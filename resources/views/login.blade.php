@@ -15,9 +15,9 @@
         <h1 class="title">Pusat Pelayanan Masyarakat</h1>
         <div class="login-box">
             <h2>Login</h2>
-            <form action="#">
-                <input type="text" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
+            <form action="/login" method="post">
+                <input type="email" name="email" placeholder="Email" id="email" autofocus required>
+                <input type="password" name="password" placeholder="Password" id="password" required>
                 <input type="submit" value="Login">
             </form>
         </div>
