@@ -27,13 +27,5 @@ class LoginController extends Controller
         } else {
             return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
-
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
-
-        //     return redirect()->intended('dashboard');
-        // }
-
-        // return back()->with('loginError', 'Login Gagal');
     }
 }
