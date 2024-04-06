@@ -26,6 +26,13 @@ body {
     right: 55px;
 }
 
+
+.logo img {
+    max-width: 100px;
+    max-height: 120px;
+}
+
+
 .title {
     color: #455a51;
     text-align: center;
