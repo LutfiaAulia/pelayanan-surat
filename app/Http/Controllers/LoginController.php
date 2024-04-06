@@ -8,22 +8,32 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /**
-     * Handle an authentication attempt.
-     */
+
     public function auth(Request $request)
     {
-        $credentials = $request->validate([
-            'email' =>'required|email:dns',
-            'password' =>'required'
+        // dd($request->all());
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
 
-            return redirect()->intended('dashboard');
+        if (Auth::attempt($data)) {
+            return redirect()->route('welcome');
+        } else {
+            return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
 
-        return back()->with('loginError', 'Login Gagal');
+        // if (Auth::attempt($credentials)) {
+        //     $request->session()->regenerate();
+
+        //     return redirect()->intended('dashboard');
+        // }
+
+        // return back()->with('loginError', 'Login Gagal');
     }
 }
