@@ -48,7 +48,16 @@ body {
     margin-bottom: 20px;
 }
 
-.login-box input[type="text"],
+.login-box input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    /* Add any additional styling here */
+}
+
 .login-box input[type="password"] {
     width: calc(100% - 20px);
     padding: 10px;
