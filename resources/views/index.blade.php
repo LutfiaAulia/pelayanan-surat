@@ -27,7 +27,7 @@
                         <div class="logo">
                             <a href="index.html"><img src="logo.png" alt="Logo" class="logo" width="80px" height="auto"></a>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -97,7 +97,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-title">Extra UI</li>
+                        <li class="sidebar-title">Tables</li>
 
 
 
@@ -108,7 +108,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-title">Pages</li>
+                        <li class="sidebar-title">Akun</li>
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
@@ -159,7 +159,7 @@
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                                 <h6 class="text-muted font-semibold">Total Pengajuan</h6>
-                                                <h6 class="font-extrabold mb-0">2</h6>
+                                                <h6 class="font-extrabold mb-0">4</h6>
                                             </div>
                                         </div>
                                     </div>
