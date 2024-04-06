@@ -27,6 +27,6 @@ Route::get('/', function () {
 Route::post('/login-proses', [LoginController::class, 'auth'])->name('auth');
 
 Route::get('/welcome', function (){
-    return view('welcome');
-})->name('welcome');
+    return view('index');
+})->name('index');
 
