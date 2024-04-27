@@ -66,14 +66,16 @@
                         <li class="sidebar-item active ">
                             <a href="index.html" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
+                                <span>Beranda</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-title">Forms &amp; Tables</li>
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
-                                <span>Pengajuan Surat</span>
+                                <span>List Pengajuan</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
@@ -86,15 +88,6 @@
                                     <a href="component-breadcrumb.html">SKU</a>
                                 </li>
                             </ul>
-                        </li>
-
-                        <li class="sidebar-title">Forms &amp; Tables</li>
-
-                        <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
-                                <i class="bi bi-file-earmark-medical-fill"></i>
-                                <span>List Pengajuan</span>
-                            </a>
                         </li>
 
                         <li class="sidebar-title">Tables</li>
