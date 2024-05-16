@@ -30,3 +30,6 @@ Route::get('/welcome', function (){
     return view('index');
 })->name('index');
 
+Route::get('/list', function () {
+    return view('listsktm');
+})->name('list');

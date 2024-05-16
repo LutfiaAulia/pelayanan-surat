@@ -60,8 +60,8 @@
                         <span>List Pengajuan</span>
                     </a>
                     <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="component-alert.html">SKTM</a>
+                        <li class="submenu-item">
+                            <a href="{{ route('list') }}">SKTM</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="component-badge.html">Surat Penghasilan</a>
