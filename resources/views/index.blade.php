@@ -5,7 +5,7 @@
 {{-- content --}}
 <div class="page-content">
     <section class="row">
-        <div class="col-12 col-lg-9">
+        <div class="">
             <div class="row">
                 <div class="col-6 col-lg-3 col-md-6">
                     <div class="card">
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
                             <h4>Profile Visit</h4>
@@ -87,18 +87,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-            <div class="card">
-                <div class="card-header">
-                    <h4>Visitors Profile</h4>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Visitors Profile</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="chart-visitors-profile"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div id="chart-visitors-profile"></div>
-                </div>
-            </div>
-        </div>
+            </div>            
     </section>
 </div>           
 
