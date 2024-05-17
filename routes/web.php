@@ -14,19 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Route::get('/login', function () {
-    return view('login');
+    return view('pages.login');
 })->name('login');
 
 Route::get('/', function () {
-    return view('index');
+    return view('pages.index');
 });
 
 Route::post('/login-proses', [LoginController::class, 'auth'])->name('auth');
 
 Route::get('/welcome', function (){
-    return view('index');
+    return view('pages.index');
 })->name('index');
 
