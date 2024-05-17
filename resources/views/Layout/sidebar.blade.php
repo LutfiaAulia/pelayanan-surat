@@ -60,8 +60,8 @@
                         <span>List Pengajuan</span>
                     </a>
                     <ul class="submenu ">
-                        <li class="submenu-item">
-                            <a href="{{ route('list') }}">SKTM</a>
+                        <li class="submenu-item ">
+                            <a href="component-alert.html">SKTM</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="component-badge.html">Surat Penghasilan</a>
@@ -90,15 +90,15 @@
                         <i class="bi bi-person-badge-fill"></i>
                         <span>Kelola Akun</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="auth-login.html">Admin</a>
+                    <ul class="submenu">
+                        <li class="submenu-item">
+                            <a href="component-alert.html">SKTM</a>
                         </li>
-                        <li class="submenu-item ">
-                            <a href="auth-register.html">Wali Nagari</a>
+                        <li class="submenu-item">
+                            <a href="component-badge.html">Surat Penghasilan</a>
                         </li>
-                        <li class="submenu-item ">
-                            <a href="auth-forgot-password.html">Masyarakat</a>
+                        <li class="submenu-item">
+                            <a href="component-breadcrumb.html">SKU</a>
                         </li>
                     </ul>
                 </li>
