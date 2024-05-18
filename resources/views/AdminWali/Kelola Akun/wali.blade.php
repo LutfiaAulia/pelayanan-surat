@@ -6,7 +6,7 @@
 <div class="page-content">
     <section class="row">
         <div class="col-12">
-            <div class="me-auto">
+            <div class="me-auto" style= "margin-bottom: 30px;">
                 <h3>Kelola Akun Wali Nagari</h3>
             </div>
             <div class="card">
