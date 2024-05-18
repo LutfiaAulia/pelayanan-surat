@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <thead>
+                            <thead style="text-align: center;">
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Username</th>
@@ -24,13 +24,13 @@
                             <tbody>
                                 {{-- Example rows --}}
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row" style="width: 80px; text-align: center;">1</th>
                                     <td>admin</td>
                                     <td>admin@gmail.com</td>
-                                    <td>
+                                    <td style="width: 200px; text-align: center;">
                                         <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
-                                            <i class="fas fa-trash-alt"></i> Hapus
+                                            <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </td>
                                 </tr>

@@ -63,9 +63,6 @@ Route::get('/welcome', function (){
 })->name('index');
 
 // Masyarakat
-Route::get('/dashboard', function () {
-    return view('Masyarakat.dashboard');
-});
 
 // Pengajuan Surat
 
