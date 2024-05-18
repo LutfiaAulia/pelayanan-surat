@@ -81,5 +81,8 @@ Route::get('/listpeng', function () {
 });
 
 // Syarat Pengajuan
+Route::get('/syarpeng', function () {
+    return view('Masyarakat.syarpeng');
+});
 
 
