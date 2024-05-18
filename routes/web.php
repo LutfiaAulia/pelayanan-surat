@@ -19,12 +19,12 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/', function () {
-    return view('pages.index');
+    return view('index');
 });
 
 Route::post('/login-proses', [LoginController::class, 'auth'])->name('auth');
 
 Route::get('/welcome', function (){
-    return view('pages.index');
+    return view('index');
 })->name('index');
 
