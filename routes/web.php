@@ -65,6 +65,9 @@ Route::get('/welcome', function (){
 // Masyarakat
 
 // Pengajuan Surat
+Route::get('/listpeng', function () {
+    return view('Masyarakat.listpeng');
+});
 
 // List Pengajuan
 
