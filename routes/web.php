@@ -65,11 +65,12 @@ Route::get('/welcome', function (){
 // Masyarakat
 
 // Pengajuan Surat
+
+
+// List Pengajuan
 Route::get('/listpeng', function () {
     return view('Masyarakat.listpeng');
 });
-
-// List Pengajuan
 
 // Syarat Pengajuan
 
