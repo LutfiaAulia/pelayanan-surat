@@ -65,7 +65,15 @@ Route::get('/welcome', function (){
 // Masyarakat
 
 // Pengajuan Surat
-
+Route::get('/sktm', function () {
+    return view('Masyarakat.Pengajuan Surat.sktm');
+});
+Route::get('/sku', function () {
+    return view('Masyarakat.Pengajuan Surat.sku');
+});
+Route::get('/surpeng', function () {
+    return view('Masyarakat.Pengajuan Surat.surpeng');
+});
 
 // List Pengajuan
 Route::get('/listpeng', function () {
