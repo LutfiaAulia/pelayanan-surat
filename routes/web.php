@@ -22,6 +22,14 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/admin', function () {
+    return view('AdminWali.Kelola Akun.admin');
+});
+
+Route::get('/wali', function () {
+    return view('AdminWali.Kelola Akun.admin');
+});
+
 Route::get('/adminWali', function () {
     return view('AdminWali.Kelola Akun.admin');
 });
