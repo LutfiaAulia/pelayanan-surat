@@ -6,9 +6,12 @@
 <div class="page-content">
     <section class="row">
         <div class="col-12">
+            <div class="me-auto">
+                <h3>Kelola Akun Admin</h3>
+            </div>
             <div class="card">
                 <div class="card-header">
-                    <h4>Akun Admin</h4>
+                    <h4>List Akun Admin</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

@@ -92,13 +92,13 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="component-alert.html">SKTM</a>
+                            <a href="component-alert.html">Admin</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="component-badge.html">Surat Penghasilan</a>
+                            <a href="component-badge.html">Wali Nagari</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="component-breadcrumb.html">SKU</a>
+                            <a href="component-breadcrumb.html">Masyarakat</a>
                         </li>
                     </ul>
                 </li>
