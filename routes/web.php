@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/adminWali', function () {
+    return view('AdminWali.Kelola Akun.admin');
+});
+
 Route::post('/login-proses', [LoginController::class, 'auth'])->name('auth');
 
 Route::get('/welcome', function (){
