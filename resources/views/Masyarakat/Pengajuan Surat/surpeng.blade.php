@@ -10,7 +10,7 @@
     <div class="card p-4" style="width: 70%">
         <div class="card-content">
             <div class="card-body">
-                <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Form Pengajuan Surat SKTM</h4>
+                <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Form Pengajuan Surat Penghasilan Orang Tua</h4>
                 <form class="form" method="post">
                     <div class="form-body">
                         <div class="row">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="" style="text-align: center">
+                    <div class="form-actions d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1">Submit</button>
                         <button type="reset" class="btn btn-light-primary">Cancel</button>
                     </div>
