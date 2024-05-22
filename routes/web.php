@@ -22,7 +22,7 @@ Route::get('/login', function () {
 
 // Admin dan Wali Nagari
 Route::get('/', function () {
-    return view('index');
+    return view('login');
 });
 
 // Kelola Akun
