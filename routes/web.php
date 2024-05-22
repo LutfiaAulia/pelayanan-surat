@@ -28,33 +28,33 @@ Route::get('/', function () {
 // Kelola Akun
 Route::get('/admin', function () {
     return view('AdminWali.Kelola Akun.admin');
-});
+})->name('admin');
 
 Route::get('/wali', function () {
     return view('AdminWali.Kelola Akun.wali');
-});
+})->name('wali');
 
 Route::get('/masyarakat', function () {
     return view('AdminWali.Kelola Akun.masyarakat');
-});
+})->name('masyarakat');
 
 // List Pengajuan
 Route::get('/listsktm', function () {
     return view('AdminWali.List Pengajuan.listsktm');
-});
+})->name('listsktm');
 
 Route::get('/listsku', function () {
     return view('AdminWali.List Pengajuan.listsku');
-});
+})->name('listsku');
 
 Route::get('/listsurpeng', function () {
     return view('AdminWali.List Pengajuan.listsurpeng');
-});
+})->name('listsurpeng');
 
 // List Surat Keluar
 Route::get('/listsuker', function () {
     return view('AdminWali.listsuker');
-});
+})->name('listsuker');
 
 Route::post('/login-proses', [LoginController::class, 'auth'])->name('auth');
 

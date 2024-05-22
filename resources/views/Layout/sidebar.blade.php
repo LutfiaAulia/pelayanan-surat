@@ -61,13 +61,13 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="component-alert.html">SKTM</a>
+                            <a href="{{ route('listsktm') }}">SKTM</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="component-badge.html">Surat Penghasilan</a>
+                            <a href="{{ route('listsurpeng') }}">Surat Penghasilan</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="component-breadcrumb.html">SKU</a>
+                            <a href="{{ route('listsku') }}">SKU</a>
                         </li>
                     </ul>
                 </li>
@@ -77,7 +77,7 @@
 
 
                 <li class="sidebar-item  ">
-                    <a href="ui-file-uploader.html" class='sidebar-link'>
+                    <a href="{{ route('listsuker') }}" class='sidebar-link'>
                         <i class="bi bi-cloud-arrow-up-fill"></i>
                         <span>List Surat Keluar</span>
                     </a>
@@ -92,13 +92,13 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="component-alert.html">Admin</a>
+                            <a href="{{ route('admin') }}">Admin</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="component-badge.html">Wali Nagari</a>
+                            <a href="{{ route('wali') }}">Wali Nagari</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="component-breadcrumb.html">Masyarakat</a>
+                            <a href="{{ route('masyarakat') }}">Masyarakat</a>
                         </li>
                     </ul>
                 </li>
