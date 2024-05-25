@@ -17,7 +17,7 @@
             <h2>Login</h2>
             <form action="{{route('auth')}}" method="post">
                 @csrf
-                <input type="email" name="email" placeholder="Email" id="email" autofocus required>
+                <input type="text" name="email" placeholder="NKK/NIP" id="nkkip" autofocus required>
                 @error ('email')
                 <small> {{$message}} </small>
                 @enderror
@@ -36,6 +36,12 @@
         Swal.fire('{{$message}}');
     </script>
     @endif
+
+    <script>
+        document.getElementById('nkkip').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
 </body>
 
 </html>

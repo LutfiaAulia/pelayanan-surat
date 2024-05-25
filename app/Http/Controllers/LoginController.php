@@ -9,6 +9,20 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
 
+    function index(){
+        return view('login');
+    }
+
+    function login(Request $request){
+        $request->validate([
+            'nkk/nip' => 'required',
+            'password' => 'required'
+        ],[
+            'nkk/nip.required' => 'NKK/NIP Wajib Diisi',
+            'password.required' => 'Password Wajib Diisi'
+        ]);
+    }
+
     public function auth(Request $request)
     {
         // dd($request->all());

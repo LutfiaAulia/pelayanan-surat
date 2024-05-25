@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 // ini buat FE dulu banyak route nya.
 
 // Login
-Route::get('/login', function () {
-    return view('pages.login');
-})->name('login');
+// Route::get('/login', function () {
+//     return view('pages.login');
+// })->name('login');
 
 // Admin dan Wali Nagari
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', [LoginController::class, 'index']);
+
+Route::post('/', [LoginController::class, 'login']);
 
 // Kelola Akun
 Route::get('/admin', function () {
