@@ -34,4 +34,9 @@ class LoginController extends Controller
             return redirect('')->withErrors('NKK/NIP atau Password Salah')->withInput();
         }
     }
+
+    function logout(){
+        Auth::logout();
+        return redirect('');
+    }
 }

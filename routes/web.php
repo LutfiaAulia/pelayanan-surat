@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,16 +17,19 @@ use Illuminate\Support\Facades\Route;
 */
 // ini buat FE dulu banyak route nya.
 
-// Login
-// Route::get('/login', function () {
-//     return view('pages.login');
-// })->name('login');
 
 // Admin dan Wali Nagari
-Route::get('/', [LoginController::class, 'index']);
+Route::middleware(['guest'])->group(function(){
+    Route::get('/', [LoginController::class, 'index']);
+    Route::post('/', [LoginController::class, 'login'])->name('login');
+});
 
-// Route::post('/', [LoginController::class, 'login']);
-Route::post('/', [LoginController::class, 'login'])->name('login');
+Route::get('/home', function(){
+    return redirect('/dashboard');
+});
+
+Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Kelola Akun
 Route::get('/admin', function () {
@@ -56,10 +61,6 @@ Route::get('/listsurpeng', function () {
 Route::get('/listsuker', function () {
     return view('AdminWali.listsuker');
 })->name('listsuker');
-
-Route::get('/welcome', function (){
-    return view('index');
-})->name('index');
 
 // Masyarakat
 

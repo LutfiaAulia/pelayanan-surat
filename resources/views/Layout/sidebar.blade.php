@@ -102,9 +102,12 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="sidebar-title">Logout</li>
-
+                <li class="sidebar-item">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
