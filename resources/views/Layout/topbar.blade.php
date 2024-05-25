@@ -9,7 +9,7 @@
                     </div>
                     <div class="ms-3 name">
                         <h5 class="font-bold">Admin</h5>
-                        <h6 class="text-muted mb-0">admin@gmail.com</h6>
+                        <h6 class="text-muted mb-0">{{ Auth::user()->name }}</h6>
                     </div>
                 </div>
             </div>

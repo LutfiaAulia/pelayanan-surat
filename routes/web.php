@@ -19,17 +19,23 @@ use Illuminate\Support\Facades\Route;
 
 
 // Admin dan Wali Nagari
-Route::middleware(['guest'])->group(function(){
-    Route::get('/', [LoginController::class, 'index']);
-    Route::post('/', [LoginController::class, 'login'])->name('login');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', [LoginController::class, 'index'])->name('login');
+    Route::post('/', [LoginController::class, 'login']);
 });
 
-Route::get('/home', function(){
+Route::get('/home', function () {
     return redirect('/dashboard');
 });
 
-Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
+    Route::get('/dashboard/admin', [AdminController::class, 'admin']);
+    Route::get('/dashboard/walinagari', [AdminController::class, 'walinagari']);
+    Route::get('/dashboard/masyarakat', [AdminController::class, 'masyarakat']);
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});
+
 
 // Kelola Akun
 Route::get('/admin', function () {
@@ -83,6 +89,4 @@ Route::get('/listpeng', function () {
 // Syarat Pengajuan
 Route::get('/syarpeng', function () {
     return view('Masyarakat.syarpeng');
-});
-
-
+})->name('syarat');

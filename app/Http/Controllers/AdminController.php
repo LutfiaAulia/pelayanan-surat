@@ -10,4 +10,16 @@ class AdminController extends Controller
         return view('index');
     }
 
+    function admin(){
+        return view('index');
+    }
+
+    function walinagari(){
+        return view('index');
+    }
+
+    function masyarakat(){
+        return view('index');
+    }
+
 }
