@@ -30,9 +30,9 @@ Route::get('/home', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
-    Route::get('/dashboard/admin', [AdminController::class, 'admin']);
-    Route::get('/dashboard/walinagari', [AdminController::class, 'walinagari']);
-    Route::get('/dashboard/masyarakat', [AdminController::class, 'masyarakat']);
+    Route::get('/dashboard/admin', [AdminController::class, 'admin'])->middleware('userAkses:admin');
+    Route::get('/dashboard/walinagari', [AdminController::class, 'walinagari'])->middleware('userAkses:walinagari');
+    Route::get('/dashboard/masyarakat', [AdminController::class, 'masyarakat'])->middleware('userAkses:masyarakat');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
