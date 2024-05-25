@@ -13,33 +13,25 @@ class LoginController extends Controller
         return view('login');
     }
 
-    function login(Request $request){
+    public function login(Request $request)
+    {
         $request->validate([
-            'nkk/nip' => 'required',
+            'nkkip' => 'required',
             'password' => 'required'
         ],[
-            'nkk/nip.required' => 'NKK/NIP Wajib Diisi',
-            'password.required' => 'Password Wajib Diisi'
-        ]);
-    }
-
-    public function auth(Request $request)
-    {
-        // dd($request->all());
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required'
+            'nkkip.required'=>'NKK/NIP Wajib Diisi',
+            'password.required'=>'Password Wajib Diisi',
         ]);
 
         $data = [
-            'email' => $request->email,
+            'nkkip' => $request->nkkip,
             'password' => $request->password
         ];
 
         if (Auth::attempt($data)) {
             return redirect()->route('index');
         } else {
-            return redirect()->route('login')->with('failed', 'Email atau Password Salah');
+            return redirect('')->withErrors('NKK/NIP atau Password Salah')->withInput();
         }
     }
 }

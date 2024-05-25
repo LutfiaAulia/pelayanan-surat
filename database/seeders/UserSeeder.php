@@ -17,19 +17,19 @@ class UserSeeder extends Seeder
         $userData = [
             [
                 'name'  =>'admin1',
-                'nkk/nip' =>'12345',
+                'nkkip' =>'12345',
                 'role' => 'admin',
                 'password'  =>Hash::make('admin123')
             ],
             [
                 'name'  =>'masyarakat1',
-                'nkk/nip' =>'23456',
+                'nkkip' =>'23456',
                 'role' => 'masyarakat',
                 'password'  =>Hash::make('masyarakat123')
             ],
             [
                 'name'  =>'walinagari1',
-                'nkk/nip' =>'34567',
+                'nkkip' =>'34567',
                 'role' => 'walinagari',
                 'password'  =>Hash::make('walinagari123')
             ]

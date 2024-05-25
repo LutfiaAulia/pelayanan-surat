@@ -23,7 +23,8 @@ use Illuminate\Support\Facades\Route;
 // Admin dan Wali Nagari
 Route::get('/', [LoginController::class, 'index']);
 
-Route::post('/', [LoginController::class, 'login']);
+// Route::post('/', [LoginController::class, 'login']);
+Route::post('/', [LoginController::class, 'login'])->name('login');
 
 // Kelola Akun
 Route::get('/admin', function () {
@@ -55,8 +56,6 @@ Route::get('/listsurpeng', function () {
 Route::get('/listsuker', function () {
     return view('AdminWali.listsuker');
 })->name('listsuker');
-
-Route::post('/login-proses', [LoginController::class, 'auth'])->name('auth');
 
 Route::get('/welcome', function (){
     return view('index');
