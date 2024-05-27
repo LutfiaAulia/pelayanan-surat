@@ -68,25 +68,30 @@ Route::get('/listsuker', function () {
     return view('AdminWali.listsuker');
 })->name('listsuker');
 
+Route::get('/verif', function () {
+    return view('AdminWali.verifikasi');
+})->name('verif');
+
 // Masyarakat
 
 // Pengajuan Surat
 Route::get('/sktm', function () {
     return view('Masyarakat.Pengajuan Surat.sktm');
-});
+})->name('sktm');
 Route::get('/sku', function () {
     return view('Masyarakat.Pengajuan Surat.sku');
-});
+})->name('sku');
 Route::get('/surpeng', function () {
     return view('Masyarakat.Pengajuan Surat.surpeng');
-});
+})->name('surpeng');
 
 // List Pengajuan
 Route::get('/listpeng', function () {
     return view('Masyarakat.listpeng');
-});
+})->name('listpeng');
 
 // Syarat Pengajuan
 Route::get('/syarpeng', function () {
     return view('Masyarakat.syarpeng');
 })->name('syarat');
+

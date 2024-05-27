@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('nkk/nip')->unique();
+            $table->string('nkkip')->unique();
             $table->timestamp('user_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['admin', 'walinagari', 'masyarakat']);

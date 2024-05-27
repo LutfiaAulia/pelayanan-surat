@@ -52,56 +52,102 @@
                     </a>
                 </li>
 
-                <li class="sidebar-title">Forms &amp; Tables</li>
+                @if(Auth::check() && Auth::user()->role == 'masyarakat')
+                    <li class="sidebar-item  ">
+                        <a href="{{ route('syarat') }}" class='sidebar-link'>
+                            <i class="bi bi-files"></i>
+                            <span>Syarat Pengajuan</span>
+                        </a>
+                    </li>
+                @endif
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>List Pengajuan</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="{{ route('listsktm') }}">SKTM</a>
+                @if(Auth::check() && Auth::user()->role == 'admin')
+
+                    <li class="sidebar-title">Forms &amp; Tables</li>
+                    
+                        <li class="sidebar-item has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>List Pengajuan</span>
+                            </a>
+                            <ul class="submenu">
+                                <li class="submenu-item">
+                                    <a href="{{ route('listsktm') }}">SKTM</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('listsurpeng') }}">Surat Penghasilan</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('listsku') }}">SKU</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="submenu-item ">
-                            <a href="{{ route('listsurpeng') }}">Surat Penghasilan</a>
+                @endif
+
+                @if(Auth::check() && Auth::user()->role == 'masyarakat')
+
+                    <li class="sidebar-title">Forms &amp; Tables</li>
+                    
+                        <li class="sidebar-item has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Pengajuan Surat</span>
+                            </a>
+                            <ul class="submenu">
+                                <li class="submenu-item">
+                                    <a href="{{ route('sktm') }}">SKTM</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('surpeng') }}">Surat Penghasilan</a>
+                                </li>
+                                <li class="submenu-item">
+                                    <a href="{{ route('sku') }}">SKU</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="submenu-item ">
-                            <a href="{{ route('listsku') }}">SKU</a>
-                        </li>
-                    </ul>
-                </li>
+                @endif
 
                 <li class="sidebar-title">Tables</li>
 
+                @if(Auth::check() && Auth::user()->role == 'masyarakat')
+                    <li class="sidebar-item  ">
+                        <a href="{{ route('listpeng') }}" class='sidebar-link'>
+                            <i class="bi bi-files"></i>
+                            <span>List Pengajuan</span>
+                        </a>
+                    </li>
+                @endif
 
+                @if(Auth::check() && (Auth::user()->role == 'admin' || Auth::user()->role == 'walinagari'))
 
-                <li class="sidebar-item  ">
-                    <a href="{{ route('listsuker') }}" class='sidebar-link'>
-                        <i class="bi bi-cloud-arrow-up-fill"></i>
-                        <span>List Surat Keluar</span>
-                    </a>
-                </li>
+                    <li class="sidebar-item  ">
+                        <a href="{{ route('listsuker') }}" class='sidebar-link'>
+                            <i class="bi bi-cloud-arrow-up-fill"></i>
+                            <span>List Surat Keluar</span>
+                        </a>
+                    </li>
 
-                <li class="sidebar-title">Akun</li>
+                    <li class="sidebar-title">Akun</li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-person-badge-fill"></i>
-                        <span>Kelola Akun</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="{{ route('admin') }}">Admin</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="{{ route('wali') }}">Wali Nagari</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="{{ route('masyarakat') }}">Masyarakat</a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-person-badge-fill"></i>
+                            <span>Kelola Akun</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="{{ route('admin') }}">Admin</a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="{{ route('wali') }}">Wali Nagari</a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="{{ route('masyarakat') }}">Masyarakat</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+                
                 <li class="sidebar-item">
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
