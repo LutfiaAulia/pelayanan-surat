@@ -9,23 +9,42 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
 
-    public function auth(Request $request)
+    function index()
     {
-        // dd($request->all());
+        return view('login');
+    }
+
+    public function login(Request $request)
+    {
         $request->validate([
-            'email' => 'required',
+            'nkkip' => 'required',
             'password' => 'required'
+        ], [
+            'nkkip.required' => 'NKK/NIP Wajib Diisi',
+            'password.required' => 'Password Wajib Diisi',
         ]);
 
         $data = [
-            'email' => $request->email,
+            'nkkip' => $request->nkkip,
             'password' => $request->password
         ];
 
         if (Auth::attempt($data)) {
-            return redirect()->route('index');
-        } else {
-            return redirect()->route('login')->with('failed', 'Email atau Password Salah');
+            if (Auth::user()->role == 'admin') {
+                return redirect('dashboard/admin');
+            } elseif (Auth::user()->role == 'walinagari') {
+                return redirect('dashboard/walinagari');
+            } elseif (Auth::user()->role == 'masyarakat') {
+                return redirect('dashboard/masyarakat');
+            } else {
+                return redirect('')->withErrors('NKK/NIP atau Password Salah')->withInput();
+            }
         }
+    }
+
+    function logout()
+    {
+        Auth::logout();
+        return redirect('');
     }
 }

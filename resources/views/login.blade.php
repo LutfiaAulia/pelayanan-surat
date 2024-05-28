@@ -15,27 +15,29 @@
         <h1 class="title">Pusat Pelayanan Masyarakat</h1>
         <div class="login-box">
             <h2>Login</h2>
-            <form action="{{route('auth')}}" method="post">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $item)
+                        <li>{{$item}}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            <form action="{{route('login')}}" method="post">
                 @csrf
-                <input type="email" name="email" placeholder="Email" id="email" autofocus required>
-                @error ('email')
-                <small> {{$message}} </small>
-                @enderror
-                <input type="password" name="password" placeholder="Password" id="password" required>
-                @error ('password')
-                <small> {{$message}} </small>
-                @enderror
+                <input type="text" value="{{old('nkkip')}}" name="nkkip" placeholder="NKK/NIP" id="nkkip" autofocus >
+                <input type="password" name="password" placeholder="Password" id="password" >
                 <input type="submit" value="Login">
             </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    @if($message = Session::get('failed'))
     <script>
-        Swal.fire('{{$message}}');
+        document.getElementById('nkkip').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
     </script>
-    @endif
 </body>
 
 </html>

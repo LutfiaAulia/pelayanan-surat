@@ -34,8 +34,7 @@
                                     <td>B-003/SKTM/IV/2024</td>
                                     <td>Selesai</td>
                                     <td style="width: 140px; text-align: center;" >
-                                        <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
-                                        <button class="btn btn-success"><i class="fas fa-file-upload"></i></button>
+                                        <button class="btn btn-success"><i class="fas fa-print"></i></button>
                                     </td>
                                 </tr>
                                 {{-- Add more rows as needed --}}

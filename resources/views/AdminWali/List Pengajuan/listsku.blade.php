@@ -32,8 +32,8 @@
                                     <td>2023-05-01</td>
                                     <td>Mengajukan</td>
                                     <td style="width: 140px; text-align: center;" >
-                                        <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
-                                        <button class="btn btn-success"><i class="fas fa-file-upload"></i></button>
+                                        <a href="{{ route('verif') }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-success"><i class="fas fa-file-upload"></i></a>
                                     </td>
                                 </tr>
                                 {{-- Add more rows as needed --}}

@@ -55,7 +55,7 @@ body {
     margin-bottom: 20px;
 }
 
-.login-box input[type="email"] {
+.login-box input[type="text"] {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 15px;
