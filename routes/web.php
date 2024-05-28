@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 // Login
 Route::get('/login', function () {
-    return view('pages.login');
+    return view('login');
 })->name('login');
 
 // Admin dan Wali Nagari
