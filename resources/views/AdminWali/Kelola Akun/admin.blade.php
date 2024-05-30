@@ -9,6 +9,11 @@
             <div class="me-auto" style= "margin-bottom: 30px;">
                 <h3>Kelola Akun Admin</h3>
             </div>
+            <div class="mb-3 d-flex justify-content-end align-items-center">
+                <a href="{{ route('admin.tambahAdmin') }}" class="btn btn-success shadow-sm" style="margin-bottom: right;">
+                    <i class="fas fa-plus fa-sm text-white-50"></i> Admin
+                </a>
+            </div>            
             <div class="card">
                 <div class="card-header">
                     <h4>List Akun Admin</h4>
@@ -20,7 +25,7 @@
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Username</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">NIK</th>
                                     <th colspan="2">Action</th>
                                 </tr>
                             </thead>
@@ -29,9 +34,11 @@
                                 <tr>
                                     <th scope="row" style="width: 80px; text-align: center;">1</th>
                                     <td>admin</td>
-                                    <td>admin@gmail.com</td>
+                                    <td>13050189765678007</td>
                                     <td style="width: 200px; text-align: center;">
-                                        <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                                        <a href="{{ route('admin.editAdmin') }}" class="btn btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>

@@ -22,4 +22,22 @@ class AdminController extends Controller
         return view('index');
     }
 
+    function tambahAdmin(){
+        return view('AdminWali.Kelola Akun.tambahAdmin'); 
+    }
+
+    function editAdmin(){
+        return view('AdminWali.Kelola Akun.editAdmin'); 
+    }
+
+    function tambahMas(){
+        return view('AdminWali.Kelola Akun.tambahMas'); 
+    }
+
+    function tambahWali(){
+        return view('AdminWali.Kelola Akun.tambahWali'); 
+    }
+
+    
+
 }
