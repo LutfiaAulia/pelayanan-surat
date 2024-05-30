@@ -44,8 +44,6 @@ Route::get('/admin/editAdmin', [AdminController::class, 'editAdmin'])->name('adm
 Route::get('/admin/editMas', [AdminController::class, 'editMas'])->name('admin.editMas');
 Route::get('/admin/editWali', [AdminController::class, 'editWali'])->name('admin.editWali');
 
-
-
 // Kelola Akun
 Route::get('/admin', function () {
     return view('AdminWali.Kelola Akun.admin');

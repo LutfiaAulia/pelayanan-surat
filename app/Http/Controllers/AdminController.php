@@ -34,8 +34,16 @@ class AdminController extends Controller
         return view('AdminWali.Kelola Akun.tambahMas'); 
     }
 
+    function editMas(){
+        return view('AdminWali.Kelola Akun.editMas'); 
+    }
+
     function tambahWali(){
         return view('AdminWali.Kelola Akun.tambahWali'); 
+    }
+
+    function editWali(){
+        return view('AdminWali.Kelola Akun.editWali'); 
     }
 
     

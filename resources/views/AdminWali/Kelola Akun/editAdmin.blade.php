@@ -26,10 +26,10 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group mb-3">
-                                    <input type="text" id="username" class="form-control" placeholder="Username" name="username" value="{{ $admin->username }}">
+                                    <input type="text" id="username" class="form-control" placeholder="Username" name="username" value="">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik" value="{{ $admin->nik }}">
+                                    <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik" value="">
                                 </div>
                                 <div class="form-group mb-3">
                                     <input type="password" id="password" class="form-control" placeholder="Password" name="password">

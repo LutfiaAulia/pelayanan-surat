@@ -36,7 +36,9 @@
                                     <td>masyarakat</td>
                                     <td>13050189765678007</td>
                                     <td style="width: 200px; text-align: center;">
-                                        <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                                        <a href="{{ route('admin.editMas') }}" class="btn btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
