@@ -1,5 +1,4 @@
 {{-- Sidebar --}}
-
 <div id="sidebar" class="active">
     <div class="sidebar-wrapper active">
 
@@ -45,15 +44,15 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active ">
-                    <a href="index.html" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->routeIs('index') ? 'active' : '' }}">
+                    <a href="{{ route('index') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Beranda</span>
                     </a>
                 </li>
 
                 @if(Auth::check() && Auth::user()->role == 'masyarakat')
-                    <li class="sidebar-item  ">
+                    <li class="sidebar-item {{ request()->routeIs('syarat') ? 'active' : '' }}">
                         <a href="{{ route('syarat') }}" class='sidebar-link'>
                             <i class="bi bi-files"></i>
                             <span>Syarat Pengajuan</span>
@@ -62,55 +61,51 @@
                 @endif
 
                 @if(Auth::check() && Auth::user()->role == 'admin')
-
                     <li class="sidebar-title">Forms &amp; Tables</li>
-                    
-                        <li class="sidebar-item has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-stack"></i>
-                                <span>List Pengajuan</span>
-                            </a>
-                            <ul class="submenu">
-                                <li class="submenu-item">
-                                    <a href="{{ route('listsktm') }}">SKTM</a>
-                                </li>
-                                <li class="submenu-item">
-                                    <a href="{{ route('listsurpeng') }}">Surat Penghasilan</a>
-                                </li>
-                                <li class="submenu-item">
-                                    <a href="{{ route('listsku') }}">SKU</a>
-                                </li>
-                            </ul>
-                        </li>
+                    <li class="sidebar-item has-sub {{ request()->routeIs(['listsktm', 'listsurpeng', 'listsku']) ? 'active' : '' }}">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>List Pengajuan</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item {{ request()->routeIs('listsktm') ? 'active' : '' }}">
+                                <a href="{{ route('listsktm') }}">SKTM</a>
+                            </li>
+                            <li class="submenu-item {{ request()->routeIs('listsurpeng') ? 'active' : '' }}">
+                                <a href="{{ route('listsurpeng') }}">Surat Penghasilan</a>
+                            </li>
+                            <li class="submenu-item {{ request()->routeIs('listsku') ? 'active' : '' }}">
+                                <a href="{{ route('listsku') }}">SKU</a>
+                            </li>
+                        </ul>
+                    </li>
                 @endif
 
                 @if(Auth::check() && Auth::user()->role == 'masyarakat')
-
                     <li class="sidebar-title">Forms &amp; Tables</li>
-                    
-                        <li class="sidebar-item has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-stack"></i>
-                                <span>Pengajuan Surat</span>
-                            </a>
-                            <ul class="submenu">
-                                <li class="submenu-item">
-                                    <a href="{{ route('sktm') }}">SKTM</a>
-                                </li>
-                                <li class="submenu-item">
-                                    <a href="{{ route('surpeng') }}">Surat Penghasilan</a>
-                                </li>
-                                <li class="submenu-item">
-                                    <a href="{{ route('sku') }}">SKU</a>
-                                </li>
-                            </ul>
-                        </li>
+                    <li class="sidebar-item has-sub {{ request()->routeIs(['sktm', 'surpeng', 'sku']) ? 'active' : '' }}">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Pengajuan Surat</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item {{ request()->routeIs('sktm') ? 'active' : '' }}">
+                                <a href="{{ route('sktm') }}">SKTM</a>
+                            </li>
+                            <li class="submenu-item {{ request()->routeIs('surpeng') ? 'active' : '' }}">
+                                <a href="{{ route('surpeng') }}">Surat Penghasilan</a>
+                            </li>
+                            <li class="submenu-item {{ request()->routeIs('sku') ? 'active' : '' }}">
+                                <a href="{{ route('sku') }}">SKU</a>
+                            </li>
+                        </ul>
+                    </li>
                 @endif
 
                 <li class="sidebar-title">Tables</li>
 
                 @if(Auth::check() && Auth::user()->role == 'masyarakat')
-                    <li class="sidebar-item  ">
+                    <li class="sidebar-item {{ request()->routeIs('listpeng') ? 'active' : '' }}">
                         <a href="{{ route('listpeng') }}" class='sidebar-link'>
                             <i class="bi bi-files"></i>
                             <span>List Pengajuan</span>
@@ -119,8 +114,7 @@
                 @endif
 
                 @if(Auth::check() && (Auth::user()->role == 'admin' || Auth::user()->role == 'walinagari'))
-
-                    <li class="sidebar-item  ">
+                    <li class="sidebar-item {{ request()->routeIs('listsuker') ? 'active' : '' }}">
                         <a href="{{ route('listsuker') }}" class='sidebar-link'>
                             <i class="bi bi-cloud-arrow-up-fill"></i>
                             <span>List Surat Keluar</span>
@@ -129,19 +123,19 @@
 
                     <li class="sidebar-title">Akun</li>
 
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item has-sub {{ request()->routeIs(['admin', 'wali', 'masyarakat']) ? 'active' : '' }}">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-person-badge-fill"></i>
                             <span>Kelola Akun</span>
                         </a>
                         <ul class="submenu">
-                            <li class="submenu-item">
+                            <li class="submenu-item {{ request()->routeIs('admin') ? 'active' : '' }}">
                                 <a href="{{ route('admin') }}">Admin</a>
                             </li>
-                            <li class="submenu-item">
+                            <li class="submenu-item {{ request()->routeIs('wali') ? 'active' : '' }}">
                                 <a href="{{ route('wali') }}">Wali Nagari</a>
                             </li>
-                            <li class="submenu-item">
+                            <li class="submenu-item {{ request()->routeIs('masyarakat') ? 'active' : '' }}">
                                 <a href="{{ route('masyarakat') }}">Masyarakat</a>
                             </li>
                         </ul>
@@ -151,10 +145,66 @@
                 <li class="sidebar-item">
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
-                        <button type="submit" class="btn btn-danger">Logout</button>
+                        <button type="submit" class="btn btn-blue">Logout</button>
                     </form>
                 </li>
+
+                {{-- <li class="sidebar-item">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="sidebar-link" style="background: none; border: none; padding: 0;">
+                            <i class="bi bi-box-arrow-left"></i>
+                            <span>Logout</span>
+                        </button>
+                    </form>
+                </li>                         --}}
             </ul>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var sidebarLinks = document.querySelectorAll('.sidebar-link');
+        var currentUrl = window.location.href;
+
+        // Function to set active class
+        function setActiveLink() {
+            sidebarLinks.forEach(function (link) {
+                if (link.href === currentUrl) {
+                    link.parentElement.classList.add('active');
+                    var parentSubMenu = link.closest('.has-sub');
+                    if (parentSubMenu) {
+                        parentSubMenu.classList.add('active');
+                    }
+                } else {
+                    link.parentElement.classList.remove('active');
+                    var parentSubMenu = link.closest('.has-sub');
+                    if (parentSubMenu) {
+                        parentSubMenu.classList.remove('active');
+                    }
+                }
+            });
+        }
+
+        // Initial setting of active link
+        setActiveLink();
+
+        // Event listener for click
+        sidebarLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                // Prevent default link behavior to allow the active class to be set
+                event.preventDefault();
+
+                // Update the URL without reloading the page
+                window.history.pushState({}, '', link.href);
+
+                // Set the active class
+                setActiveLink();
+
+                // Navigate to the link
+                window.location.href = link.href;
+            });
+        });
+    });
+</script>
