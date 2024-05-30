@@ -26,7 +26,7 @@
             @endif
             <form action="{{route('login')}}" method="post">
                 @csrf
-                <input type="text" value="{{old('nkkip')}}" name="nkkip" placeholder="NKK/NIP" id="nkkip" autofocus >
+                <input type="text" value="{{old('nkkip')}}" name="nkkip" placeholder="NKK/NIP" id="nkkip" maxlength="18" autofocus >
                 <input type="password" name="password" placeholder="Password" id="password" >
                 <input type="submit" value="Login">
             </form>

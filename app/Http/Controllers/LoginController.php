@@ -30,15 +30,16 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($data)) {
-            if (Auth::user()->role == 'admin') {
+            $user = Auth::user();
+            if ($user->role == 'admin') {
                 return redirect('dashboard/admin');
-            } elseif (Auth::user()->role == 'walinagari') {
+            } elseif ($user->role == 'walinagari') {
                 return redirect('dashboard/walinagari');
-            } elseif (Auth::user()->role == 'masyarakat') {
+            } elseif ($user->role == 'masyarakat') {
                 return redirect('dashboard/masyarakat');
-            } else {
-                return redirect('')->withErrors('NKK/NIP atau Password Salah')->withInput();
             }
+        } else {
+            return redirect()->back()->withErrors(['nkkip' => 'NKK/NIP atau Password Salah'])->withInput();
         }
     }
 
