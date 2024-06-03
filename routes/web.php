@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MasyarakatController;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/walinagari', [AdminController::class, 'walinagari'])->middleware('userAkses:walinagari');
     Route::get('/dashboard/masyarakat', [AdminController::class, 'masyarakat'])->middleware('userAkses:masyarakat');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    //Pengajuan Surat
+    Route::get('/formsktm', [MasyarakatController::class, 'formsktm'])->name('masyarakat.sktm')->middleware('userAkses:masyarakat');
+    Route::post('/ajusktm', [MasyarakatController::class, 'ajusktm'])->name('masyarakat.aju')->middleware('userAkses:masyarakat');
+
 });
 
 //Tambah Akun
@@ -94,9 +100,9 @@ Route::get('/listsuker', function () {
 // Masyarakat
 
 // Pengajuan Surat
-Route::get('/sktm', function () {
-    return view('Masyarakat.Pengajuan Surat.sktm');
-})->name('sktm');
+// Route::get('/sktm', function () {
+//     return view('Masyarakat.Pengajuan Surat.sktm');
+// })->name('sktm');
 Route::get('/sku', function () {
     return view('Masyarakat.Pengajuan Surat.sku');
 })->name('sku');

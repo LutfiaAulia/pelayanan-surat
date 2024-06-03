@@ -90,7 +90,7 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item {{ request()->routeIs('sktm') ? 'active' : '' }}">
-                                <a href="{{ route('sktm') }}">SKTM</a>
+                                <a href="{{ route('masyarakat.sktm') }}">SKTM</a>
                             </li>
                             <li class="submenu-item {{ request()->routeIs('surpeng') ? 'active' : '' }}">
                                 <a href="{{ route('surpeng') }}">Surat Penghasilan</a>
