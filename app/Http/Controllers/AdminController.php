@@ -46,6 +46,32 @@ class AdminController extends Controller
         return view('AdminWali.Kelola Akun.editWali'); 
     }
 
+    //Verifikasi
+    function verifikasisktm(){
+        return view('AdminWali.List Pengajuan.verifikasisktm'); 
+    }
+
+    function verifikasisku(){
+        return view('AdminWali.List Pengajuan.verifikasisku'); 
+    }
+
+    function verifikasisurpeng(){
+        return view('AdminWali.List Pengajuan.verifikasisurpeng'); 
+    }
+
+    //Generate
+    function generatesktm(){
+        return view('AdminWali.List Pengajuan.generatesktm'); 
+    }
+
+    function generatesku(){
+        return view('AdminWali.List Pengajuan.generatesku'); 
+    }
+
+    function generatesurpeng(){
+        return view('AdminWali.List Pengajuan.generatesurpeng'); 
+    }
+
     public function inputAdmin(Request $request){
         $validator = Validator::make($request->all(),[
             'name' => 'required',

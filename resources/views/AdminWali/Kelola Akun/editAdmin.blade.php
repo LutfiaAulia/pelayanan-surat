@@ -18,7 +18,7 @@
                                     <label for="username" class="form-label">Username</label>
                                 </div>
                                 <div class="form-group mb-4">
-                                    <label for="nik" class="form-label">NIK</label>
+                                    <label for="nik" class="form-label">NIP</label>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="form-label">Password</label>

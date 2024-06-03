@@ -32,7 +32,7 @@
                                     <td>2023-05-01</td>
                                     <td>Mengajukan</td>
                                     <td style="width: 140px; text-align: center;" >
-                                        <a href="{{ route('verif') }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('admin.verifikasisurpeng') }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                         <a class="btn btn-success"><i class="fas fa-file-upload"></i></a>
                                     </td>
                                 </tr>

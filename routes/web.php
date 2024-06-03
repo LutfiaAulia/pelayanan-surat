@@ -37,14 +37,27 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/admin/listAdmin', [AdminController::class, 'listAdmin'])->name('admin.listAdmin');
+//Tambah Akun
 Route::get('/admin/tambahAdmin', [AdminController::class, 'tambahAdmin'])->name('admin.tambahAdmin');
 Route::post('/admin/inputAdmin', [AdminController::class, 'inputAdmin'])->name('admin.inputAdmin');
 Route::get('/admin/tambahMas', [AdminController::class, 'tambahMas'])->name('admin.tambahMas');
 Route::get('/admin/tambahWali', [AdminController::class, 'tambahWali'])->name('admin.tambahWali');
 
+// Edit Akun
+Route::get('/admin/editAdmin', [AdminController::class, 'editAdmin'])->name('admin.editAdmin');
 Route::get('/admin/editAdmin/{id}', [AdminController::class, 'editAdmin'])->name('admin.editAdmin');
 Route::get('/admin/editMas', [AdminController::class, 'editMas'])->name('admin.editMas');
 Route::get('/admin/editWali', [AdminController::class, 'editWali'])->name('admin.editWali');
+
+//Verifikasi Akun
+Route::get('/admin/verifikasisktm', [AdminController::class, 'verifikasisktm'])->name('admin.verifikasisktm');
+Route::get('/admin/verifikasisku', [AdminController::class, 'verifikasisku'])->name('admin.verifikasisku');
+Route::get('/admin/verifikasisurpeng', [AdminController::class, 'verifikasisurpeng'])->name('admin.verifikasisurpeng');
+
+//Generate Surat
+Route::get('/admin/generatesktm', [AdminController::class, 'generatesktm'])->name('admin.generatesktm');
+Route::get('/admin/generatesku', [AdminController::class, 'generatesku'])->name('admin.generatesku');
+Route::get('/admin/generatesurpeng', [AdminController::class, 'generatesurpeng'])->name('admin.generatesurpeng');
 
 // Kelola Akun
 Route::get('/admin', function () {
@@ -77,9 +90,9 @@ Route::get('/listsuker', function () {
     return view('AdminWali.listsuker');
 })->name('listsuker');
 
-Route::get('/verif', function () {
-    return view('AdminWali.verifikasi');
-})->name('verif');
+// Route::get('/verif', function () {
+//     return view('AdminWali.List Pengajuan.verifikasisktm');
+// })->name('verif');
 
 // Masyarakat
 
