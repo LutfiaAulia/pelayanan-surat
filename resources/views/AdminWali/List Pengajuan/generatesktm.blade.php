@@ -20,6 +20,12 @@
                                     <label for="namapengaju" class="form-label">Nama Pengaju</label>
                                 </div>
                                 <div class="form-group mb-4">
+                                    <label for="tempattanggal" class="form-label">Tempat/Tanggal Lahir</label>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="agama" class="form-label">Agama</label>
+                                </div>
+                                <div class="form-group mb-4">
                                     <label for="nik" class="form-label">NIK</label>
                                 </div>
                                 <div class="form-group mb-4">
