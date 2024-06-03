@@ -15,31 +15,37 @@
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-2">
-                                <div class="form-group mb-3">
-                                    <label for="feedback4" class="form-label">Nama Pengaju</label>
+                                <div class="form-group mb-4">
+                                    <label for="namapengaju" class="form-label">Nama Pengaju</label>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label for="feedback2" class="form-label">NIK</label>
+                                <div class="form-group mb-4">
+                                    <label for="nik" class="form-label">NIK</label>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label for="feedback2" class="form-label">Penghasilan Orang Tua</label>
+                                <div class="form-group mb-4">
+                                    <label for="penghasilan" class="form-label">Penghasilan Orang Tua</label>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label for="fileUpload" class="form-label">Upload KK</label>
+                                <div class="form-group mb-4">
+                                    <label for="alasan" class="form-label">Alasan</label>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="filekk" class="form-label">Upload KK</label>
                                 </div>
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group mb-3">
-                                    <input type="text" id="feedback4" class="form-control" placeholder="" name="nama_pengaju">
+                                    <input type="text" id="namapengaju" class="form-control" placeholder="Nama" name="nama_pengaju">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="feedback2" class="form-control" placeholder="" name="nik">
+                                    <input type="text" id="nik" class="form-control" placeholder="16-digit" name="nik">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="feedback2" class="form-control" placeholder="" name="penghasilan">
+                                    <input type="text" id="penghasilan" class="form-control" placeholder="Tambahkan penghasilan orangtua" name="penghasilan">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="file" id="fileUpload" class="form-control" name="fileUploadkk">
+                                    <input type="text" id="alasan" class="form-control" placeholder="Tambahkan alasan pengajuan surat" name="alasan">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="file" id="filekk" class="form-control" name="filekk">
                                     <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG</small>
                                 </div>
                             </div>

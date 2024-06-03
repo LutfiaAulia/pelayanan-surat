@@ -130,7 +130,7 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item {{ request()->routeIs('admin') ? 'active' : '' }}">
-                                <a href="{{ route('admin') }}">Admin</a>
+                                <a href="{{ route('admin.listAdmin') }}">Admin</a>
                             </li>
                             <li class="submenu-item {{ request()->routeIs('wali') ? 'active' : '' }}">
                                 <a href="{{ route('wali') }}">Wali Nagari</a>
