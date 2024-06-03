@@ -36,14 +36,20 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
+//Tambah Akun
 Route::get('/admin/tambahAdmin', [AdminController::class, 'tambahAdmin'])->name('admin.tambahAdmin');
 Route::get('/admin/tambahMas', [AdminController::class, 'tambahMas'])->name('admin.tambahMas');
 Route::get('/admin/tambahWali', [AdminController::class, 'tambahWali'])->name('admin.tambahWali');
 
+// Edit Akun
 Route::get('/admin/editAdmin', [AdminController::class, 'editAdmin'])->name('admin.editAdmin');
 Route::get('/admin/editMas', [AdminController::class, 'editMas'])->name('admin.editMas');
 Route::get('/admin/editWali', [AdminController::class, 'editWali'])->name('admin.editWali');
 
+//Verifikasi Akun
+Route::get('/admin/verifikasisktm', [AdminController::class, 'verifikasisktm'])->name('admin.verifikasisktm');
+Route::get('/admin/verifikasisku', [AdminController::class, 'verifikasisku'])->name('admin.verifikasisku');
+Route::get('/admin/verifikasisurpeng', [AdminController::class, 'verifikasisurpeng'])->name('admin.verifikasisurpeng');
 // Kelola Akun
 Route::get('/admin', function () {
     return view('AdminWali.Kelola Akun.admin');
@@ -75,9 +81,9 @@ Route::get('/listsuker', function () {
     return view('AdminWali.listsuker');
 })->name('listsuker');
 
-Route::get('/verif', function () {
-    return view('AdminWali.verifikasi');
-})->name('verif');
+// Route::get('/verif', function () {
+//     return view('AdminWali.List Pengajuan.verifikasisktm');
+// })->name('verif');
 
 // Masyarakat
 

@@ -46,6 +46,19 @@ class AdminController extends Controller
         return view('AdminWali.Kelola Akun.editWali'); 
     }
 
+    //Verifikasi
+    function verifikasisktm(){
+        return view('AdminWali.List Pengajuan.verifikasisktm'); 
+    }
+
+    function verifikasisku(){
+        return view('AdminWali.List Pengajuan.verifikasisku'); 
+    }
+
+    function verifikasisurpeng(){
+        return view('AdminWali.List Pengajuan.verifikasisurpeng'); 
+    }
+
     
 
 }
