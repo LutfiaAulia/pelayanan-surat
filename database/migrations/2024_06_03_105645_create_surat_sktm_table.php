@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('surat_sktm', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('NIK');
+            $table->string('nik');
+            $table->string('alasan');
+            $table->string('ktp');
+            $table->string('kk');
             $table->timestamps();
         });
     }
