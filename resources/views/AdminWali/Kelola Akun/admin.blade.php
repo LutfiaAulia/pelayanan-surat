@@ -30,13 +30,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Example rows --}}
+                                @foreach($admins as $admin)
                                 <tr>
-                                    <th scope="row" style="width: 80px; text-align: center;">1</th>
-                                    <td>admin</td>
-                                    <td>13050189765678007</td>
+                                    <th scope="row" style="width: 80px; text-align: center;">{{ $loop->iteration }}</th>
+                                    <td>{{ $admin->name }}</td>
+                                    <td>{{ $admin->nkkip }}</td>
                                     <td style="width: 200px; text-align: center;">
-                                        <a href="{{ route('admin.editAdmin') }}" class="btn btn-primary">
+                                        <a href="{{ route('admin.editAdmin', ['id' => $admin->id]) }}" class="btn btn-primary">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
@@ -44,7 +44,7 @@
                                         </button>
                                     </td>
                                 </tr>
-                                {{-- Add more rows as needed --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
