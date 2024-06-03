@@ -31,7 +31,7 @@
                                     <input type="text" id="username" class="form-control" placeholder="Username" name="username">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="nip" class="form-control" placeholder="NIK" name="nip">
+                                    <input type="text" id="nip" class="form-control" placeholder="NIP" name="nip">
                                 </div>
                                 <div class="form-group mb-3">
                                     <input type="password" id="password" class="form-control" placeholder="Password" name="password">

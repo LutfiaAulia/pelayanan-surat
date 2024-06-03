@@ -40,13 +40,60 @@
                         </div>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
-                        <button type="submit" class="btn btn-success me-1" name="action" value="verifikasi">Verifikasi</button>
-                        <button type="submit" class="btn btn-danger" name="action" value="tolak">Tolak</button>
+                        <a href="{{ route('admin.generatesktm') }}" class="btn btn-success me-1" name="action" value="verifikasi">Verifikasi</a>
+                        <button type="button" class="btn btn-danger" id="tolakButton">Tolak</button> <!-- Ganti type dengan "button" -->
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="alasanModal" tabindex="-1" aria-labelledby="alasanModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Tambahkan kelas modal-lg untuk modal lebih besar -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="alasanModalLabel">Tulis Alasan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <form id="alasanForm" method="post" action=""> 
+                    @csrf
+                    <div class="mb-3">
+                        <label for="alasan" class="form-label">Alasan</label>
+                        <textarea class="form-control" id="alasan" name="alasan" rows="6" required></textarea> <!-- Ubah rows menjadi 6 -->
+                    </div>
+                    <div class="form-actions d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary me-1" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="alasanForm" class="btn btn-primary">Kirim</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* CSS untuk memposisikan modal di tengah halaman */
+    .modal-dialog {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+</style>
+
+<script>
+    document.getElementById('tolakButton').addEventListener('click', function() {
+        var alasanModal = new bootstrap.Modal(document.getElementById('alasanModal'));
+        alasanModal.show();
+    });
+</script>
 
 @endsection

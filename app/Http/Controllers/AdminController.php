@@ -59,6 +59,17 @@ class AdminController extends Controller
         return view('AdminWali.List Pengajuan.verifikasisurpeng'); 
     }
 
-    
+    //Generate
+    function generatesktm(){
+        return view('AdminWali.List Pengajuan.generatesktm'); 
+    }
+
+    function generatesku(){
+        return view('AdminWali.List Pengajuan.generatesku'); 
+    }
+
+    function generatesurpeng(){
+        return view('AdminWali.List Pengajuan.generatesurpeng'); 
+    }
 
 }

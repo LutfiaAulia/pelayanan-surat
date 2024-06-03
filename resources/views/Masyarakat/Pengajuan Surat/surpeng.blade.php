@@ -15,9 +15,6 @@
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-2">
-                                <div class="form-group mb-4">
-                                    <label for="feedback1" class="form-label">Jenis Surat</label>
-                                </div>
                                 <div class="form-group mb-3">
                                     <label for="feedback4" class="form-label">Nama Pengaju</label>
                                 </div>
@@ -32,9 +29,6 @@
                                 </div>
                             </div>
                             <div class="col-md-10">
-                                <div class="form-group mb-3">
-                                    <input type="text" id="feedback1" class="form-control" placeholder="" name="jenis_surat">
-                                </div>
                                 <div class="form-group mb-3">
                                     <input type="text" id="feedback4" class="form-control" placeholder="" name="nama_pengaju">
                                 </div>

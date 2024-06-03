@@ -50,6 +50,12 @@ Route::get('/admin/editWali', [AdminController::class, 'editWali'])->name('admin
 Route::get('/admin/verifikasisktm', [AdminController::class, 'verifikasisktm'])->name('admin.verifikasisktm');
 Route::get('/admin/verifikasisku', [AdminController::class, 'verifikasisku'])->name('admin.verifikasisku');
 Route::get('/admin/verifikasisurpeng', [AdminController::class, 'verifikasisurpeng'])->name('admin.verifikasisurpeng');
+
+//Generate Surat
+Route::get('/admin/generatesktm', [AdminController::class, 'generatesktm'])->name('admin.generatesktm');
+Route::get('/admin/generatesku', [AdminController::class, 'generatesku'])->name('admin.generatesku');
+Route::get('/admin/generatesurpeng', [AdminController::class, 'generatesurpeng'])->name('admin.generatesurpeng');
+
 // Kelola Akun
 Route::get('/admin', function () {
     return view('AdminWali.Kelola Akun.admin');
