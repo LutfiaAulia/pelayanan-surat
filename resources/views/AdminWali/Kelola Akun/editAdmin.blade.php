@@ -11,6 +11,9 @@
         <div class="card-content">
             <div class="card-body">
                 <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Form Edit Admin</h4>
+                <form action="{{ route('admin.updateAdmin', $data->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-2">
@@ -27,9 +30,15 @@
                             <div class="col-md-10">
                                 <div class="form-group mb-3">
                                     <input type="text" id="username" class="form-control" placeholder="Username" name="name" value="{{ $data->name }}">
+                                    @error('username')
+                                        <small>{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <input type="text" id="nik" class="form-control" placeholder="NIK" name="nkkip" value="{{ $data->nkkip }}">
+                                    @error('username')
+                                        <small>{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <input type="password" id="password" class="form-control" placeholder="Password" name="password">

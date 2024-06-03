@@ -100,4 +100,33 @@ class AdminController extends Controller
         $data = User::find($id);
         return view('AdminWali.Kelola Akun.editAdmin',compact('data'));
     }
+
+    public function updateAdmin(Request $request,$id){
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'nkkip' => 'required',
+            'password' => 'nullable',
+        ]);
+        
+        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $data['name'] = $request->name;
+        $data['nkkip'] = $request->nkkip;
+        if($request->password){
+            $data['password'] = Hash::make($request->password);
+        }
+
+        User::whereId($id)->update($data);
+        return redirect()->route('admin.listAdmin')->with('success', 'Update akunadmin berhasil');
+    }
+
+    public function deleteAdmin($id){
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('admin.listAdmin')->withErrors('User not found');
+        }
+    
+        $user->delete();
+        return redirect()->route('admin.listAdmin')->with('success', 'Hapus akun admin berhasil');
+    }
 }

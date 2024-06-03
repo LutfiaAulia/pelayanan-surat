@@ -39,9 +39,13 @@
                                         <a href="{{ route('admin.editAdmin', ['id' => $admin->id]) }}" class="btn btn-primary">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
+                                        <form action="{{ route('admin.deleteAdmin', ['id' => $admin->id]) }}" method="POST" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

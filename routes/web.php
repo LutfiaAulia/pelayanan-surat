@@ -42,18 +42,21 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::get('/admin/listAdmin', [AdminController::class, 'listAdmin'])->name('admin.listAdmin');
 //Tambah Akun
+Route::get('/admin/listAdmin', [AdminController::class, 'listAdmin'])->name('admin.listAdmin');
 Route::get('/admin/tambahAdmin', [AdminController::class, 'tambahAdmin'])->name('admin.tambahAdmin');
 Route::post('/admin/inputAdmin', [AdminController::class, 'inputAdmin'])->name('admin.inputAdmin');
 Route::get('/admin/tambahMas', [AdminController::class, 'tambahMas'])->name('admin.tambahMas');
 Route::get('/admin/tambahWali', [AdminController::class, 'tambahWali'])->name('admin.tambahWali');
 
 // Edit Akun
-Route::get('/admin/editAdmin', [AdminController::class, 'editAdmin'])->name('admin.editAdmin');
 Route::get('/admin/editAdmin/{id}', [AdminController::class, 'editAdmin'])->name('admin.editAdmin');
+Route::put('/admin/updateAdmin/{id}', [AdminController::class, 'updateAdmin'])->name('admin.updateAdmin');
 Route::get('/admin/editMas', [AdminController::class, 'editMas'])->name('admin.editMas');
 Route::get('/admin/editWali', [AdminController::class, 'editWali'])->name('admin.editWali');
+
+//Delete Akun
+Route::delete('/admin/deleteAdmin/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.deleteAdmin');
 
 //Verifikasi Akun
 Route::get('/admin/verifikasisktm', [AdminController::class, 'verifikasisktm'])->name('admin.verifikasisktm');
