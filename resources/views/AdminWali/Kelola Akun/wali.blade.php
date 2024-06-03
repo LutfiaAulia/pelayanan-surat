@@ -25,7 +25,7 @@
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Username</th>
-                                    <th scope="col">NIK</th>
+                                    <th scope="col">NIP</th>
                                     <th colspan="2">Action</th>
                                 </tr>
                             </thead>
@@ -34,7 +34,7 @@
                                 <tr>
                                     <th scope="row" style="width: 80px; text-align: center;">1</th>
                                     <td>walinagari</td>
-                                    <td>13050189765678007</td>
+                                    <td>198504102014081001</td>
                                     <td style="width: 200px; text-align: center;">
                                         <a href="{{ route('admin.editWali') }}" class="btn btn-primary">
                                             <i class="fas fa-edit"></i>

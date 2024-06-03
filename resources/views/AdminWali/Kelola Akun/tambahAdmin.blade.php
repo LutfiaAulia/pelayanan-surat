@@ -20,7 +20,7 @@
                                     <label for="username" class="form-label">Username</label>
                                 </div>
                                 <div class="form-group mb-4">
-                                    <label for="nik" class="form-label">NIK</label>
+                                    <label for="nip" class="form-label">NIP</label>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="form-label">Password</label>
@@ -31,7 +31,7 @@
                                     <input type="text" id="username" class="form-control" placeholder="Username" name="username">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik">
+                                    <input type="text" id="nip" class="form-control" placeholder="NIK" name="nip">
                                 </div>
                                 <div class="form-group mb-3">
                                     <input type="password" id="password" class="form-control" placeholder="Password" name="password">
