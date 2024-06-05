@@ -133,10 +133,10 @@
                                 <a href="{{ route('admin.listAdmin') }}">Admin</a>
                             </li>
                             <li class="submenu-item {{ request()->routeIs('wali') ? 'active' : '' }}">
-                                <a href="{{ route('wali') }}">Wali Nagari</a>
+                                <a href="{{ route('admin.listWali') }}">Wali Nagari</a>
                             </li>
                             <li class="submenu-item {{ request()->routeIs('masyarakat') ? 'active' : '' }}">
-                                <a href="{{ route('masyarakat') }}">Masyarakat</a>
+                                <a href="{{ route('admin.listMas') }}">Masyarakat</a>
                             </li>
                         </ul>
                     </li>

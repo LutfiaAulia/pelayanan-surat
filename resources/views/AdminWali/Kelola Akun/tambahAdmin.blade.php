@@ -29,13 +29,13 @@
                             <div class="col-md-10">
                                 <div class="form-group mb-3">
                                     <input type="text" id="username" class="form-control" placeholder="Username" name="name">
-                                    @error('username')
+                                    @error('name')
                                         <small>{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
                                     <input type="text" id="nik" class="form-control" placeholder="NIK" name="nkkip">
-                                    @error('nik')
+                                    @error('nkkip')
                                         <small>{{ $message }}</small>
                                     @enderror
                                 </div>

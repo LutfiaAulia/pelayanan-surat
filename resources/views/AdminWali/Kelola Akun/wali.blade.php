@@ -11,7 +11,7 @@
             </div>
             <div class="mb-3 d-flex justify-content-end align-items-center">
                 <a href="{{ route('admin.tambahWali') }}" class="btn btn-success shadow-sm" style="margin-bottom: right;">
-                    <i class="fas fa-plus fa-sm text-white-50"></i> Admin
+                    <i class="fas fa-plus fa-sm text-white-50"></i> Wali
                 </a>
             </div>
             <div class="card">
@@ -30,21 +30,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Example rows --}}
+                                @foreach($walis as $wali)
                                 <tr>
                                     <th scope="row" style="width: 80px; text-align: center;">1</th>
-                                    <td>walinagari</td>
-                                    <td>198504102014081001</td>
+                                    <td>{{ $wali->name }}</td>
+                                    <td>{{ $wali->nkkip }}</td>
                                     <td style="width: 200px; text-align: center;">
-                                        <a href="{{ route('admin.editWali') }}" class="btn btn-primary">
+                                        <a href="{{ route('admin.editWali', ['id' => $wali->id]) }}" class="btn btn-primary">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
+                                        <form action="{{ route('admin.deleteWali', ['id' => $wali->id]) }}" method="POST" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
-                                {{-- Add more rows as needed --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
