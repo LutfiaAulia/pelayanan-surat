@@ -9,83 +9,100 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-    function index(){
+    function index()
+    {
         return view('index');
     }
 
-    function listAdmin(){
+    function listAdmin()
+    {
         $admins = User::where('role', 'admin')->get();
         return view('AdminWali.Kelola Akun.admin', compact('admins'));
     }
 
-    function listMas(){
+    function listMas()
+    {
         $masyarakats = User::where('role', 'masyarakat')->get();
         return view('AdminWali.Kelola Akun.masyarakat', compact('masyarakats'));
     }
 
-    function listWali(){
+    function listWali()
+    {
         $walis = User::where('role', 'walinagari')->get();
         return view('AdminWali.Kelola Akun.wali', compact('walis'));
     }
 
-    function admin(){
+    function admin()
+    {
         return view('index');
     }
 
-    function walinagari(){
+    function walinagari()
+    {
         return view('index');
     }
 
-    function masyarakat(){
+    function masyarakat()
+    {
         return view('index');
     }
 
-    function tambahAdmin(){
-        return view('AdminWali.Kelola Akun.tambahAdmin'); 
+    function tambahAdmin()
+    {
+        return view('AdminWali.Kelola Akun.tambahAdmin');
     }
 
-    function tambahMas(){
-        return view('AdminWali.Kelola Akun.tambahMas'); 
+    function tambahMas()
+    {
+        return view('AdminWali.Kelola Akun.tambahMas');
     }
 
-    function tambahWali(){
-        return view('AdminWali.Kelola Akun.tambahWali'); 
+    function tambahWali()
+    {
+        return view('AdminWali.Kelola Akun.tambahWali');
     }
 
     //Verifikasi
-    function verifikasisktm(){
-        return view('AdminWali.List Pengajuan.verifikasisktm'); 
+    function verifikasisktm()
+    {
+        return view('AdminWali.List Pengajuan.verifikasisktm');
     }
 
-    function verifikasisku(){
-        return view('AdminWali.List Pengajuan.verifikasisku'); 
+    function verifikasisku()
+    {
+        return view('AdminWali.List Pengajuan.verifikasisku');
     }
 
-    function verifikasisurpeng(){
-        return view('AdminWali.List Pengajuan.verifikasisurpeng'); 
+    function verifikasisurpeng()
+    {
+        return view('AdminWali.List Pengajuan.verifikasisurpeng');
     }
 
     //Generate
-    function generatesktm(){
-        return view('AdminWali.List Pengajuan.generatesktm'); 
+    function generatesktm()
+    {
+        return view('AdminWali.List Pengajuan.generatesktm');
     }
 
-    function generatesku(){
-        return view('AdminWali.List Pengajuan.generatesku'); 
+    function generatesku()
+    {
+        return view('AdminWali.List Pengajuan.generatesku');
     }
 
-    function generatesurpeng(){
-        return view('AdminWali.List Pengajuan.generatesurpeng'); 
+    function generatesurpeng()
+    {
+        return view('AdminWali.List Pengajuan.generatesurpeng');
     }
 
-    public function inputAdmin(Request $request){
-        $validator = Validator::make($request->all(),[
+    public function inputAdmin(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'nkkip' => 'required',
             'password' => 'required',
         ]);
-        
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['name'] = $request->name;
         $data['nkkip'] = $request->nkkip;
@@ -95,17 +112,18 @@ class AdminController extends Controller
 
         User::create($data);
 
-        return redirect()->route('admin.listAdmin');
+        return redirect()->route('admin.listAdmin')->with('success', 'Data berhasil ditambahkan');
     }
 
-    public function inputMas(Request $request){
-        $validator = Validator::make($request->all(),[
+    public function inputMas(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'nkkip' => 'required',
             'password' => 'required',
         ]);
-        
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['name'] = $request->name;
         $data['nkkip'] = $request->nkkip;
@@ -115,17 +133,19 @@ class AdminController extends Controller
 
         User::create($data);
 
-        return redirect()->route('admin.listMas');
+        // On successful save
+        return redirect()->route('admin.listMas')->with('success', 'Data berhasil ditambahkan');
     }
 
-    public function inputWali(Request $request){
-        $validator = Validator::make($request->all(),[
+    public function inputWali(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'nkkip' => 'required',
             'password' => 'required',
         ]);
-        
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['name'] = $request->name;
         $data['nkkip'] = $request->nkkip;
@@ -135,36 +155,40 @@ class AdminController extends Controller
 
         User::create($data);
 
-        return redirect()->route('admin.listWali');
+        return redirect()->route('admin.listWali')->with('success', 'Data berhasil ditambahkan');
     }
 
-    public function editAdmin(Request $request,$id){
+    public function editAdmin(Request $request, $id)
+    {
         $data = User::find($id);
-        return view('AdminWali.Kelola Akun.editAdmin',compact('data'));
+        return view('AdminWali.Kelola Akun.editAdmin', compact('data'));
     }
 
-    public function editMas(Request $request,$id){
+    public function editMas(Request $request, $id)
+    {
         $data = User::find($id);
-        return view('AdminWali.Kelola Akun.editMas',compact('data'));
+        return view('AdminWali.Kelola Akun.editMas', compact('data'));
     }
 
-    public function editWali(Request $request,$id){
+    public function editWali(Request $request, $id)
+    {
         $data = User::find($id);
-        return view('AdminWali.Kelola Akun.editWali',compact('data'));
+        return view('AdminWali.Kelola Akun.editWali', compact('data'));
     }
 
-    public function updateAdmin(Request $request,$id){
-        $validator = Validator::make($request->all(),[
+    public function updateAdmin(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'nkkip' => 'required',
             'password' => 'nullable',
         ]);
-        
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['name'] = $request->name;
         $data['nkkip'] = $request->nkkip;
-        if($request->password){
+        if ($request->password) {
             $data['password'] = Hash::make($request->password);
         }
 
@@ -172,18 +196,19 @@ class AdminController extends Controller
         return redirect()->route('admin.listAdmin')->with('success', 'Update akun admin berhasil');
     }
 
-    public function updateMas(Request $request,$id){
-        $validator = Validator::make($request->all(),[
+    public function updateMas(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'nkkip' => 'required',
             'password' => 'nullable',
         ]);
-        
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['name'] = $request->name;
         $data['nkkip'] = $request->nkkip;
-        if($request->password){
+        if ($request->password) {
             $data['password'] = Hash::make($request->password);
         }
 
@@ -191,18 +216,19 @@ class AdminController extends Controller
         return redirect()->route('admin.listMas')->with('success', 'Update akun masyarakat berhasil');
     }
 
-    public function updateWali(Request $request,$id){
-        $validator = Validator::make($request->all(),[
+    public function updateWali(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'nkkip' => 'required',
             'password' => 'nullable',
         ]);
-        
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
         $data['name'] = $request->name;
         $data['nkkip'] = $request->nkkip;
-        if($request->password){
+        if ($request->password) {
             $data['password'] = Hash::make($request->password);
         }
 
@@ -210,32 +236,35 @@ class AdminController extends Controller
         return redirect()->route('admin.listWali')->with('success', 'Update akun wali berhasil');
     }
 
-    public function deleteAdmin($id){
+    public function deleteAdmin($id)
+    {
         $user = User::find($id);
         if (!$user) {
             return redirect()->route('admin.listAdmin')->withErrors('User not found');
         }
-    
+
         $user->delete();
         return redirect()->route('admin.listAdmin')->with('success', 'Hapus akun admin berhasil');
     }
 
-    public function deleteMas($id){
+    public function deleteMas($id)
+    {
         $user = User::find($id);
         if (!$user) {
             return redirect()->route('admin.listMas')->withErrors('User not found');
         }
-    
+
         $user->delete();
         return redirect()->route('admin.listMas')->with('success', 'Hapus akun masyarakat berhasil');
     }
 
-    public function deleteWali($id){
+    public function deleteWali($id)
+    {
         $user = User::find($id);
         if (!$user) {
             return redirect()->route('admin.listWali')->withErrors('User not found');
         }
-    
+
         $user->delete();
         return redirect()->route('admin.listWali')->with('success', 'Hapus akun wali berhasil');
     }

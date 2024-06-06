@@ -20,7 +20,7 @@
                                     <label for="username" class="form-label">Username</label>
                                 </div>
                                 <div class="form-group mb-4">
-                                    <label for="nik" class="form-label">NIK</label>
+                                    <label for="nik" class="form-label">NKK</label>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="form-label">Password</label>
@@ -34,7 +34,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="nik" class="form-control" placeholder="NIK" name="nkkip">
+                                    <input type="text" id="nkk" class="form-control" placeholder="NKK" name="nkkip">
                                     @error('nkkip')
                                         <small>{{ $message }}</small>
                                     @enderror

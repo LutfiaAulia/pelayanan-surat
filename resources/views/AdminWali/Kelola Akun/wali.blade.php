@@ -6,6 +6,19 @@
 <div class="page-content">
     <section class="row">
         <div class="col-12">
+            
+            {{-- Flash messages --}}
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+            @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+            @endif
+
             <div class="me-auto" style= "margin-bottom: 30px;">
                 <h3>Kelola Akun Wali Nagari</h3>
             </div>
