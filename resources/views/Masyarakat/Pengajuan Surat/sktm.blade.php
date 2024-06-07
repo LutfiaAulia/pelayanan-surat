@@ -3,6 +3,17 @@
 @section('content')
 
 <div class="me-auto" style="margin-bottom: 20px;">
+    {{-- Flash messages --}}
+    @if (session('success'))
+    <div class="alert alert-success">
+            {{ session('success') }}
+    </div>
+    @endif
+    @if (session('error'))
+    <div class="alert alert-danger">
+            {{ session('error') }}
+    </div>
+    @endif
     <h3>Surat Keterangan Tidak Mampu</h3>
 </div>
 
@@ -10,8 +21,10 @@
     <div class="card p-4" style="width: 70%">
         <div class="card-content">
             <div class="card-body">
+                
+
                 <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Form Pengajuan Surat Keterangan Tidak Mampu</h4>
-                <form action="{{route('masyarakat.aju')}}" method="POST">
+                <form action="{{route('masyarakat.ajusktm')}}" method="POST">
                     @csrf
                     <form class="form" method="post">
                         <div class="form-body">
@@ -36,7 +49,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div class="form-group mb-3">
-                                            <input type="text" id="namapengaju" class="form-control" placeholder="Nama" name="nama_pengaju">
+                                            <input type="text" id="namapengaju" class="form-control" placeholder="Nama" name="nama">
                                         </div>
                                         <div class="form-group mb-3">
                                             <input type="text" id="nik" class="form-control" placeholder="16-digit" maxlength="16" name="nik">
@@ -45,11 +58,11 @@
                                             <input type="text" id="alasan" class="form-control" placeholder="Tambahkan alasan pengajuan surat" name="alasan">
                                         </div>
                                         <div class="form-group mb-3">
-                                            <input type="file" id="filektp" class="form-control" name="filektp">
+                                            <input type="file" id="filektp" class="form-control" name="ktp">
                                             <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG</small>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <input type="file" id="filekk" class="form-control" name="filekk">
+                                            <input type="file" id="filekk" class="form-control" name="kk">
                                             <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG</small>
                                         </div>
                                     </div>

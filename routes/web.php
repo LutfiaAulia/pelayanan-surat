@@ -38,7 +38,11 @@ Route::middleware(['auth'])->group(function () {
 
     //Pengajuan Surat
     Route::get('/formsktm', [MasyarakatController::class, 'formsktm'])->name('masyarakat.sktm')->middleware('userAkses:masyarakat');
-    Route::post('/ajusktm', [MasyarakatController::class, 'ajusktm'])->name('masyarakat.aju')->middleware('userAkses:masyarakat');
+    Route::post('/ajusktm', [MasyarakatController::class, 'ajusktm'])->name('masyarakat.ajusktm')->middleware('userAkses:masyarakat');
+    Route::get('/formsku', [MasyarakatController::class, 'formsku'])->name('masyarakat.sku')->middleware('userAkses:masyarakat');
+    Route::post('/ajusku', [MasyarakatController::class, 'ajusku'])->name('masyarakat.ajusku')->middleware('userAkses:masyarakat');
+    Route::get('/formpeng', [MasyarakatController::class, 'formpeng'])->name('masyarakat.peng')->middleware('userAkses:masyarakat');
+    Route::post('/ajupeng', [MasyarakatController::class, 'ajupeng'])->name('masyarakat.ajupeng')->middleware('userAkses:masyarakat');
 
 });
 
