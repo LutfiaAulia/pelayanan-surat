@@ -1,5 +1,5 @@
 {{-- Sidebar --}}
-<div id="sidebar" class="active">
+<div id="sidebar" class="active" style="background-color: #293D35;">
     <div class="sidebar-wrapper active">
 
         <div class="sidebar-logo position-relative mt-4">

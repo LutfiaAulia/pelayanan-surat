@@ -34,7 +34,23 @@
                                     <td>Acc</td>
                                     <td>Cek</td>
                                     <td style="width: 200px; text-align: center;" >
-                                        <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                                        {{-- @if ($item->jenis_surat == 'SKTM')
+                                            <a href="{{ route('masyarakat.sktm') }}" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        @elseif ($item->jenis_surat == 'SKU')
+                                            <a href="{{ route('masyarakat.sku') }}" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        @elseif ($item->jenis_surat == 'SurPeng')
+                                            <a href="{{ route('masyarakat.surpeng') }}" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        @endif --}}
+
+                                        <a href="{{ route('masyarakat.sktm') }}" class="btn btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>                                        
                                         <button class="btn btn-success"><i class="fas fa-file-upload"></i></button>
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
                                             <i class="fas fa-trash-alt"></i>

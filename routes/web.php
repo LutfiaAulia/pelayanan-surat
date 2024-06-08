@@ -44,6 +44,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/formpeng', [MasyarakatController::class, 'formpeng'])->name('masyarakat.peng')->middleware('userAkses:masyarakat');
     Route::post('/ajupeng', [MasyarakatController::class, 'ajupeng'])->name('masyarakat.ajupeng')->middleware('userAkses:masyarakat');
 
+    Route::get('/profile/{id}/edit', [MasyarakatController::class, 'edit'])->name('masyarakat.edit')->middleware('userAkses:masyarakat');
+    Route::put('/profile/{id}', [MasyarakatController::class, 'update'])->name('masyarakat.update')->middleware('userAkses:masyarakat');
+    Route::get('/profile/{id}/show', [MasyarakatController::class, 'show'])->name('masyarakat.show')->middleware('userAkses:masyarakat');
 });
 
 //Tambah Akun
@@ -137,4 +140,3 @@ Route::get('/listpeng', function () {
 Route::get('/syarpeng', function () {
     return view('Masyarakat.syarpeng');
 })->name('syarat');
-

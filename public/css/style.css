@@ -87,3 +87,25 @@ body {
 .login-box input[type="submit"]:hover {
     background-color: #45a049;
 }
+
+.sidebar {
+    background-color: #293D35;;
+    color: #ffffff; /* Warna teks */
+}
+
+.sidebar-logo a {
+    color: #ffffff; /* Warna teks logo */
+}
+
+.sidebar-menu .menu .sidebar-item a {
+    color: #ffffff; /* Warna teks menu */
+}
+
+.sidebar-menu .menu .sidebar-item.active a {
+    background-color: #293D35; /* Warna latar belakang menu aktif */
+}
+
+.sidebar-menu .menu .sidebar-item.has-sub .submenu .submenu-item.active a {
+    background-color: #293D35; /* Warna latar belakang submenu aktif */
+}
+
