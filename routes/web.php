@@ -124,6 +124,7 @@ Route::get('/listsuker', function () {
 // Route::get('/sktm', function () {
 //     return view('Masyarakat.Pengajuan Surat.sktm');
 // })->name('sktm');
+
 Route::get('/sku', function () {
     return view('Masyarakat.Pengajuan Surat.sku');
 })->name('sku');
@@ -140,3 +141,7 @@ Route::get('/listpeng', function () {
 Route::get('/syarpeng', function () {
     return view('Masyarakat.syarpeng');
 })->name('syarat');
+
+Route::get('/land', function () {
+    return view('landingpage');
+});
