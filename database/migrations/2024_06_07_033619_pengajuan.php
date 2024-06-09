@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('file_path')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_jenis')->references('id_jenis')->on('jenis_surat')->onDelete('cascade');
-            $table->foreign('id_admin')->references('id_user')->on('users')->onDelete('set null');
+            $table->foreign('id_admin')->references('id')->on('users')->onDelete('set null');
         });
     }
 
