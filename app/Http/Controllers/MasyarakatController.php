@@ -135,18 +135,18 @@ class MasyarakatController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'nkk' => 'required|string|nkk|max:255',
-            'phone' => 'required|string|max:15',
-            'address' => 'required|string|max:255',
+            'nkkip' => 'required|string|max:255',
+            'password' => 'nullable|string|min:8', // Validasi password baru
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'password' => 'nullable|string|min:8',
         ]);
 
         $user = User::findOrFail($id);
         $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->address = $request->address;
+        $user->nkkip = $request->nkkip;
+
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->password); // Hash password baru
+        }
 
         if ($request->hasFile('profile_picture')) {
             if ($user->profile_picture) {
@@ -158,11 +158,11 @@ class MasyarakatController extends Controller
         }
 
         if ($request->filled('password')) {
-            $user->password = bcrypt($request->password);
+            $user->password = bcrypt($request->password); // Hash password baru
         }
 
         $user->save();
 
-        return redirect()->route('profile.show', $user->id)->with('success', 'Profil berhasil diperbarui');
+        return redirect()->route('index')->with('success', 'Profil berhasil diperbarui');
     }
 }

@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="nkkip">NIP:</label>
+                        <label for="nkkip">NIK:</label>
                         <input type="text" class="form-control" id="nkkip" name="nkkip" value="{{ $user->nkkip }}" required>
                         @error('nkkip')
                             <small>{{ $message }}</small>
@@ -46,7 +46,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('masyarakat.show', $user->id) }}" class="btn btn-secondary">Batal</a>
+                    <a href="{{ route('index') }}" class="btn btn-secondary">Batal</a>
                 </form>
             </div>
         </div>
