@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Storage;
 
 class MasyarakatController extends Controller
 {
-    function index()
-    {
-    }
-
     function formsktm()
     {
         return view('Masyarakat.Pengajuan Surat.sktm');
