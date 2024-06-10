@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Storage;
 
 class MasyarakatController extends Controller
 {
-    function index()
-    {
-    }
-
     function formsktm()
     {
         return view('Masyarakat.Pengajuan Surat.sktm');
@@ -153,14 +149,16 @@ class MasyarakatController extends Controller
         }
 
         if ($request->hasFile('profile_picture')) {
-            // Delete old profile picture
             if ($user->profile_picture) {
                 Storage::disk('public')->delete($user->profile_picture);
             }
 
-            // Store new profile picture
             $path = $request->file('profile_picture')->store('profile_pictures', 'public');
             $user->profile_picture = $path;
+        }
+
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->password); // Hash password baru
         }
 
         $user->save();
