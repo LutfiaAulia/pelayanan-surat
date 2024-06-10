@@ -143,7 +143,7 @@ class MasyarakatController extends Controller
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:255',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'password' => 'nullable|string|min:8', // Validasi password baru
+            'password' => 'nullable|string|min:8',
         ]);
 
         $user = User::findOrFail($id);
@@ -153,18 +153,16 @@ class MasyarakatController extends Controller
         $user->address = $request->address;
 
         if ($request->hasFile('profile_picture')) {
-            // Delete old profile picture
             if ($user->profile_picture) {
                 Storage::disk('public')->delete($user->profile_picture);
             }
 
-            // Store new profile picture
             $path = $request->file('profile_picture')->store('profile_pictures', 'public');
             $user->profile_picture = $path;
         }
 
         if ($request->filled('password')) {
-            $user->password = bcrypt($request->password); // Hash password baru
+            $user->password = bcrypt($request->password);
         }
 
         $user->save();
