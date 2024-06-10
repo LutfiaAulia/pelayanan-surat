@@ -21,4 +21,9 @@ class SKTM extends Model
         'filektp',
         'filekk'
     ];
+
+    public function pengajuan()
+    {
+        return $this->belongsTo(Pengajuan::class, 'id_pengajuan');
+    }
 }

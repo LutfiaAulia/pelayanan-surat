@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Peng extends Model
+class POT extends Model
 {
     use HasFactory;
 
@@ -21,6 +21,11 @@ class Peng extends Model
         'alasan',
         'filekk'
     ];
+
+    public function pengajuan()
+    {
+        return $this->belongsTo(Pengajuan::class, 'id_pengajuan');
+    }
 
     // public function user()
     // {

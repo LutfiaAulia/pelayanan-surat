@@ -24,19 +24,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Example rows --}}
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>John Doe</td>
-                                    <td>123456789</td>
-                                    <td>2023-05-01</td>
-                                    <td>Mengajukan</td>
-                                    <td style="width: 140px; text-align: center;" >
-                                        <a href="{{ route('admin.verifikasisurpeng') }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-success"><i class="fas fa-file-upload"></i></a>
-                                    </td>
-                                </tr>
-                                {{-- Add more rows as needed --}}
+                                @foreach($list as $item)
+                                    <tr>
+                                        <th scope="row" style="width: 80px; text-align: center;">{{ $loop->iteration }}</th>
+                                        <td>{{ $item['nama'] }}</td>
+                                        <td>{{ $item['nik'] }}</td>
+                                        <td>{{ $item['tanggal_pengajuan'] }}</td>
+                                        <td>{{ $item['status_pengajuan'] }}</td>
+                                        <td style="width: 140px; text-align: center;" >
+                                            <a href="{{ route('admin.verifikasisurpeng') }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-success"><i class="fas fa-file-upload"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -273,7 +273,7 @@ class AdminController extends Controller
         return redirect()->route('admin.listWali')->with('success', 'Hapus akun wali berhasil');
     }
 
-    public function listSku()
+    public function listsku()
     {
         // Mengambil data dengan join
         $list = SKU::with('pengajuan')
@@ -291,5 +291,45 @@ class AdminController extends Controller
         });
 
         return view('AdminWali.List Pengajuan.listsku', compact('list'));
+    }
+
+    public function listsktm()
+    {
+        // Mengambil data dengan join
+        $list = SKTM::with('pengajuan')
+            ->whereHas('pengajuan', function($query) {})
+            ->get();
+
+        // Mengambil hanya kolom yang diperlukan
+        $list = $list->map(function($item) {
+            return [
+                'nama' => $item->nama,
+                'nik' => $item->nik,
+                'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
+                'status_pengajuan' => $item->pengajuan->status_pengajuan,
+            ];
+        });
+
+        return view('AdminWali.List Pengajuan.listsktm', compact('list'));
+    }
+
+    public function listpot()
+    {
+        // Mengambil data dengan join
+        $list = POT::with('pengajuan')
+            ->whereHas('pengajuan', function($query) {})
+            ->get();
+
+        // Mengambil hanya kolom yang diperlukan
+        $list = $list->map(function($item) {
+            return [
+                'nama' => $item->nama,
+                'nik' => $item->nik,
+                'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
+                'status_pengajuan' => $item->pengajuan->status_pengajuan,
+            ];
+        });
+
+        return view('AdminWali.List Pengajuan.listsurpeng', compact('list'));
     }
 }

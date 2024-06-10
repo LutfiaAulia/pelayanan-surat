@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peng;
+use App\Models\POT;
 use App\Models\Pengajuan;
 use App\Models\SKTM;
 use App\Models\SKU;
@@ -120,7 +120,7 @@ class MasyarakatController extends Controller
         $data['id_pengajuan'] = $pengajuan->id_pengajuan;
 
 
-        Peng::create($data);
+        POT::create($data);
 
         return redirect()->route('masyarakat.peng')->with('success', 'Surat berhasil diajukan');
     }

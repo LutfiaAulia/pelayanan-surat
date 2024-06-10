@@ -73,9 +73,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admin/deleteWali/{id}', [AdminController::class, 'deleteWali'])->name('admin.deleteWali')->middleware('userAkses:admin,walinagari');
 
     // List Pengajuan
-    Route::get('/admin/listSktm', [AdminController::class, 'listSktm'])->name('admin.listSktm')->middleware('userAkses:admin');
+    Route::get('/admin/listsktm', [AdminController::class, 'listsktm'])->name('admin.listsktm')->middleware('userAkses:admin');
     Route::get('/admin/listsku', [AdminController::class, 'listsku'])->name('admin.listsku')->middleware('userAkses:admin');
-    Route::get('/admin/listPot', [AdminController::class, 'listPot'])->name('admin.listPot')->middleware('userAkses:admin');
+    Route::get('/admin/listpot', [AdminController::class, 'listpot'])->name('admin.listpot')->middleware('userAkses:admin');
 });
 
 //Verifikasi Akun
