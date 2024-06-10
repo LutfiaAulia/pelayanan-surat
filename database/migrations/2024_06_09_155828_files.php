@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('surat_sktm', function (Blueprint $table) {
-            $table->id('id_sktm');
+        Schema::create('files', function (Blueprint $table) {
+            $table->id('id_file');
             $table->unsignedBigInteger('id_pengajuan');
-            $table->string('nama');
-            $table->string('nik');
-            $table->text('alasan');
+            $table->string('file_path');
+            $table->string('file_type');
             $table->timestamps();
 
             $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan')->onDelete('cascade');
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('surat_sktm');
+        Schema::dropIfExists('files');
     }
 };

@@ -12,12 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pengajuan', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_surat')->constrained('surat')->onDelete('cascade');
-            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
-            $table->enum('status', ['mengajukan', 'diproses', 'ditolak', 'selesai']);
-            $table->string('alasan_tolak')->nullable();
-            
+            $table->id('id_pengajuan');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_jenis');
+            $table->date('tanggal_pengajuan');
+            $table->string('status_pengajuan')->default('Mengajukan');
+            $table->text('alasan_penolakan')->nullable();
+            $table->unsignedBigInteger('id_admin')->nullable();
+            $table->string('file_path')->nullable();
+            $table->timestamps();
+
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_jenis')->references('id_jenis')->on('jenis_surat')->onDelete('cascade');
+            $table->foreign('id_admin')->references('id')->on('users')->onDelete('set null');
         });
     }
 

@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('surat_sktm', function (Blueprint $table) {
-            $table->id('id_sktm');
+        Schema::create('surat_keluar', function (Blueprint $table) {
+            $table->id('id_keluar');
             $table->unsignedBigInteger('id_pengajuan');
-            $table->string('nama');
-            $table->string('nik');
-            $table->text('alasan');
+            $table->string('nomor_surat');
+            $table->date('tanggal_kirim');
+            $table->string('file_path')->nullable();
             $table->timestamps();
 
             $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan')->onDelete('cascade');
         });
+
     }
 
     /**
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('surat_sktm');
+        Schema::dropIfExists('surat_keluar');
     }
 };

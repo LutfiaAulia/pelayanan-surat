@@ -10,15 +10,14 @@ class SKTM extends Model
     use HasFactory;
 
     protected $table = 'surat_sktm';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_sktm';
     public $timestamps = true;
 
     protected $fillable = [
+        'id_pengajuan',
         'nama',
         'nik',
-        'alasan',
-        'ktp',
-        'kk'
+        'alasan'
     ];
 
     // public function user()

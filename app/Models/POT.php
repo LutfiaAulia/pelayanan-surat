@@ -9,16 +9,16 @@ class Peng extends Model
 {
     use HasFactory;
 
-    protected $table = 'surat_peng';
-    protected $primaryKey = 'id';
+    protected $table = 'surat_pot';
+    protected $primaryKey = 'id_pot';
     public $timestamps = true;
 
     protected $fillable = [
+        'id_pengajuan',
         'nama',
         'nik',
         'penghasilan',
-        'alasan',
-        'filekk'
+        'alasan'
     ];
 
     // public function user()

@@ -10,15 +10,14 @@ class SKU extends Model
     use HasFactory;
 
     protected $table = 'surat_sku';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_sku';
     public $timestamps = true;
 
     protected $fillable = [
+        'id_pengajuan',
         'nama',
         'nik',
-        'alasan',
-        'filektp',
-        'fotousaha'
+        'alasan'
     ];
 
     // public function user()

@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('surat_sku', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_sku');
+            $table->unsignedBigInteger('id_pengajuan');
             $table->string('nama');
             $table->string('nik');
             $table->string('alasan');
-            $table->string('filektp');
-            $table->string('fotousaha');
             $table->timestamps();
+
+            $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan')->onDelete('cascade');
         });
     }
 
