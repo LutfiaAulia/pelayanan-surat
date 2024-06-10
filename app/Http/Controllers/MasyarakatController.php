@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peng;
+use App\Models\Pengajuan;
 use App\Models\SKTM;
 use App\Models\SKU;
 use Illuminate\Http\Request;
@@ -12,23 +13,27 @@ use Illuminate\Support\Facades\Storage;
 
 class MasyarakatController extends Controller
 {
-    function index(){
-
+    function index()
+    {
     }
 
-    function formsktm(){
+    function formsktm()
+    {
         return view('Masyarakat.Pengajuan Surat.sktm');
     }
 
-    function editsktm(){
+    function editsktm()
+    {
         return view('Masyarakat.listpeng');
     }
 
-    function formsku(){
+    function formsku()
+    {
         return view('Masyarakat.Pengajuan Surat.sku');
     }
 
-    function formpeng(){
+    function formpeng()
+    {
         return view('Masyarakat.Pengajuan Surat.surpeng');
     }
 
@@ -44,17 +49,22 @@ class MasyarakatController extends Controller
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
+        $pengajuan = Pengajuan::create([
+            'id_user' => auth()->user()->id,
+            'status_pengajuan' => 'Mengajukan',
+            'tanggal_pengajuan' => now(),
+        ]);
+
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
         $data['alasan'] = $request->alasan;
-        $data['ktp'] = $request->ktp;
-        $data['kk'] = $request->kk;
-
+        $data['filektp'] = $request->ktp;
+        $data['filekk'] = $request->kk;
+        $data['id_pengajuan'] = $pengajuan->id_pengajuan;
 
         SKTM::create($data);
 
         return redirect()->route('masyarakat.sktm')->with('success', 'Surat berhasil diajukan');
-    
     }
 
     function ajusku(Request $request)
@@ -69,17 +79,23 @@ class MasyarakatController extends Controller
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
+        $pengajuan = Pengajuan::create([
+            'id_user' => auth()->user()->id,
+            'status_pengajuan' => 'Mengajukan',
+            'tanggal_pengajuan' => now(),
+        ]);
+
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
         $data['alasan'] = $request->alasan;
         $data['filektp'] = $request->filektp;
         $data['fotousaha'] = $request->fotousaha;
+        $data['id_pengajuan'] = $pengajuan->id_pengajuan;
 
 
         SKU::create($data);
 
         return redirect()->route('masyarakat.sku')->with('success', 'Surat berhasil diajukan');
-    
     }
 
     function ajupeng(Request $request)
@@ -94,17 +110,23 @@ class MasyarakatController extends Controller
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
+        $pengajuan = Pengajuan::create([
+            'id_user' => auth()->user()->id,
+            'status_pengajuan' => 'Mengajukan',
+            'tanggal_pengajuan' => now(),
+        ]);
+
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
         $data['penghasilan'] = $request->penghasilan;
         $data['alasan'] = $request->alasan;
         $data['filekk'] = $request->filekk;
+        $data['id_pengajuan'] = $pengajuan->id_pengajuan;
 
 
         Peng::create($data);
 
         return redirect()->route('masyarakat.peng')->with('success', 'Surat berhasil diajukan');
-    
     }
 
     public function edit($id)

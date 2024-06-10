@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('surat_sktm', function (Blueprint $table) {
             $table->id('id_sktm');
             $table->unsignedBigInteger('id_pengajuan');
+            $table->string('jenis_surat')->default('SKTM');
             $table->string('nama');
             $table->string('nik');
             $table->text('alasan');
+            $table->string('filektp');
+            $table->string('filekk');
             $table->timestamps();
 
             $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan')->onDelete('cascade');

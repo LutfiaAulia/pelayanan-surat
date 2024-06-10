@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pengajuan');
             $table->string('nomor_surat');
             $table->date('tanggal_kirim');
-            $table->string('file_path')->nullable();
+            $table->string('file_surat')->nullable();
             $table->timestamps();
 
             $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan')->onDelete('cascade');

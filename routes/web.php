@@ -47,31 +47,31 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/{id}/edit', [MasyarakatController::class, 'edit'])->name('masyarakat.edit')->middleware('userAkses:masyarakat');
     Route::put('/profile/{id}', [MasyarakatController::class, 'update'])->name('masyarakat.update')->middleware('userAkses:masyarakat');
     Route::get('/profile/{id}/show', [MasyarakatController::class, 'show'])->name('masyarakat.show')->middleware('userAkses:masyarakat');
+
+    //Tambah Akun
+    Route::get('/admin/listAdmin', [AdminController::class, 'listAdmin'])->name('admin.listAdmin')->middleware('userAkses:admin,walinagari');
+    Route::get('/admin/tambahAdmin', [AdminController::class, 'tambahAdmin'])->name('admin.tambahAdmin')->middleware('userAkses:admin,walinagari');
+    Route::post('/admin/inputAdmin', [AdminController::class, 'inputAdmin'])->name('admin.inputAdmin')->middleware('userAkses:admin,walinagari');
+    Route::get('/admin/listMas', [AdminController::class, 'listMas'])->name('admin.listMas')->middleware('userAkses:admin,walinagari');
+    Route::get('/admin/tambahMas', [AdminController::class, 'tambahMas'])->name('admin.tambahMas')->middleware('userAkses:admin,walinagari');
+    Route::post('/admin/inputMas', [AdminController::class, 'inputMas'])->name('admin.inputMas')->middleware('userAkses:admin,walinagari');
+    Route::get('/admin/listWali', [AdminController::class, 'listWali'])->name('admin.listWali')->middleware('userAkses:admin,walinagari');
+    Route::get('/admin/tambahWali', [AdminController::class, 'tambahWali'])->name('admin.tambahWali')->middleware('userAkses:admin,walinagari');
+    Route::post('/admin/inputWali', [AdminController::class, 'inputWali'])->name('admin.inputWali')->middleware('userAkses:admin,walinagari');
+
+    // Edit Akun
+    Route::get('/admin/editAdmin/{id}', [AdminController::class, 'editAdmin'])->name('admin.editAdmin')->middleware('userAkses:admin,walinagari');
+    Route::put('/admin/updateAdmin/{id}', [AdminController::class, 'updateAdmin'])->name('admin.updateAdmin')->middleware('userAkses:admin,walinagari');
+    Route::get('/admin/editMas/{id}', [AdminController::class, 'editMas'])->name('admin.editMas')->middleware('userAkses:admin,walinagari');
+    Route::put('/admin/updateMas/{id}', [AdminController::class, 'updateMas'])->name('admin.updateMas')->middleware('userAkses:admin,walinagari');
+    Route::get('/admin/editWali/{id}', [AdminController::class, 'editWali'])->name('admin.editWali')->middleware('userAkses:admin,walinagari');
+    Route::put('/admin/updateWali/{id}', [AdminController::class, 'updateWali'])->name('admin.updateWali')->middleware('userAkses:admin,walinagari');
+
+    //Delete Akun
+    Route::delete('/admin/deleteAdmin/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.deleteAdmin')->middleware('userAkses:admin,walinagari');
+    Route::delete('/admin/deleteMas/{id}', [AdminController::class, 'deleteMas'])->name('admin.deleteMas')->middleware('userAkses:admin,walinagari');
+    Route::delete('/admin/deleteWali/{id}', [AdminController::class, 'deleteWali'])->name('admin.deleteWali')->middleware('userAkses:admin,walinagari');
 });
-
-//Tambah Akun
-Route::get('/admin/listAdmin', [AdminController::class, 'listAdmin'])->name('admin.listAdmin');
-Route::get('/admin/tambahAdmin', [AdminController::class, 'tambahAdmin'])->name('admin.tambahAdmin');
-Route::post('/admin/inputAdmin', [AdminController::class, 'inputAdmin'])->name('admin.inputAdmin');
-Route::get('/admin/listMas', [AdminController::class, 'listMas'])->name('admin.listMas');
-Route::get('/admin/tambahMas', [AdminController::class, 'tambahMas'])->name('admin.tambahMas');
-Route::post('/admin/inputMas', [AdminController::class, 'inputMas'])->name('admin.inputMas');
-Route::get('/admin/listWali', [AdminController::class, 'listWali'])->name('admin.listWali');
-Route::get('/admin/tambahWali', [AdminController::class, 'tambahWali'])->name('admin.tambahWali');
-Route::post('/admin/inputWali', [AdminController::class, 'inputWali'])->name('admin.inputWali');
-
-// Edit Akun
-Route::get('/admin/editAdmin/{id}', [AdminController::class, 'editAdmin'])->name('admin.editAdmin');
-Route::put('/admin/updateAdmin/{id}', [AdminController::class, 'updateAdmin'])->name('admin.updateAdmin');
-Route::get('/admin/editMas/{id}', [AdminController::class, 'editMas'])->name('admin.editMas');
-Route::put('/admin/updateMas/{id}', [AdminController::class, 'updateMas'])->name('admin.updateMas');
-Route::get('/admin/editWali/{id}', [AdminController::class, 'editWali'])->name('admin.editWali');
-Route::put('/admin/updateWali/{id}', [AdminController::class, 'updateWali'])->name('admin.updateWali');
-
-//Delete Akun
-Route::delete('/admin/deleteAdmin/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.deleteAdmin');
-Route::delete('/admin/deleteMas/{id}', [AdminController::class, 'deleteMas'])->name('admin.deleteMas');
-Route::delete('/admin/deleteWali/{id}', [AdminController::class, 'deleteWali'])->name('admin.deleteWali');
 
 //Verifikasi Akun
 Route::get('/admin/verifikasisktm', [AdminController::class, 'verifikasisktm'])->name('admin.verifikasisktm');

@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class SuratKeluar extends Model
 {
     use HasFactory;
 
-    protected $table = 'files';
-    protected $primaryKey = 'id_file';
+    protected $table = 'surat_keluar';
+    protected $primaryKey = 'id_keluar';
     public $timestamps = true;
 
     protected $fillable = [
         'id_pengajuan',
-        'file_path',
-        'file_type',
+        'no_surat',
+        'tanggal_kirim',
+        'file_surat',
     ];
 }

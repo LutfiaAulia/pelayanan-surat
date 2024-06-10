@@ -17,7 +17,9 @@ class SKU extends Model
         'id_pengajuan',
         'nama',
         'nik',
-        'alasan'
+        'alasan',
+        'filektp',
+        'fotousaha'
     ];
 
     // public function user()
