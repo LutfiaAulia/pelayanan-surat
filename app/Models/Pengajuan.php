@@ -15,16 +15,9 @@ class Pengajuan extends Model
 
     protected $fillable = [
         'id_user',
-        'id_jenis',
         'tanggal_pengajuan',
         'status_pengajuan',
         'alasan_penolakan',
         'id_admin',
-        'file_path',
     ];
-
-    public function files()
-    {
-        return $this->hasMany(File::class, 'id_pengajuan');
-    }
 }

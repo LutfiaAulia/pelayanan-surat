@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('files', function (Blueprint $table) {
-            $table->id('id_file');
+        Schema::create('surat_pot', function (Blueprint $table) {
+            $table->id('id_pot');
             $table->unsignedBigInteger('id_pengajuan');
-            $table->string('file_path');
-            $table->string('file_type');
+            $table->string('jenis_surat')->default('POT');
+            $table->string('nama');
+            $table->string('nik');
+            $table->decimal('penghasilan');
+            $table->string('alasan');
+            $table->string('filekk');
             $table->timestamps();
 
             $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan')->onDelete('cascade');
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('files');
+        Schema::dropIfExists('surat_pot');
     }
 };

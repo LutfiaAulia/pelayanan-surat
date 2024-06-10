@@ -18,7 +18,8 @@ class Peng extends Model
         'nama',
         'nik',
         'penghasilan',
-        'alasan'
+        'alasan',
+        'filekk'
     ];
 
     // public function user()

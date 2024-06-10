@@ -17,17 +17,8 @@ class SKTM extends Model
         'id_pengajuan',
         'nama',
         'nik',
-        'alasan'
+        'alasan',
+        'filektp',
+        'filekk'
     ];
-
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
-
-    // // Contoh hubungan hasMany
-    // public function someRelatedModels()
-    // {
-    //     return $this->hasMany(SomeRelatedModel::class);
-    // }
 }
