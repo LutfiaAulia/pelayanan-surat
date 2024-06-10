@@ -20,4 +20,19 @@ class Pengajuan extends Model
         'alasan_penolakan',
         'id_admin',
     ];
+
+    public function suratSktm()
+    {
+        return $this->hasOne(SKTM::class, 'id_pengajuan');
+    }
+
+    public function suratPot()
+    {
+        return $this->hasOne(POT::class, 'id_pengajuan');
+    }
+
+    public function suratSku()
+    {
+        return $this->hasOne(SKU::class, 'id_pengajuan');
+    }
 }

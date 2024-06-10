@@ -71,6 +71,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admin/deleteAdmin/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.deleteAdmin')->middleware('userAkses:admin,walinagari');
     Route::delete('/admin/deleteMas/{id}', [AdminController::class, 'deleteMas'])->name('admin.deleteMas')->middleware('userAkses:admin,walinagari');
     Route::delete('/admin/deleteWali/{id}', [AdminController::class, 'deleteWali'])->name('admin.deleteWali')->middleware('userAkses:admin,walinagari');
+
+    // List Pengajuan
+    Route::get('/admin/listSktm', [AdminController::class, 'listSktm'])->name('admin.listSktm')->middleware('userAkses:admin');
+    Route::get('/admin/listsku', [AdminController::class, 'listsku'])->name('admin.listsku')->middleware('userAkses:admin');
+    Route::get('/admin/listPot', [AdminController::class, 'listPot'])->name('admin.listPot')->middleware('userAkses:admin');
 });
 
 //Verifikasi Akun
@@ -95,19 +100,6 @@ Route::get('/wali', function () {
 Route::get('/masyarakat', function () {
     return view('AdminWali.Kelola Akun.masyarakat');
 })->name('masyarakat');
-
-// List Pengajuan
-Route::get('/listsktm', function () {
-    return view('AdminWali.List Pengajuan.listsktm');
-})->name('listsktm');
-
-Route::get('/listsku', function () {
-    return view('AdminWali.List Pengajuan.listsku');
-})->name('listsku');
-
-Route::get('/listsurpeng', function () {
-    return view('AdminWali.List Pengajuan.listsurpeng');
-})->name('listsurpeng');
 
 // List Surat Keluar
 Route::get('/listsuker', function () {

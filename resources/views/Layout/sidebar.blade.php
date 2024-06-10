@@ -68,14 +68,14 @@
                             <span>List Pengajuan</span>
                         </a>
                         <ul class="submenu">
-                            <li class="submenu-item {{ request()->routeIs('listsktm') ? 'active' : '' }}">
-                                <a href="{{ route('listsktm') }}">SKTM</a>
+                            <li class="submenu-item {{ request()->routeIs('admin.listSktm') ? 'active' : '' }}">
+                                <a href="{{ route('admin.listSktm') }}">SKTM</a>
                             </li>
-                            <li class="submenu-item {{ request()->routeIs('listsurpeng') ? 'active' : '' }}">
-                                <a href="{{ route('listsurpeng') }}">Surat Penghasilan</a>
+                            <li class="submenu-item {{ request()->routeIs('admin.listPot') ? 'active' : '' }}">
+                                <a href="{{ route('admin.listPot') }}">Surat Penghasilan</a>
                             </li>
-                            <li class="submenu-item {{ request()->routeIs('listsku') ? 'active' : '' }}">
-                                <a href="{{ route('listsku') }}">SKU</a>
+                            <li class="submenu-item {{ request()->routeIs('admin.listsku') ? 'active' : '' }}">
+                                <a href="{{ route('admin.listsku') }}">SKU</a>
                             </li>
                         </ul>
                     </li>

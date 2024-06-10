@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator; // Add this line
 use Illuminate\Support\Facades\Hash; // Add this line
 use App\Models\User;
+use App\Models\Pengajuan;
+use App\Models\SKTM;
+use App\Models\SKU;
+use App\Models\POT;
 
 class AdminController extends Controller
 {
@@ -267,5 +271,25 @@ class AdminController extends Controller
 
         $user->delete();
         return redirect()->route('admin.listWali')->with('success', 'Hapus akun wali berhasil');
+    }
+
+    public function listSku()
+    {
+        // Mengambil data dengan join
+        $list = SKU::with('pengajuan')
+            ->whereHas('pengajuan', function($query) {})
+            ->get();
+
+        // Mengambil hanya kolom yang diperlukan
+        $list = $list->map(function($item) {
+            return [
+                'nama' => $item->nama,
+                'nik' => $item->nik,
+                'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
+                'status_pengajuan' => $item->pengajuan->status_pengajuan,
+            ];
+        });
+
+        return view('AdminWali.List Pengajuan.listsku', compact('list'));
     }
 }
