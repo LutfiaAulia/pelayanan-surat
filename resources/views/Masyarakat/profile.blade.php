@@ -26,12 +26,13 @@
 
                     <div class="form-group">
                         <label for="email">NIP:</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ $user->nkkip }}" required>
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Password:</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{ $user->phone }}" required>
+                        <input type="password" id="password" class="form-control" placeholder="Password" name="password">
+                        <small class="text-muted">Kosongkan jika tidak ingin mengubah password</small>
                     </div>
 
                     {{-- <div class="form-group">
