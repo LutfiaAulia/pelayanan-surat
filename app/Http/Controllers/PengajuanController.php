@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\POT;
 use App\Models\Pengajuan;
 use App\Models\SKTM;
 use App\Models\SKU;
-use App\Models\POT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
-use Illuminate\Support\Facades\Storage;
 
-class MasyarakatController extends Controller
+class PengajuanController extends Controller
 {
     function formsktm()
     {
@@ -101,7 +99,7 @@ class MasyarakatController extends Controller
             'nik' => 'required',
             'penghasilan' => 'required',
             'alasan' => 'required',
-            'filekk' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'filekk' => 'required',
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -112,62 +110,16 @@ class MasyarakatController extends Controller
             'tanggal_pengajuan' => now(),
         ]);
 
-        $filekk = $request->file('filekk');
-        $filename = date('Y-m-d') . '_' . $filekk->getClientOriginalName();
-        $path = 'filekk/'.$filename;
-
-        Storage::disk('public')->put($path, file_get_contents($filekk));
-
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
         $data['penghasilan'] = $request->penghasilan;
         $data['alasan'] = $request->alasan;
-        $data['filekk'] = $filename;
+        $data['filekk'] = $request->filekk;
         $data['id_pengajuan'] = $pengajuan->id_pengajuan;
 
 
         POT::create($data);
 
         return redirect()->route('masyarakat.peng')->with('success', 'Surat berhasil diajukan');
-    }
-
-    public function edit($id)
-    {
-        $user = User::findOrFail($id);
-        return view('masyarakat.profile', compact('user'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'nkkip' => 'required|string|max:255',
-            'password' => 'nullable|string|min:8',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->nkkip = $request->nkkip;
-
-        if ($request->filled('password')) {
-            $user->password = bcrypt($request->password);
-        }
-    
-        if ($request->hasFile('profile_picture')) {
-            if ($user->profile_picture) {
-                Storage::disk('public')->delete($user->profile_picture);
-            }
-    
-            $file = $request->file('profile_picture');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $path = $file->move(public_path('img'), $filename);
-    
-            $user->profile_picture = 'img/' . $filename;
-        }
-
-        $user->save();
-
-        return redirect()->route('index')->with('success', 'Profil berhasil diperbarui');
     }
 }

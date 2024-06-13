@@ -13,7 +13,7 @@
 
                     <div class="d-flex flex-column align-items-center">
                         @if($user->profile_picture)
-                            <img id="profilePicturePreview" src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture" class="rounded-circle mb-2" width="150" height="150" style="object-fit: cover; cursor: pointer;">
+                            <img id="profilePicturePreview" src="{{ asset($user->profile_picture) }}" alt="Profile Picture" class="rounded-circle mb-2" width="150" height="150" style="object-fit: cover; cursor: pointer;">
                         @else
                             <img id="profilePicturePreview" src="{{ asset('template/assets/images/faces/1.jpg') }}" alt="Default Profile Picture" class="rounded-circle mb-2" width="150" height="150" style="object-fit: cover; cursor: pointer;">
                         @endif
@@ -80,4 +80,18 @@
             }
         }
     </script>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('profilePicturePreview');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    document.getElementById('profile_picture').addEventListener('change', previewImage);
+</script>
+
 @endsection

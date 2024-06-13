@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('jenis_surat')->default('POT');
             $table->string('nama');
             $table->string('nik');
-            $table->decimal('penghasilan');
+            $table->string('penghasilan');
             $table->string('alasan');
             $table->string('filekk');
             $table->timestamps();
