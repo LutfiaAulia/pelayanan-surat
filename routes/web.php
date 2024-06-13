@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PengajuanController;
@@ -78,6 +79,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/listsktm', [AdminController::class, 'listsktm'])->name('admin.listsktm')->middleware('userAkses:admin');
     Route::get('/admin/listsku', [AdminController::class, 'listsku'])->name('admin.listsku')->middleware('userAkses:admin');
     Route::get('/admin/listpot', [AdminController::class, 'listpot'])->name('admin.listpot')->middleware('userAkses:admin');
+
+    // Dashboard
+    Route::get('/jumlah-pengajuan', [DashboardController::class, 'jumlahPengajuan']);
 });
 
 //Verifikasi Akun
