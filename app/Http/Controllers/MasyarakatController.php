@@ -20,7 +20,7 @@ class MasyarakatController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'nkkip' => 'required|string|max:255',
-            'password' => 'nullable|string|min:8', // Validasi password baru
+            'password' => 'nullable|string|min:8',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 

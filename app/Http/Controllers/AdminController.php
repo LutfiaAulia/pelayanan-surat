@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator; // Add this line
-use Illuminate\Support\Facades\Hash; // Add this line
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Pengajuan;
 use App\Models\SKTM;
