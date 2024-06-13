@@ -325,11 +325,18 @@ class AdminController extends Controller
             return [
                 'nama' => $item->nama,
                 'nik' => $item->nik,
+                'id_pengajuan' => $item->pengajuan->id_pengajuan,
                 'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                 'status_pengajuan' => $item->pengajuan->status_pengajuan,
             ];
         });
 
         return view('AdminWali.List Pengajuan.listsurpeng', compact('list'));
+    }
+
+    public function verifsurpeng(Request $request, $id_pengajuan)
+    {
+        $data = POT::with('pengajuan')->where('id_pengajuan', $id_pengajuan)->firstOrFail();
+        return view('AdminWali.List Pengajuan.verifikasisurpeng', compact('data'));
     }
 }
