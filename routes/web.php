@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasyarakatController;
+use App\Http\Controllers\PengajuanController;
+use App\Models\Pengajuan;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
@@ -37,12 +39,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     //Pengajuan Surat
-    Route::get('/formsktm', [MasyarakatController::class, 'formsktm'])->name('masyarakat.sktm')->middleware('userAkses:masyarakat');
-    Route::post('/ajusktm', [MasyarakatController::class, 'ajusktm'])->name('masyarakat.ajusktm')->middleware('userAkses:masyarakat');
-    Route::get('/formsku', [MasyarakatController::class, 'formsku'])->name('masyarakat.sku')->middleware('userAkses:masyarakat');
-    Route::post('/ajusku', [MasyarakatController::class, 'ajusku'])->name('masyarakat.ajusku')->middleware('userAkses:masyarakat');
-    Route::get('/formpeng', [MasyarakatController::class, 'formpeng'])->name('masyarakat.peng')->middleware('userAkses:masyarakat');
-    Route::post('/ajupeng', [MasyarakatController::class, 'ajupeng'])->name('masyarakat.ajupeng')->middleware('userAkses:masyarakat');
+    Route::get('/formsktm', [PengajuanController::class, 'formsktm'])->name('masyarakat.sktm')->middleware('userAkses:masyarakat');
+    Route::post('/ajusktm', [PengajuanController::class, 'ajusktm'])->name('masyarakat.ajusktm')->middleware('userAkses:masyarakat');
+    Route::get('/formsku', [PengajuanController::class, 'formsku'])->name('masyarakat.sku')->middleware('userAkses:masyarakat');
+    Route::post('/ajusku', [PengajuanController::class, 'ajusku'])->name('masyarakat.ajusku')->middleware('userAkses:masyarakat');
+    Route::get('/formpeng', [PengajuanController::class, 'formpeng'])->name('masyarakat.peng')->middleware('userAkses:masyarakat');
+    Route::post('/ajupeng', [PengajuanController::class, 'ajupeng'])->name('masyarakat.ajupeng')->middleware('userAkses:masyarakat');
 
     Route::get('/profile/{id}/edit', [MasyarakatController::class, 'edit'])->name('masyarakat.edit')->middleware('userAkses:masyarakat');
     Route::put('/profile/{id}', [MasyarakatController::class, 'update'])->name('masyarakat.update')->middleware('userAkses:masyarakat');
