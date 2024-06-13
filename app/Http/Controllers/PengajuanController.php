@@ -8,8 +8,6 @@ use App\Models\SKTM;
 use App\Models\SKU;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
-use Illuminate\Support\Facades\Storage;
 
 class PengajuanController extends Controller
 {

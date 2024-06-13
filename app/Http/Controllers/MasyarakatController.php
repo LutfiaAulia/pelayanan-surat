@@ -29,7 +29,7 @@ class MasyarakatController extends Controller
         $user->nkkip = $request->nkkip;
 
         if ($request->filled('password')) {
-            $user->password = bcrypt($request->password); // Hash password baru
+            $user->password = bcrypt($request->password);
         }
     
         if ($request->hasFile('profile_picture')) {
