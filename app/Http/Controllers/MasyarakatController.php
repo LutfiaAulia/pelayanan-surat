@@ -29,20 +29,19 @@ class MasyarakatController extends Controller
         $user->nkkip = $request->nkkip;
 
         if ($request->filled('password')) {
-            $user->password = bcrypt($request->password);
+            $user->password = bcrypt($request->password); // Hash password baru
         }
-
+    
         if ($request->hasFile('profile_picture')) {
             if ($user->profile_picture) {
                 Storage::disk('public')->delete($user->profile_picture);
             }
-
-            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
-            $user->profile_picture = $path;
-        }
-
-        if ($request->filled('password')) {
-            $user->password = bcrypt($request->password); // Hash password baru
+    
+            $file = $request->file('profile_picture');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->move(public_path('img'), $filename);
+    
+            $user->profile_picture = 'img/' . $filename;
         }
 
         $user->save();
