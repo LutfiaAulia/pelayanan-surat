@@ -32,14 +32,14 @@ class PengajuanController extends Controller
         return view('Masyarakat.Pengajuan Surat.surpeng');
     }
 
-    function ajusktm(Request $request)
+    public function ajusktm(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required',
-            'nik' => 'required',
+            'nama' => 'required|string|max:255',
+            'nik' => 'required|string|max:16',
             'alasan' => 'required',
-            'ktp' => 'required',
-            'kk' => 'required',
+            'filektp' => 'required|mimes:jpg,jpeg,png|max:512',
+            'filekk' => 'required|mimes:jpg,jpeg,png|max:512',
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -50,11 +50,21 @@ class PengajuanController extends Controller
             'tanggal_pengajuan' => now(),
         ]);
 
+        $filekk = $request->file('filekk');
+        $filektp = $request->file('filektp');
+        $filename = date('Y-m-d') . '_' . $filekk->getClientOriginalName();
+        $filenamektp = date('Y-m-d') . '_' . $filektp->getClientOriginalName();
+        $path = 'filekk/' . $filename;
+        $pathktp = 'filektp/' . $filenamektp;
+
+        Storage::disk('public')->put($path, file_get_contents($filekk));
+        Storage::disk('public')->put($pathktp, file_get_contents($filektp));
+
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
         $data['alasan'] = $request->alasan;
-        $data['filektp'] = $request->ktp;
-        $data['filekk'] = $request->kk;
+        $data['filekk'] = $filename;
+        $data['filektp'] = $filenamektp;
         $data['id_pengajuan'] = $pengajuan->id_pengajuan;
 
         SKTM::create($data);
@@ -65,11 +75,11 @@ class PengajuanController extends Controller
     function ajusku(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required',
-            'nik' => 'required',
+            'nama' => 'required|string|max:255',
+            'nik' => 'required|string|max:16',
             'alasan' => 'required',
-            'filektp' => 'required',
-            'fotousaha' => 'required',
+            'filektp' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'fotousaha' => 'required|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -80,11 +90,21 @@ class PengajuanController extends Controller
             'tanggal_pengajuan' => now(),
         ]);
 
+        $filektp = $request->file('filektp');
+        $fileusaha = $request->file('fotousaha');
+        $filenamektp = date('Y-m-d') . '_' . $filektp->getClientOriginalName();
+        $filenameusaha = date('Y-m-d') . '_' . $fileusaha->getClientOriginalName();
+        $pathktp = 'filektp/' . $filenamektp;
+        $pathusaha = 'fileusaha/' . $filenameusaha;
+
+        Storage::disk('public')->put($pathktp, file_get_contents($filektp));
+        Storage::disk('public')->put($pathusaha, file_get_contents($fileusaha));
+
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
         $data['alasan'] = $request->alasan;
-        $data['filektp'] = $request->filektp;
-        $data['fotousaha'] = $request->fotousaha;
+        $data['filektp'] = $filenamektp;
+        $data['fotousaha'] = $filenameusaha;
         $data['id_pengajuan'] = $pengajuan->id_pengajuan;
 
 
