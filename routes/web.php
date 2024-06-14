@@ -34,8 +34,8 @@ Route::get('/home', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
-    Route::get('/dashboard/admin', [AdminController::class, 'admin'])->middleware('userAkses:admin');
-    Route::get('/dashboard/walinagari', [AdminController::class, 'walinagari'])->middleware('userAkses:walinagari');
+    Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('dashboard')->middleware('userAkses:admin');
+    Route::get('/dashboard/walinagari', [DashboardController::class, 'index'])->middleware('userAkses:walinagari');
     Route::get('/dashboard/masyarakat', [AdminController::class, 'masyarakat'])->middleware('userAkses:masyarakat');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -84,9 +84,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/verifikasisktm', [AdminController::class, 'verifsktm'])->name('admin.verifikasisktm')->middleware('userAkses:admin');
     Route::get('/admin/verifikasisku', [AdminController::class, 'verifsku'])->name('admin.verifikasisku')->middleware('userAkses:admin');
     Route::get('/admin/verifikasisurpeng/{id_pengajuan}', [AdminController::class, 'verifsurpeng'])->name('admin.verifikasisurpeng')->middleware('userAkses:admin');
-
-    // Dashboard
-    Route::get('/jumlah-pengajuan', [DashboardController::class, 'jumlahPengajuan']);
 });
 
 //Generate Surat
