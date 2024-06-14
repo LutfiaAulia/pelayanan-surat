@@ -36,16 +36,6 @@ class AdminController extends Controller
         return view('AdminWali.Kelola Akun.wali', compact('walis'));
     }
 
-    function admin()
-    {
-        return view('index');
-    }
-
-    function walinagari()
-    {
-        return view('index');
-    }
-
     function masyarakat()
     {
         return view('index');
