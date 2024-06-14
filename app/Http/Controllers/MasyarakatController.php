@@ -94,43 +94,6 @@ class MasyarakatController extends Controller
         return redirect()->route('masyarakat.sku')->with('success', 'Surat berhasil diajukan');
     }
 
-    function ajupeng(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required',
-            'nik' => 'required',
-            'penghasilan' => 'required',
-            'alasan' => 'required',
-            'filekk' => 'required|mimes:png,jpg,jpeg|max:2048',
-        ]);
-
-        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
-
-        $pengajuan = Pengajuan::create([
-            'id_user' => auth()->user()->id,
-            'status_pengajuan' => 'Mengajukan',
-            'tanggal_pengajuan' => now(),
-        ]);
-
-        $filekk = $request->file('filekk');
-        $filename = date('Y-m-d') . '_' . $filekk->getClientOriginalName();
-        $path = 'filekk/'.$filename;
-
-        Storage::disk('public')->put($path, file_get_contents($filekk));
-
-        $data['nama'] = $request->nama;
-        $data['nik'] = $request->nik;
-        $data['penghasilan'] = $request->penghasilan;
-        $data['alasan'] = $request->alasan;
-        $data['filekk'] = $filename;
-        $data['id_pengajuan'] = $pengajuan->id_pengajuan;
-
-
-        POT::create($data);
-
-        return redirect()->route('masyarakat.peng')->with('success', 'Surat berhasil diajukan');
-    }
-
     public function edit($id)
     {
         $user = User::findOrFail($id);

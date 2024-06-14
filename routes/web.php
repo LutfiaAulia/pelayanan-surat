@@ -33,10 +33,10 @@ Route::get('/home', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
-    Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('dashboard')->middleware('userAkses:admin');
-    Route::get('/dashboard/walinagari', [DashboardController::class, 'index'])->middleware('userAkses:walinagari');
-    Route::get('/dashboard/masyarakat', [AdminController::class, 'masyarakat'])->middleware('userAkses:masyarakat');
+    // Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
+    Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('userAkses:admin');
+    Route::get('/dashboard/walinagari', [DashboardController::class, 'index'])->name('walinagari.dashboard')->middleware('userAkses:walinagari');
+    Route::get('/dashboard/masyarakat', [AdminController::class, 'index'])->name('masyarakat.dashboard')->middleware('userAkses:masyarakat');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     //Pengajuan Surat
