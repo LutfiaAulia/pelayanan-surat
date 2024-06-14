@@ -95,7 +95,7 @@ class PengajuanController extends Controller
         $filenamektp = date('Y-m-d') . '_' . $filektp->getClientOriginalName();
         $filenameusaha = date('Y-m-d') . '_' . $fotousaha->getClientOriginalName();
         $pathktp = 'filektp/' . $filenamektp;
-        $pathusaha = 'fileusaha/' . $filenameusaha;
+        $pathusaha = 'fotousaha/' . $filenameusaha;
 
         Storage::disk('public')->put($pathktp, file_get_contents($filektp));
         Storage::disk('public')->put($pathusaha, file_get_contents($fotousaha));
