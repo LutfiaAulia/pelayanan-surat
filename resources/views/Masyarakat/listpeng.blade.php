@@ -2,7 +2,6 @@
 
 @section('content')
 
-{{-- content --}}
 <div class="page-content">
     <section class="row">
         <div class="col-12">
@@ -18,46 +17,34 @@
                                     <th scope="col">No.</th>
                                     <th scope="col">Tanggal Pengajuan</th>
                                     <th scope="col">Jenis Surat</th>
-                                    <th scope="col">Acc Staff</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Detail</th>
                                     <th colspan="2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Example rows --}}
+                                @foreach ($pengajuans as $pengajuan)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>12/02/2024</td>
-                                    <td>SKTM</td>
-                                    <td>Sarah Putri</td>
-                                    <td>Acc</td>
-                                    <td>Cek</td>
-                                    <td style="width: 200px; text-align: center;" >
-                                        {{-- @if ($item->jenis_surat == 'SKTM')
-                                            <a href="{{ route('masyarakat.sktm') }}" class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                        @elseif ($item->jenis_surat == 'SKU')
-                                            <a href="{{ route('masyarakat.sku') }}" class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                        @elseif ($item->jenis_surat == 'SurPeng')
-                                            <a href="{{ route('masyarakat.surpeng') }}" class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                        @endif --}}
-
-                                        <a href="{{ route('masyarakat.sktm') }}" class="btn btn-primary">
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $pengajuan->created_at }}</td>
+                                    <td>{{ $pengajuan->jenis_surat }}</td>
+                                    <td>{{ $pengajuan->status_pengajuan }}</td>
+                                    <td><a href="{{ route('masyarakat.sktm', $pengajuan->id_pengajuan) }}">Cek</a></td>
+                                    <td style="width: 200px; text-align: center;">
+                                        <a href="{{ route('masyarakat.sktm.edit', $pengajuan->id_pengajuan) }}" class="btn btn-primary">
                                             <i class="fas fa-edit"></i>
-                                        </a>                                        
+                                        </a>
                                         <button class="btn btn-success"><i class="fas fa-file-upload"></i></button>
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
+                                        <form action="{{ route('masyarakat.sktm.destroy', $pengajuan->id_pengajuan) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
-                                {{-- Add more rows as needed --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
