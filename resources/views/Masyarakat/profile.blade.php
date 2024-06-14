@@ -46,7 +46,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('index') }}" class="btn btn-secondary">Batal</a>
+                    <a href="{{ route('masyarakat.dashboard') }}" class="btn btn-secondary">Batal</a>
                 </form>
             </div>
         </div>

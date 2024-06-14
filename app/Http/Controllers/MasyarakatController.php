@@ -131,6 +131,6 @@ class MasyarakatController extends Controller
 
         $user->save();
 
-        return redirect()->route('index')->with('success', 'Profil berhasil diperbarui');
+        return redirect()->route('masyarakat.dashboard')->with('success', 'Profil berhasil diperbarui');
     }
 }

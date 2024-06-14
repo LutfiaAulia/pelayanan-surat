@@ -7,8 +7,9 @@ use App\Models\Pengajuan;
 use App\Models\SKTM;
 use App\Models\SKU;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class PengajuanController extends Controller
 {
@@ -32,32 +33,30 @@ class PengajuanController extends Controller
         return view('Masyarakat.Pengajuan Surat.surpeng');
     }
 
-    public function ajusktm(Request $request)
+    function ajusktm(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
-            'nik' => 'required|string|max:16',
-            'alasan' => 'required|string',
-            'filektp' => 'required|file|mimes:jpg,jpeg,png|max:512',
-            'filekk' => 'required|file|mimes:jpg,jpeg,png|max:512',
+            'nama' => 'required',
+            'nik' => 'required',
+            'alasan' => 'required',
+            'ktp' => 'required',
+            'kk' => 'required',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
-        $data = $request->all();
-        $data['id_user'] = auth()->user()->id;
-        $data['status_pengajuan'] = 'Mengajukan';
+        $pengajuan = Pengajuan::create([
+            'id_user' => auth()->user()->id,
+            'status_pengajuan' => 'Mengajukan',
+            'tanggal_pengajuan' => now(),
+        ]);
 
-        // Handle file upload
-        if ($request->hasFile('filektp')) {
-            $data['filektp'] = $request->file('filektp')->store('ktp');
-        }
-
-        if ($request->hasFile('filekk')) {
-            $data['filekk'] = $request->file('filekk')->store('kk');
-        }
+        $data['nama'] = $request->nama;
+        $data['nik'] = $request->nik;
+        $data['alasan'] = $request->alasan;
+        $data['filektp'] = $request->ktp;
+        $data['filekk'] = $request->kk;
+        $data['id_pengajuan'] = $pengajuan->id_pengajuan;
 
         SKTM::create($data);
 
@@ -102,7 +101,7 @@ class PengajuanController extends Controller
             'nik' => 'required',
             'penghasilan' => 'required',
             'alasan' => 'required',
-            'filekk' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'filekk' => 'required',
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -113,17 +112,11 @@ class PengajuanController extends Controller
             'tanggal_pengajuan' => now(),
         ]);
 
-        $filekk = $request->file('filekk');
-        $filename = date('Y-m-d') . '_' . $filekk->getClientOriginalName();
-        $path = 'filekk/'.$filename;
-
-        Storage::disk('public')->put($path, file_get_contents($filekk));
-
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
         $data['penghasilan'] = $request->penghasilan;
         $data['alasan'] = $request->alasan;
-        $data['filekk'] = $filename;
+        $data['filekk'] = $request->filekk;
         $data['id_pengajuan'] = $pengajuan->id_pengajuan;
 
 
@@ -131,20 +124,4 @@ class PengajuanController extends Controller
 
         return redirect()->route('masyarakat.peng')->with('success', 'Surat berhasil diajukan');
     }
-
-    public function listPengajuan()
-    {
-        $pengajuans = Pengajuan::all();
-        
-        return view('Masyarakat.listpeng', compact('pengajuans'));
-    }
-
-    // public function listPengajuan()
-    // {
-    //     // Fetch all Pengajuan records with related SuratSktm
-    //     $pengajuans = Pengajuan::with('suratSktm', 'suratPot', 'suratSku')->get();
-        
-    //     // Pass the data to the view
-    //     return view('Masyarakat.listpeng', compact('pengajuans'));
-    // }
 }
