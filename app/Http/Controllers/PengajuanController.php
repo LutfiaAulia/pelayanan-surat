@@ -113,7 +113,7 @@ class PengajuanController extends Controller
 
         $filekk = $request->file('filekk');
         $filename = date('Y-m-d') . '_' . $filekk->getClientOriginalName();
-        $path = 'filekk/' . $filename;
+        $path = 'filekk/'.$filename;
 
         Storage::disk('public')->put($path, file_get_contents($filekk));
 
