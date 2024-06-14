@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PengajuanController;
@@ -32,10 +33,9 @@ Route::get('/home', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
-    Route::get('/dashboard/admin', [AdminController::class, 'admin'])->middleware('userAkses:admin');
-    Route::get('/dashboard/walinagari', [AdminController::class, 'walinagari'])->middleware('userAkses:walinagari');
-    Route::get('/dashboard/masyarakat', [AdminController::class, 'masyarakat'])->middleware('userAkses:masyarakat');
+    Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('userAkses:admin');
+    Route::get('/dashboard/walinagari', [DashboardController::class, 'index'])->name('walinagari.dashboard')->middleware('userAkses:walinagari');
+    Route::get('/dashboard/masyarakat', [DashboardController::class, 'index'])->name('masyarakat.dashboard')->middleware('userAkses:masyarakat');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     //Pengajuan Surat (Masyarakat)
@@ -82,12 +82,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/listsktm', [AdminController::class, 'listsktm'])->name('admin.listsktm')->middleware('userAkses:admin');
     Route::get('/admin/listsku', [AdminController::class, 'listsku'])->name('admin.listsku')->middleware('userAkses:admin');
     Route::get('/admin/listpot', [AdminController::class, 'listpot'])->name('admin.listpot')->middleware('userAkses:admin');
-});
 
-//Verifikasi Akun
-Route::get('/admin/verifikasisktm', [AdminController::class, 'verifikasisktm'])->name('admin.verifikasisktm');
-Route::get('/admin/verifikasisku', [AdminController::class, 'verifikasisku'])->name('admin.verifikasisku');
-Route::get('/admin/verifikasisurpeng', [AdminController::class, 'verifikasisurpeng'])->name('admin.verifikasisurpeng');
+    //Verifikasi Akun
+    Route::get('/admin/verifikasisktm', [AdminController::class, 'verifsktm'])->name('admin.verifikasisktm')->middleware('userAkses:admin');
+    Route::get('/admin/verifikasisku', [AdminController::class, 'verifsku'])->name('admin.verifikasisku')->middleware('userAkses:admin');
+    Route::get('/admin/verifikasisurpeng/{id_pengajuan}', [AdminController::class, 'verifsurpeng'])->name('admin.verifikasisurpeng')->middleware('userAkses:admin');
+});
 
 //Generate Surat
 Route::get('/admin/generatesktm', [AdminController::class, 'generatesktm'])->name('admin.generatesktm');

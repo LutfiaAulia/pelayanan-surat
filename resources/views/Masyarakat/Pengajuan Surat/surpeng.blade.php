@@ -22,7 +22,7 @@
         <div class="card-content">
             <div class="card-body">
                 <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Form Pengajuan Surat Penghasilan Orang Tua</h4>
-                <form action="{{route('masyarakat.ajupeng')}}" method="POST">
+                <form action="{{route('masyarakat.ajupeng')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <form class="form" method="post">
                         <div class="form-body">

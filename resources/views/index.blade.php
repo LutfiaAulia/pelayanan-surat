@@ -17,7 +17,7 @@
                             </div>
                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                 <h6 class="text-muted font-semibold">Total Pengajuan</h6>
-                                <h6 class="font-extrabold mb-0">4</h6>
+                                <h6 class="font-extrabold mb-0">{{ $jumlahPengajuan }}</h6>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                 <h6 class="text-muted font-semibold">Pengajuan Diproses</h6>
-                                <h6 class="font-extrabold mb-0">2</h6>
+                                <h6 class="font-extrabold mb-0">{{ $jumlahDiproses }}</h6>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                 <h6 class="text-muted font-semibold">Pengajuan Ditolak</h6>
-                                <h6 class="font-extrabold mb-0">0</h6>
+                                <h6 class="font-extrabold mb-0">{{ $jumlahDitolak }}</h6>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                 <h6 class="text-muted font-semibold">Pengajuan Selesai</h6>
-                                <h6 class="font-extrabold mb-0">2</h6>
+                                <h6 class="font-extrabold mb-0">{{ $jumlahSelesai }}</h6>
                             </div>
                         </div>
                     </div>
