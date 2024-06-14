@@ -91,14 +91,14 @@ class PengajuanController extends Controller
         ]);
 
         $filektp = $request->file('filektp');
-        $fileusaha = $request->file('fotousaha');
+        $fotousaha = $request->file('fotousaha');
         $filenamektp = date('Y-m-d') . '_' . $filektp->getClientOriginalName();
-        $filenameusaha = date('Y-m-d') . '_' . $fileusaha->getClientOriginalName();
+        $filenameusaha = date('Y-m-d') . '_' . $fotousaha->getClientOriginalName();
         $pathktp = 'filektp/' . $filenamektp;
         $pathusaha = 'fileusaha/' . $filenameusaha;
 
         Storage::disk('public')->put($pathktp, file_get_contents($filektp));
-        Storage::disk('public')->put($pathusaha, file_get_contents($fileusaha));
+        Storage::disk('public')->put($pathusaha, file_get_contents($fotousaha));
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
