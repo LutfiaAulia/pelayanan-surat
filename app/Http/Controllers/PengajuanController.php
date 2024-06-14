@@ -7,9 +7,8 @@ use App\Models\Pengajuan;
 use App\Models\SKTM;
 use App\Models\SKU;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PengajuanController extends Controller
 {
@@ -101,7 +100,7 @@ class PengajuanController extends Controller
             'nik' => 'required',
             'penghasilan' => 'required',
             'alasan' => 'required',
-            'filekk' => 'required',
+            'filekk' => 'required|mimes:png,jpg,jpeg|max:2048',
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -112,11 +111,17 @@ class PengajuanController extends Controller
             'tanggal_pengajuan' => now(),
         ]);
 
+        $filekk = $request->file('filekk');
+        $filename = date('Y-m-d') . '_' . $filekk->getClientOriginalName();
+        $path = 'filekk/' . $filename;
+
+        Storage::disk('public')->put($path, file_get_contents($filekk));
+
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
         $data['penghasilan'] = $request->penghasilan;
         $data['alasan'] = $request->alasan;
-        $data['filekk'] = $request->filekk;
+        $data['filekk'] = $filename;
         $data['id_pengajuan'] = $pengajuan->id_pengajuan;
 
 
