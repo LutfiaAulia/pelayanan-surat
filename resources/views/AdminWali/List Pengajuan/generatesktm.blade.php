@@ -37,6 +37,12 @@
                                     <input type="text" id="namapengaju" class="form-control" placeholder="Nama Pengaju" name="namapengaju">
                                 </div>
                                 <div class="form-group mb-3">
+                                    <input type="text" id="ttl" class="form-control" placeholder="TTL" name="ttl">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" id="agama" class="form-control" placeholder="Agama" name="agama">
+                                </div>
+                                <div class="form-group mb-3">
                                     <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik">
                                 </div>
                                 <div class="form-group mb-3">
