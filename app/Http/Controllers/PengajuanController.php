@@ -149,4 +149,11 @@ class PengajuanController extends Controller
 
         return redirect()->route('masyarakat.peng')->with('success', 'Surat berhasil diajukan');
     }
+
+    public function listpeng()
+    {
+        $pengajuans = Pengajuan::all();
+        dd($pengajuans);
+        return view('masyarakat.listpeng', compact('pengajuans'));
+    }
 }

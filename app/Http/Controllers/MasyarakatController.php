@@ -55,6 +55,12 @@ class MasyarakatController extends Controller
 
         $user->save();
 
-        return redirect()->route('masyarakat.dashboard')->with('success', 'Profil berhasil diperbarui');
+        return redirect()->route('Masyarakat.profile', $id)->with('success', 'Profil berhasil diperbarui');
+    }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        return view('masyarakat.profile', compact('user'));
     }
 }
