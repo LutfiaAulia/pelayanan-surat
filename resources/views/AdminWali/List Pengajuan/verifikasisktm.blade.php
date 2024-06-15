@@ -54,9 +54,15 @@
                             </div>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
-                        <a href="{{ route('admin.generatesktm') }}" class="btn btn-success me-1" name="action" value="verifikasi">Verifikasi</a>
-                        <button type="button" class="btn btn-danger" id="tolakButton">Tolak</button> <!-- Ganti type dengan "button" -->
-                    </div>
+                        <a href="{{ route('adminwali.listpengajuan.generate', [
+                            'nama_pengaju' => $data->nama,
+                            'ttl' => $data->ttl ?? '',
+                            'agama' => $data->agama ?? '',
+                            'nik' => $data->nik,
+                            'nomorsurat' => $data->nomorsurat ?? ''
+                        ]) }}" class="btn btn-success me-1">Verifikasi</a>
+                        <button type="button" class="btn btn-danger" id="tolakButton">Tolak</button>
+                    </div>                    
                 </form>
             </div>
         </div>

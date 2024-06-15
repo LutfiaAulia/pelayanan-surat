@@ -34,19 +34,19 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group mb-3">
-                                    <input type="text" id="namapengaju" class="form-control" placeholder="Nama Pengaju" name="namapengaju">
+                                    <input type="text" id="namapengaju" class="form-control" name="namapengaju" value="{{ $data['nama_pengaju'] ?? '' }}" readonly>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="ttl" class="form-control" placeholder="TTL" name="ttl">
+                                    <input type="text" id="ttl" class="form-control" name="ttl" value="{{ $data['ttl'] ?? '' }}">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="agama" class="form-control" placeholder="Agama" name="agama">
+                                    <input type="text" id="agama" class="form-control" name="agama" value="{{ $data['agama'] ?? '' }}">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik">
+                                    <input type="text" id="nik" class="form-control" name="nik" value="{{ $data['nik'] ?? '' }}" readonly>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="nomorsurat" class="form-control" placeholder="Nomor Surat" name="nomorsurat">
+                                    <input type="text" id="nomorsurat" class="form-control" name="nomorsurat" value="{{ $data['nomorsurat'] ?? '' }}">
                                 </div>
                             </div>
                         </div>

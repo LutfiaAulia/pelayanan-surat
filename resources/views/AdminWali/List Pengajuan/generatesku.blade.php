@@ -25,16 +25,22 @@
                                 <div class="form-group mb-4">
                                     <label for="nomorsurat" class="form-label">Nomor Surat</label>
                                 </div>
+                                <div class="form-group mb-4">
+                                    <label for="alasan" class="form-label">Alasan</label>
+                                </div>
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group mb-3">
-                                    <input type="text" id="namapengaju" class="form-control" placeholder="Nama Pengaju" name="namapengaju">
+                                    <input type="text" id="namapengaju" class="form-control" placeholder="Nama Pengaju" name="namapengaju" value="{{ $data['nama'] }}" readonly>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik">
+                                    <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik" value="{{ $data['nik'] }}" readonly>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="nomorsurat" class="form-control" placeholder="Nomor Surat" name="nomorsurat">
+                                    <input type="text" id="nomorsurat" class="form-control" placeholder="Nomor Surat" name="nomorsurat" value="">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="text" id="alasan" class="form-control" name="alasan" value="{{ $data['alasan'] }}" readonly>
                                 </div>
                             </div>
                         </div>

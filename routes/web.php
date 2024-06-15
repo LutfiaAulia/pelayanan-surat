@@ -88,6 +88,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/verifikasisktm/{id_pengajuan}', [AdminController::class, 'verifsktm'])->name('admin.verifikasisktm')->middleware('userAkses:admin');
     Route::get('/admin/verifikasisku/{id_pengajuan}', [AdminController::class, 'verifsku'])->name('admin.verifikasisku')->middleware('userAkses:admin');
     Route::get('/admin/verifikasisurpeng/{id_pengajuan}', [AdminController::class, 'verifsurpeng'])->name('admin.verifikasisurpeng')->middleware('userAkses:admin');
+
+    //Generate (Form yg menampilkan hasil klik button verifikasi)
+    Route::get('/adminwali/listpengajuan/generate', [PengajuanController::class, 'verifsktm'])->name('adminwali.listpengajuan.generate')->middleware('userAkses:admin');
+    Route::get('/adminwali/listpengajuan/verifikasi', [PengajuanController::class, 'verifsku'])->name('adminwali.listpengajuan.verifikasi')->middleware('userAkses:admin');
+    Route::get('/adminwali/listpengajuan/verifikasi', [PengajuanController::class, 'verifpot'])->name('adminwali.listpengajuan.verifikasipot')->middleware('userAkses:admin');
 });
 
 //Generate Surat

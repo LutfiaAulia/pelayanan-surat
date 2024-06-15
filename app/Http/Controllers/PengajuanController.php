@@ -159,7 +159,7 @@ class PengajuanController extends Controller
     public function listpeng()
     {
         $pengajuans = Pengajuan::with(['suratSktm', 'suratSku', 'suratPot'])->get();
-    
+
         $pengajuans = $pengajuans->map(function ($pengajuan) {
             return [
                 'id_pengajuan' => $pengajuan->id_pengajuan,
@@ -173,5 +173,23 @@ class PengajuanController extends Controller
         dd($pengajuans);
 
         return view('masyarakat.listpeng', compact('pengajuans'));
+    }
+
+    public function verifsktm(Request $request)
+    {
+        $data = $request->only(['nama_pengaju', 'ttl', 'agama', 'nik', 'nomorsurat']);
+        return view('AdminWali.List Pengajuan.generatesktm', compact('data'));
+    }
+
+    public function verifsku(Request $request)
+    {
+        $data = $request->only(['nama', 'nik', 'alasan']);
+        return view('AdminWali.List Pengajuan.generatesku', compact('data'));
+    }
+
+    public function verifpot(Request $request)
+    {
+        $data = $request->only(['nama', 'nik', 'alasan', 'penghasilan']);
+        return view('AdminWali.List Pengajuan.generatesurpeng', compact('data'));
     }
 }
