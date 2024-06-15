@@ -85,8 +85,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/listpot', [AdminController::class, 'listpot'])->name('admin.listpot')->middleware('userAkses:admin');
 
     //Verifikasi Akun
-    Route::get('/admin/verifikasisktm', [AdminController::class, 'verifsktm'])->name('admin.verifikasisktm')->middleware('userAkses:admin');
-    Route::get('/admin/verifikasisku', [AdminController::class, 'verifsku'])->name('admin.verifikasisku')->middleware('userAkses:admin');
+    Route::get('/admin/verifikasisktm/{id_pengajuan}', [AdminController::class, 'verifsktm'])->name('admin.verifikasisktm')->middleware('userAkses:admin');
+    Route::get('/admin/verifikasisku/{id_pengajuan}', [AdminController::class, 'verifsku'])->name('admin.verifikasisku')->middleware('userAkses:admin');
     Route::get('/admin/verifikasisurpeng/{id_pengajuan}', [AdminController::class, 'verifsurpeng'])->name('admin.verifikasisurpeng')->middleware('userAkses:admin');
 });
 

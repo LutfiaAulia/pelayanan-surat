@@ -25,8 +25,11 @@
                                             <label for="penghasilan" class="form-label">Penghasilan Orang Tua</label>
                                         </div>
                                         <div class="form-group mb-4">
-                                            <label for="fileUploadkk" class="form-label">Lampiran KK</label>
+                                            <label for="alasan" class="form-label">Alasan</label>
                                         </div>
+                                        {{-- <div class="form-group mb-4">
+                                            <label for="fileUploadkk" class="form-label">Lampiran KK</label>
+                                        </div> --}}
                                     </div>
                                     <div class="col-md-10">
                                         <div class="form-group mb-3">
@@ -39,6 +42,10 @@
                                             <input type="text" id="penghasilan" class="form-control" name="penghasilan" value="{{ $data->penghasilan }}" readonly>
                                         </div>
                                         <div class="form-group mb-3">
+                                            <input type="text" id="alasan" class="form-control" name="alasan" value="{{ $data->alasan }}" readonly>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="penghasilan" class="form-label">Penghasilan Orang Tua</label>
                                             <img src="{{ asset('storage/filekk/' . $data->filekk) }}" alt="" style="max-width: 100%; height: auto;">
                                         </div>
                                     </div>
