@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/masyarakat', [DashboardController::class, 'index'])->name('masyarakat.dashboard')->middleware('userAkses:masyarakat');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-    //Pengajuan Surat
+    //Pengajuan Surat (Masyarakat)
     Route::get('/formsktm', [PengajuanController::class, 'formsktm'])->name('masyarakat.sktm')->middleware('userAkses:masyarakat');
     Route::post('/ajusktm', [PengajuanController::class, 'ajusktm'])->name('masyarakat.ajusktm')->middleware('userAkses:masyarakat');
     Route::get('/formsku', [PengajuanController::class, 'formsku'])->name('masyarakat.sku')->middleware('userAkses:masyarakat');
@@ -46,11 +46,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/formpeng', [PengajuanController::class, 'formpeng'])->name('masyarakat.peng')->middleware('userAkses:masyarakat');
     Route::post('/ajupeng', [PengajuanController::class, 'ajupeng'])->name('masyarakat.ajupeng')->middleware('userAkses:masyarakat');
 
+    //List Pengajuan Surat Oleh Masyarakat (Masyarakat)
+    Route::get('/pengajuan/list', [PengajuanController::class, 'listPengajuan'])->name('masyarakat.listpeng');
+
+    //Edit Profil (Masyarakat)
     Route::get('/profile/{id}/edit', [MasyarakatController::class, 'edit'])->name('masyarakat.edit')->middleware('userAkses:masyarakat');
     Route::put('/profile/{id}', [MasyarakatController::class, 'update'])->name('masyarakat.update')->middleware('userAkses:masyarakat');
     Route::get('/profile/{id}/show', [MasyarakatController::class, 'show'])->name('masyarakat.show')->middleware('userAkses:masyarakat');
 
-    //Tambah Akun
+    //Tambah Akun (Admin dan Wali)
     Route::get('/admin/listAdmin', [AdminController::class, 'listAdmin'])->name('admin.listAdmin')->middleware('userAkses:admin,walinagari');
     Route::get('/admin/tambahAdmin', [AdminController::class, 'tambahAdmin'])->name('admin.tambahAdmin')->middleware('userAkses:admin,walinagari');
     Route::post('/admin/inputAdmin', [AdminController::class, 'inputAdmin'])->name('admin.inputAdmin')->middleware('userAkses:admin,walinagari');
@@ -61,7 +65,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/tambahWali', [AdminController::class, 'tambahWali'])->name('admin.tambahWali')->middleware('userAkses:admin,walinagari');
     Route::post('/admin/inputWali', [AdminController::class, 'inputWali'])->name('admin.inputWali')->middleware('userAkses:admin,walinagari');
 
-    // Edit Akun
+    // Edit Akun (Admin dan Wali)
     Route::get('/admin/editAdmin/{id}', [AdminController::class, 'editAdmin'])->name('admin.editAdmin')->middleware('userAkses:admin,walinagari');
     Route::put('/admin/updateAdmin/{id}', [AdminController::class, 'updateAdmin'])->name('admin.updateAdmin')->middleware('userAkses:admin,walinagari');
     Route::get('/admin/editMas/{id}', [AdminController::class, 'editMas'])->name('admin.editMas')->middleware('userAkses:admin,walinagari');
@@ -69,12 +73,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/editWali/{id}', [AdminController::class, 'editWali'])->name('admin.editWali')->middleware('userAkses:admin,walinagari');
     Route::put('/admin/updateWali/{id}', [AdminController::class, 'updateWali'])->name('admin.updateWali')->middleware('userAkses:admin,walinagari');
 
-    //Delete Akun
+    //Delete Akun (Admin dan Wali)
     Route::delete('/admin/deleteAdmin/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.deleteAdmin')->middleware('userAkses:admin,walinagari');
     Route::delete('/admin/deleteMas/{id}', [AdminController::class, 'deleteMas'])->name('admin.deleteMas')->middleware('userAkses:admin,walinagari');
     Route::delete('/admin/deleteWali/{id}', [AdminController::class, 'deleteWali'])->name('admin.deleteWali')->middleware('userAkses:admin,walinagari');
 
-    // List Pengajuan
+    // List Pengajuan (Admin dan Wali)
     Route::get('/admin/listsktm', [AdminController::class, 'listsktm'])->name('admin.listsktm')->middleware('userAkses:admin');
     Route::get('/admin/listsku', [AdminController::class, 'listsku'])->name('admin.listsku')->middleware('userAkses:admin');
     Route::get('/admin/listpot', [AdminController::class, 'listpot'])->name('admin.listpot')->middleware('userAkses:admin');
