@@ -150,10 +150,28 @@ class PengajuanController extends Controller
         return redirect()->route('masyarakat.peng')->with('success', 'Surat berhasil diajukan');
     }
 
+    // public function listpeng()
+    // {
+    //     $pengajuans = Pengajuan::all();
+    //     return view('masyarakat.listpeng', compact('pengajuans'));
+    // }
+
     public function listpeng()
     {
-        $pengajuans = Pengajuan::all();
+        $pengajuans = Pengajuan::with(['suratSktm', 'suratSku', 'suratPot'])->get();
+    
+        $pengajuans = $pengajuans->map(function ($pengajuan) {
+            return [
+                'id_pengajuan' => $pengajuan->id_pengajuan,
+                'tanggal_pengajuan' => $pengajuan->tanggal_pengajuan,
+                'status_pengajuan' => $pengajuan->status_pengajuan,
+                'created_at' => $pengajuan->created_at,
+                'jenis_surat' => $pengajuan->suratSktm ? 'SKTM' : ($pengajuan->suratSku ? 'SKU' : ($pengajuan->suratPot ? 'POT' : null))
+            ];
+        });
+
         dd($pengajuans);
+
         return view('masyarakat.listpeng', compact('pengajuans'));
     }
 }
