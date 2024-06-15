@@ -275,6 +275,8 @@ class AdminController extends Controller
             return [
                 'nama' => $item->nama,
                 'nik' => $item->nik,
+                'alasan' => $item->alasan,
+                'id_pengajuan' => $item->pengajuan->id_pengajuan,
                 'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                 'status_pengajuan' => $item->pengajuan->status_pengajuan,
             ];
@@ -295,6 +297,8 @@ class AdminController extends Controller
             return [
                 'nama' => $item->nama,
                 'nik' => $item->nik,
+                'alasan' => $item->alasan,
+                'id_pengajuan' => $item->pengajuan->id_pengajuan,
                 'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                 'status_pengajuan' => $item->pengajuan->status_pengajuan,
             ];
@@ -315,6 +319,7 @@ class AdminController extends Controller
             return [
                 'nama' => $item->nama,
                 'nik' => $item->nik,
+                'alasan' => $item->alasan,
                 'id_pengajuan' => $item->pengajuan->id_pengajuan,
                 'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                 'status_pengajuan' => $item->pengajuan->status_pengajuan,
@@ -324,9 +329,22 @@ class AdminController extends Controller
         return view('AdminWali.List Pengajuan.listsurpeng', compact('list'));
     }
 
+    public function verifsktm(Request $request, $id_pengajuan)
+    {
+        $data = SKTM::with('pengajuan')->where('id_pengajuan', $id_pengajuan)->firstOrFail();
+        return view('AdminWali.List Pengajuan.verifikasisktm', compact('data'));
+    }
+
+    public function verifsku(Request $request, $id_pengajuan)
+    {
+        $data = SKU::with('pengajuan')->where('id_pengajuan', $id_pengajuan)->firstOrFail();
+        return view('AdminWali.List Pengajuan.verifikasisku', compact('data'));
+    }
+
     public function verifsurpeng(Request $request, $id_pengajuan)
     {
         $data = POT::with('pengajuan')->where('id_pengajuan', $id_pengajuan)->firstOrFail();
         return view('AdminWali.List Pengajuan.verifikasisurpeng', compact('data'));
     }
+
 }
