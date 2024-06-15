@@ -40,16 +40,16 @@ class MasyarakatController extends Controller
         if ($request->filled('password')) {
             $user->password = bcrypt($request->password);
         }
-    
+
         if ($request->hasFile('profile_picture')) {
             if ($user->profile_picture) {
                 Storage::disk('public')->delete($user->profile_picture);
             }
-    
+
             $file = $request->file('profile_picture');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $path = $file->move(public_path('img'), $filename);
-    
+
             $user->profile_picture = 'img/' . $filename;
         }
 

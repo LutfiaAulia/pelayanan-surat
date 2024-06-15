@@ -47,12 +47,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/ajupeng', [PengajuanController::class, 'ajupeng'])->name('masyarakat.ajupeng')->middleware('userAkses:masyarakat');
 
     //List Pengajuan Surat Oleh Masyarakat (Masyarakat)
-    Route::get('/pengajuan/list', [PengajuanController::class, 'listPengajuan'])->name('masyarakat.listpeng');
+    Route::get('/listpeng', [PengajuanController::class, 'listpeng'])->name('masyarakat.listpeng')->middleware('userAkses:masyarakat');
 
     //Edit Profil (Masyarakat)
     Route::get('/profile/{id}/edit', [MasyarakatController::class, 'edit'])->name('masyarakat.edit')->middleware('userAkses:masyarakat');
     Route::put('/profile/{id}', [MasyarakatController::class, 'update'])->name('masyarakat.update')->middleware('userAkses:masyarakat');
-    Route::get('/profile/{id}/show', [MasyarakatController::class, 'show'])->name('masyarakat.show')->middleware('userAkses:masyarakat');
+    // Route::get('/profile/{id}/show', [MasyarakatController::class, 'show'])->name('masyarakat.show')->middleware('userAkses:masyarakat');
+    Route::get('/profile/{id}', [MasyarakatController::class, 'show'])->name('Masyarakat.profile')->middleware('userAkses:masyarakat');
 
     //Tambah Akun (Admin dan Wali)
     Route::get('/admin/listAdmin', [AdminController::class, 'listAdmin'])->name('admin.listAdmin')->middleware('userAkses:admin,walinagari');
