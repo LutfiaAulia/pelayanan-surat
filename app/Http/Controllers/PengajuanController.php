@@ -9,6 +9,7 @@ use App\Models\SKU;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class PengajuanController extends Controller
 {
@@ -150,29 +151,53 @@ class PengajuanController extends Controller
         return redirect()->route('masyarakat.peng')->with('success', 'Surat berhasil diajukan');
     }
 
-    // public function listpeng()
-    // {
-    //     $pengajuans = Pengajuan::all();
-    //     return view('masyarakat.listpeng', compact('pengajuans'));
-    // }
-
     public function listpeng()
     {
-        $pengajuans = Pengajuan::with(['suratSktm', 'suratSku', 'suratPot'])->get();
-
-        $pengajuans = $pengajuans->map(function ($pengajuan) {
-            return [
-                'id_pengajuan' => $pengajuan->id_pengajuan,
-                'tanggal_pengajuan' => $pengajuan->tanggal_pengajuan,
-                'status_pengajuan' => $pengajuan->status_pengajuan,
-                'created_at' => $pengajuan->created_at,
-                'jenis_surat' => $pengajuan->suratSktm ? 'SKTM' : ($pengajuan->suratSku ? 'SKU' : ($pengajuan->suratPot ? 'POT' : null))
-            ];
-        });
-
-        dd($pengajuans);
-
-        return view('masyarakat.listpeng', compact('pengajuans'));
+        $skuList = SKU::with('pengajuan')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'nama' => $item->nama,
+                    'nik' => $item->nik,
+                    'alasan' => $item->alasan,
+                    'id_pengajuan' => $item->pengajuan->id_pengajuan,
+                    'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
+                    'status_pengajuan' => $item->pengajuan->status_pengajuan,
+                    'jenis_surat' => 'SKU',
+                ];
+            });
+    
+        $sktmList = SKTM::with('pengajuan')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'nama' => $item->nama,
+                    'nik' => $item->nik,
+                    'alasan' => $item->alasan,
+                    'id_pengajuan' => $item->pengajuan->id_pengajuan,
+                    'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
+                    'status_pengajuan' => $item->pengajuan->status_pengajuan,
+                    'jenis_surat' => 'SKTM',
+                ];
+            });
+    
+        $potList = POT::with('pengajuan')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'nama' => $item->nama,
+                    'nik' => $item->nik,
+                    'alasan' => $item->alasan,
+                    'id_pengajuan' => $item->pengajuan->id_pengajuan,
+                    'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
+                    'status_pengajuan' => $item->pengajuan->status_pengajuan,
+                    'jenis_surat' => 'POT',
+                ];
+            });
+    
+        $list = $skuList->merge($sktmList)->merge($potList);
+    
+        return view('Masyarakat.listpeng', compact('list'));
     }
 
     public function verifsktm(Request $request)

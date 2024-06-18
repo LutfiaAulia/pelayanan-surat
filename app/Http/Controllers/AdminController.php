@@ -265,12 +265,10 @@ class AdminController extends Controller
 
     public function listsku()
     {
-        // Mengambil data dengan join
         $list = SKU::with('pengajuan')
             ->whereHas('pengajuan', function($query) {})
             ->get();
 
-        // Mengambil hanya kolom yang diperlukan
         $list = $list->map(function($item) {
             return [
                 'nama' => $item->nama,

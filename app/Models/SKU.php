@@ -27,14 +27,4 @@ class SKU extends Model
         return $this->belongsTo(Pengajuan::class, 'id_pengajuan');
     }
 
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
-
-    // // Contoh hubungan hasMany
-    // public function someRelatedModels()
-    // {
-    //     return $this->hasMany(SomeRelatedModel::class);
-    // }
 }
