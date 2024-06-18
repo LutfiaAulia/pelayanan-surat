@@ -71,7 +71,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="alasanModal" tabindex="-1" aria-labelledby="alasanModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Tambahkan kelas modal-lg untuk modal lebih besar -->
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="alasanModalLabel">Tulis Alasan</h5>
@@ -83,11 +83,12 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <form id="alasanForm" method="post" action=""> 
+                <form id="alasanForm" method="post" action="{{ route('pengajuan.tolaksktm') }}"> 
                     @csrf
+                    <input type="hidden" name="id_pengajuan" value="{{ $data->id_pengajuan }}">
                     <div class="mb-3">
-                        <label for="alasan" class="form-label">Alasan</label>
-                        <textarea class="form-control" id="alasan" name="alasan" rows="6" required></textarea> <!-- Ubah rows menjadi 6 -->
+                        <label for="alasan_penolakan" class="form-label">Alasan</label>
+                        <textarea class="form-control" id="alasan_penolakan" name="alasan_penolakan" rows="6" required></textarea>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
                         <button type="button" class="btn btn-secondary me-1" data-bs-dismiss="modal">Close</button>
@@ -98,6 +99,7 @@
         </div>
     </div>
 </div>
+
 
 <style>
     /* CSS untuk memposisikan modal di tengah halaman */
