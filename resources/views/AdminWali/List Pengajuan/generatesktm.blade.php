@@ -17,6 +17,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="nomorsurat" class="form-label" style="min-width: 200px;">Nomor Surat</label>
+                                    <input type="text" id="nomorsurat" class="form-control" name="nomorsurat" value="{{ $data['nomorsurat'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
                                     <label for="namapengaju" class="form-label" style="min-width: 200px;">Nama Pengaju</label>
                                     <input type="text" id="namapengaju" class="form-control" name="namapengaju" value="{{ $data['nama_pengaju'] ?? '' }}" readonly>
                                 </div>
@@ -39,10 +43,6 @@
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alamat" class="form-label" style="min-width: 200px;">Alamat</label>
                                     <input type="text" id="alamat" class="form-control" name="alamat" value="{{ $data['alamat'] ?? '' }}">
-                                </div>
-                                <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="nomorsurat" class="form-label" style="min-width: 200px;">Nomor Surat</label>
-                                    <input type="text" id="nomorsurat" class="form-control" name="nomorsurat" value="{{ $data['nomorsurat'] ?? '' }}">
                                 </div>
                             </div>
                         </div>

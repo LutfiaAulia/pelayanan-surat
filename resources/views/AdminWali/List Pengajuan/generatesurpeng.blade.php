@@ -17,16 +17,16 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="nomorsurat" class="form-label" style="min-width: 200px;">Nomor Surat</label>
+                                    <input type="text" id="nomorsurat" class="form-control" placeholder="Nomor Surat" name="nomorsurat">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
                                     <label for="namapengaju" class="form-label" style="min-width: 200px;">Nama Pengaju</label>
                                     <input type="text" id="namapengaju" class="form-control" placeholder="Nama Pengaju" name="namapengaju" value="{{ $data['nama'] }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="nik" class="form-label" style="min-width: 200px;">NIK</label>
                                     <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik" value="{{ $data['nik'] }}" readonly>
-                                </div>
-                                <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="nomorsurat" class="form-label" style="min-width: 200px;">Nomor Surat</label>
-                                    <input type="text" id="nomorsurat" class="form-control" placeholder="Nomor Surat" name="nomorsurat">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="penghasilan" class="form-label" style="min-width: 200px;">Penghasilan Orang Tua</label>
