@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
     //List Pengajuan Surat Oleh Masyarakat (Masyarakat)
     Route::get('/listpeng', [PengajuanController::class, 'listpeng'])->name('masyarakat.listpeng')->middleware('userAkses:masyarakat');
 
+
     //Edit Profil (Masyarakat)
     Route::get('/profile/{id}/edit', [MasyarakatController::class, 'edit'])->name('masyarakat.edit')->middleware('userAkses:masyarakat');
     Route::put('/profile/{id}', [MasyarakatController::class, 'update'])->name('masyarakat.update')->middleware('userAkses:masyarakat');
@@ -91,7 +92,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Generate (Form yg menampilkan hasil klik button verifikasi)
     Route::get('/adminwali/listpengajuan/generate', [PengajuanController::class, 'verifsktm'])->name('adminwali.listpengajuan.generate')->middleware('userAkses:admin');
-    Route::get('/adminwali/listpengajuan/verifikasi', [PengajuanController::class, 'verifsku'])->name('adminwali.listpengajuan.verifikasi')->middleware('userAkses:admin');
+    Route::get('/adminwali/listpengajuan/verifikasisku', [PengajuanController::class, 'verifsku'])->name('adminwali.listpengajuan.verifikasi')->middleware('userAkses:admin');
     Route::get('/adminwali/listpengajuan/verifikasi', [PengajuanController::class, 'verifpot'])->name('adminwali.listpengajuan.verifikasipot')->middleware('userAkses:admin');
 });
 

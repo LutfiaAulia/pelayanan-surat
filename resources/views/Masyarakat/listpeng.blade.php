@@ -23,28 +23,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pengajuans as $pengajuan)
+                                @if(isset($list) && $list->isNotEmpty())
+                                    @foreach ($list as $pengajuan)
+                                        <tr>
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $pengajuan['tanggal_pengajuan'] }}</td>
+                                            <td>{{ $pengajuan['jenis_surat'] }}</td>
+                                            <td>{{ $pengajuan['status_pengajuan'] }}</td>
+                                            <td><a href="{{ route('masyarakat.sktm', $pengajuan['id_pengajuan']) }}">Cek</a></td>
+                                            <td style="width: 200px; text-align: center;">
+                                                <a href="{{ route('masyarakat.sktm.edit', $pengajuan['id_pengajuan']) }}" class="btn btn-primary">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <button class="btn btn-success"><i class="fas fa-file-upload"></i></button>
+                                                <form action="{{ route('masyarakat.sktm.destroy', $pengajuan['id_pengajuan']) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                     <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $pengajuan['created_at'] }}</td>
-                                        <td>{{ $pengajuan['jenis_surat'] }}</td>
-                                        <td>{{ $pengajuan['status_pengajuan'] }}</td>
-                                        <td><a href="{{ route('masyarakat.sktm', $pengajuan['id_pengajuan']) }}">Cek</a></td>
-                                        <td style="width: 200px; text-align: center;">
-                                            <a href="{{ route('masyarakat.sktm.edit', $pengajuan['id_pengajuan']) }}" class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <button class="btn btn-success"><i class="fas fa-file-upload"></i></button>
-                                            <form action="{{ route('masyarakat.sktm.destroy', $pengajuan['id_pengajuan']) }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                                        <td colspan="6">Tidak ada data pengajuan.</td>
                                     </tr>
-                                @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
