@@ -21,6 +21,10 @@
                                     <input type="text" id="namapengaju" class="form-control" name="namapengaju" value="{{ $data['nama_pengaju'] ?? '' }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="nik" class="form-label" style="min-width: 200px;">NIK</label>
+                                    <input type="text" id="nik" class="form-control" name="nik" value="{{ $data['nik'] ?? '' }}" readonly>
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
                                     <label for="tempattanggal" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
                                     <input type="text" id="ttl" class="form-control" name="ttl" value="{{ $data['ttl'] ?? '' }}">
                                 </div>
@@ -29,8 +33,12 @@
                                     <input type="text" id="agama" class="form-control" name="agama" value="{{ $data['agama'] ?? '' }}">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="nik" class="form-label" style="min-width: 200px;">NIK</label>
-                                    <input type="text" id="nik" class="form-control" name="nik" value="{{ $data['nik'] ?? '' }}" readonly>
+                                    <label for="pekerjaan" class="form-label" style="min-width: 200px;">Pekerjaan</label>
+                                    <input type="text" id="pekerjaan" class="form-control" name="pekerjaan" value="{{ $data['pekerjaan'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="alamat" class="form-label" style="min-width: 200px;">Alamat</label>
+                                    <input type="text" id="alamat" class="form-control" name="alamat" value="{{ $data['alamat'] ?? '' }}">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="nomorsurat" class="form-label" style="min-width: 200px;">Nomor Surat</label>

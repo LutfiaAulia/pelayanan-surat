@@ -25,6 +25,22 @@
                                     <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik" value="{{ $data['nik'] }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="tempattanggal" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
+                                    <input type="text" id="ttl" class="form-control" placeholder="Lubuk Alung, 06-12-1970" name="ttl" value="{{ $data['ttl'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>
+                                    <input type="text" id="agama" class="form-control" placeholder="Tambahkan Agama Pengaju" name="agama" value="{{ $data['agama'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="status" class="form-label" style="min-width: 200px;">Status Perkawinan</label>
+                                    <input type="text" id="status" class="form-control" placeholder="Kawin/Belum Kawin" name="status" value="{{ $data['status'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="pekerjaan" class="form-label" style="min-width: 200px;">Pekerjaan</label>
+                                    <input type="text" id="pekerjaan" class="form-control" placeholder="Pekerjaan saat ini" name="pekerjaan" value="{{ $data['pekerjaan'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
                                     <label for="nomorsurat" class="form-label" style="min-width: 200px;">Nomor Surat</label>
                                     <input type="text" id="nomorsurat" class="form-control" placeholder="Nomor Surat" name="nomorsurat" value="">
                                 </div>
