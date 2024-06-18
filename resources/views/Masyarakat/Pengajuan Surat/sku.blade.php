@@ -26,38 +26,26 @@
                     @csrf
                     <div class="form-body">
                         <div class="row">
-                            <div class="col-md-2">
-                                <div class="form-group mb-4">
-                                    <label for="namapengaju" class="form-label">Nama Pengaju</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="nik" class="form-label">NIK</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="alasan" class="form-label">Alasan</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="filektp" class="form-label">Upload KTP</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="fotousaha" class="form-label">Upload Foto Usaha</label>
-                                </div>
-                            </div>
-                            <div class="col-md-10">
-                                <div class="form-group mb-3">
+                            <div class="col-md-12">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="namapengaju" class="form-label" style="min-width: 200px;">Nama Pengaju</label>
                                     <input type="text" id="namapengaju" class="form-control" placeholder="Nama" name="nama">
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="nik" class="form-label" style="min-width: 200px;">NIK</label>
                                     <input type="text" id="nik" class="form-control" placeholder="16-digit" maxlength="16" name="nik">
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
                                     <input type="text" id="alasan" class="form-control" placeholder="Tambahkan alasan pengajuan surat" name="alasan">
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="filektp" class="form-label" style="min-width: 200px;">Upload KTP</label>
                                     <input type="file" id="filektp" class="form-control" name="filektp">
                                     <small class="text-muted">Ukuran maksimum: 2MB, Format: JPG, JPEG, PNG</small>
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="fotousaha" class="form-label" style="min-width: 200px;">Upload Foto Usaha</label>
                                     <input type="file" id="fotousaha" class="form-control" name="fotousaha">
                                     <small class="text-muted">Ukuran maksimum: 2MB, Format: JPG, JPEG, PNG</small>
                                 </div>
