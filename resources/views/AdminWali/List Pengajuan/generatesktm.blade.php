@@ -15,38 +15,34 @@
                     @csrf
                     <div class="form-body">
                         <div class="row">
-                            <div class="col-md-2">
-                                <div class="form-group mb-4">
-                                    <label for="namapengaju" class="form-label">Nama Pengaju</label>
+                            <div class="col-md-12">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="nomorsurat" class="form-label" style="min-width: 200px;">Nomor Surat</label>
+                                    <input type="text" id="nomorsurat" class="form-control" name="nomorsurat" value="{{ $data['nomorsurat'] ?? '' }}">
                                 </div>
-                                <div class="form-group mb-4">
-                                    <label for="tempattanggal" class="form-label">Tempat/Tanggal Lahir</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="agama" class="form-label">Agama</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="nik" class="form-label">NIK</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="nomorsurat" class="form-label">Nomor Surat</label>
-                                </div>
-                            </div>
-                            <div class="col-md-10">
-                                <div class="form-group mb-3">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="namapengaju" class="form-label" style="min-width: 200px;">Nama Pengaju</label>
                                     <input type="text" id="namapengaju" class="form-control" name="namapengaju" value="{{ $data['nama_pengaju'] ?? '' }}" readonly>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <input type="text" id="ttl" class="form-control" name="ttl" value="{{ $data['ttl'] ?? '' }}">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="text" id="agama" class="form-control" name="agama" value="{{ $data['agama'] ?? '' }}">
-                                </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="nik" class="form-label" style="min-width: 200px;">NIK</label>
                                     <input type="text" id="nik" class="form-control" name="nik" value="{{ $data['nik'] ?? '' }}" readonly>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <input type="text" id="nomorsurat" class="form-control" name="nomorsurat" value="{{ $data['nomorsurat'] ?? '' }}">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="tempattanggal" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
+                                    <input type="text" id="ttl" class="form-control" name="ttl" value="{{ $data['ttl'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>
+                                    <input type="text" id="agama" class="form-control" name="agama" value="{{ $data['agama'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="pekerjaan" class="form-label" style="min-width: 200px;">Pekerjaan</label>
+                                    <input type="text" id="pekerjaan" class="form-control" name="pekerjaan" value="{{ $data['pekerjaan'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="alamat" class="form-label" style="min-width: 200px;">Alamat</label>
+                                    <input type="text" id="alamat" class="form-control" name="alamat" value="{{ $data['alamat'] ?? '' }}">
                                 </div>
                             </div>
                         </div>

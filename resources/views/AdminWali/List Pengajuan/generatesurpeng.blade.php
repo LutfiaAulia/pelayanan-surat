@@ -15,37 +15,25 @@
                     @csrf
                     <div class="form-body">
                         <div class="row">
-                            <div class="col-md-2">
-                                <div class="form-group mb-4">
-                                    <label for="namapengaju" class="form-label">Nama Pengaju</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="nik" class="form-label">NIK</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="nomorsurat" class="form-label">Nomor Surat</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="penghasilan" class="form-label">Penghasilan Orang Tua</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="alasan" class="form-label">Alasan</label>
-                                </div>
-                            </div>
-                            <div class="col-md-10">
-                                <div class="form-group mb-3">
-                                    <input type="text" id="namapengaju" class="form-control" placeholder="Nama Pengaju" name="namapengaju" value="{{ $data['nama'] }}" readonly>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik" value="{{ $data['nik'] }}" readonly>
-                                </div>
-                                <div class="form-group mb-3">
+                            <div class="col-md-12">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="nomorsurat" class="form-label" style="min-width: 200px;">Nomor Surat</label>
                                     <input type="text" id="nomorsurat" class="form-control" placeholder="Nomor Surat" name="nomorsurat">
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="namapengaju" class="form-label" style="min-width: 200px;">Nama Pengaju</label>
+                                    <input type="text" id="namapengaju" class="form-control" placeholder="Nama Pengaju" name="namapengaju" value="{{ $data['nama'] }}" readonly>
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="nik" class="form-label" style="min-width: 200px;">NIK</label>
+                                    <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik" value="{{ $data['nik'] }}" readonly>
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="penghasilan" class="form-label" style="min-width: 200px;">Penghasilan Orang Tua</label>
                                     <input type="text" id="penghasilan" class="form-control" placeholder="Jumlah Penghasilan" name="penghasilan" value="{{ $data['penghasilan'] }}" readonly>
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
                                     <input type="text" id="alasan" class="form-control" name="alasan" value="{{ $data['alasan'] }}" readonly>
                                 </div>
                             </div>
