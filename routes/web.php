@@ -94,6 +94,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/adminwali/listpengajuan/generate', [PengajuanController::class, 'verifsktm'])->name('adminwali.listpengajuan.generate')->middleware('userAkses:admin');
     Route::get('/adminwali/listpengajuan/verifikasisku', [PengajuanController::class, 'verifsku'])->name('adminwali.listpengajuan.verifikasi')->middleware('userAkses:admin');
     Route::get('/adminwali/listpengajuan/verifikasi', [PengajuanController::class, 'verifpot'])->name('adminwali.listpengajuan.verifikasipot')->middleware('userAkses:admin');
+
+    //Menolak Pengajuan Admin
+    Route::post('/pengajuan/tolaksktm', [PengajuanController::class, 'tolakPengajuanSktm'])->name('pengajuan.tolaksktm')->middleware('userAkses:admin');
+    Route::post('/pengajuan/tolaksku', [PengajuanController::class, 'tolakPengajuanSku'])->name('pengajuan.tolaksku')->middleware('userAkses:admin');
+    Route::post('/pengajuan/tolakpot', [PengajuanController::class, 'tolakPengajuanPot'])->name('pengajuan.tolakpot')->middleware('userAkses:admin');
+
 });
 
 //Generate Surat

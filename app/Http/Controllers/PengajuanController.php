@@ -166,7 +166,7 @@ class PengajuanController extends Controller
                     'jenis_surat' => 'SKU',
                 ];
             });
-    
+
         $sktmList = SKTM::with('pengajuan')
             ->get()
             ->map(function ($item) {
@@ -180,7 +180,7 @@ class PengajuanController extends Controller
                     'jenis_surat' => 'SKTM',
                 ];
             });
-    
+
         $potList = POT::with('pengajuan')
             ->get()
             ->map(function ($item) {
@@ -194,9 +194,9 @@ class PengajuanController extends Controller
                     'jenis_surat' => 'POT',
                 ];
             });
-    
+
         $list = $skuList->merge($sktmList)->merge($potList);
-    
+
         return view('Masyarakat.listpeng', compact('list'));
     }
 
@@ -216,5 +216,59 @@ class PengajuanController extends Controller
     {
         $data = $request->only(['nama', 'nik', 'alasan', 'penghasilan']);
         return view('AdminWali.List Pengajuan.generatesurpeng', compact('data'));
+    }
+
+    public function tolakPengajuanSktm(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_pengajuan' => 'required|exists:pengajuan,id_pengajuan',
+            'alasan_penolakan' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) return redirect()->back()->withErrors($validator);
+
+        $pengajuan = Pengajuan::find($request->id_pengajuan);
+        $pengajuan->status_pengajuan = 'Ditolak';
+        $pengajuan->alasan_penolakan = $request->alasan_penolakan;
+        $pengajuan->id_admin = auth()->user()->id;
+        $pengajuan->save();
+
+        return redirect()->route('admin.listsktm')->with('success', 'Pengajuan berhasil ditolak.');
+    }
+
+    public function tolakPengajuanSku(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_pengajuan' => 'required|exists:pengajuan,id_pengajuan',
+            'alasan_penolakan' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) return redirect()->back()->withErrors($validator);
+
+        $pengajuan = Pengajuan::find($request->id_pengajuan);
+        $pengajuan->status_pengajuan = 'Ditolak';
+        $pengajuan->alasan_penolakan = $request->alasan_penolakan;
+        $pengajuan->id_admin = auth()->user()->id;
+        $pengajuan->save();
+
+        return redirect()->route('admin.listsku')->with('success', 'Pengajuan berhasil ditolak.');
+    }
+
+    public function tolakPengajuanPot(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_pengajuan' => 'required|exists:pengajuan,id_pengajuan',
+            'alasan_penolakan' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) return redirect()->back()->withErrors($validator);
+
+        $pengajuan = Pengajuan::find($request->id_pengajuan);
+        $pengajuan->status_pengajuan = 'Ditolak';
+        $pengajuan->alasan_penolakan = $request->alasan_penolakan;
+        $pengajuan->id_admin = auth()->user()->id;
+        $pengajuan->save();
+
+        return redirect()->route('admin.listpot')->with('success', 'Pengajuan berhasil ditolak.');
     }
 }
