@@ -34,7 +34,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" id="nip" class="form-control" placeholder="NIP" name="nkkip">
+                                    <input type="text" id="nip" class="form-control" placeholder="NIP" name="nkkip" maxlength="18">
                                     @error('nkkip')
                                         <small>{{ $message }}</small>
                                     @enderror
@@ -56,6 +56,11 @@
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('nip').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
 </div>
 
 @endsection
