@@ -31,11 +31,11 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="filektp" class="form-label" style="min-width: 200px;">Lampiran KTP</label>
-                                    <img src="{{ asset('storage/filektp/' . $data->filektp) }}" alt="" style="max-width: 100%; height: auto;">
+                                    <img src="{{ asset('storage/filektp/' . $data->filektp) }}" alt="" style="max-width: 500px; height: auto;">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="filekk" class="form-label" style="min-width: 200px;">Lampiran KK</label>
-                                    <img src="{{ asset('storage/filekk/' . $data->filekk) }}" alt="" style="max-width: 100%; height: auto;">
+                                    <img src="{{ asset('storage/filekk/' . $data->filekk) }}" alt="" style="max-width: 500px; height: auto;">
                                 </div>
                             </div>
                         </div>
