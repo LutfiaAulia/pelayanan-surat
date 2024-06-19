@@ -6,10 +6,13 @@ use App\Models\POT;
 use App\Models\Pengajuan;
 use App\Models\SKTM;
 use App\Models\SKU;
+use App\Models\SuratKeluar;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class PengajuanController extends Controller
 {
@@ -217,16 +220,73 @@ class PengajuanController extends Controller
         return view('AdminWali.List Pengajuan.generatesktm', compact('data'));
     }
 
-    public function verifsku($id_pengajuan)
+    public function verifsku(Request $request, $id_pengajuan)
     {
+        function monthToRoman($month)
+        {
+            $romanMonths = [
+                1 => 'I',
+                2 => 'II',
+                3 => 'III',
+                4 => 'IV',
+                5 => 'V',
+                6 => 'VI',
+                7 => 'VII',
+                8 => 'VIII',
+                9 => 'IX',
+                10 => 'X',
+                11 => 'XI',
+                12 => 'XII'
+            ];
+
+            return $romanMonths[intval($month)];
+        }
+
+        // Mendapatkan ID admin yang sedang login
+        $adminId = Auth::user()->id;
+
+        // Mencari record pengajuan
+        $pengajuan = Pengajuan::findOrFail($id_pengajuan);
+
+        // Memperbarui record pengajuan
+        $pengajuan->status_pengajuan = 'diproses';
+        $pengajuan->id_admin = $adminId;
+        $pengajuan->save();
+
+        // Membuat nomor_surat
+        $jenisSurat = 'SKU'; // Untuk Surat Keterangan Usaha
+        $currentYear = Carbon::now()->year;
+        $currentMonthNumeric = Carbon::now()->month;
+        $currentMonthRoman = monthToRoman($currentMonthNumeric);
+
+        // Mengambil surat_keluar terakhir untuk jenis_surat tertentu
+        $lastSuratKeluar = SuratKeluar::whereYear('created_at', $currentYear)
+            ->where('nomor_surat', 'LIKE', '%/' . $jenisSurat . '/%')
+            ->orderBy('id_keluar', 'desc')
+            ->first();
+
+        $nextNumber = $lastSuratKeluar ? intval(explode('-', $lastSuratKeluar->nomor_surat)[1]) + 1 : 1;
+        $nomorSurat = 'B-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT) . '/' . $jenisSurat . '/' . $currentMonthRoman . '/' . $currentYear;
+
+        Log::info('Nomor Surat: ' . $nomorSurat);
+
+        // Membuat record baru di surat_keluar
+        SuratKeluar::create([
+            'id_pengajuan' => $pengajuan->id_pengajuan,
+            'nomor_surat' => $nomorSurat, // Sertakan nomor_surat di sini
+            'tanggal_kirim' => now(),
+            'file_surat' => '', // Sesuaikan jika perlu berisi path file
+        ]);
+
         $sku = SKU::where('id_pengajuan', $id_pengajuan)->firstOrFail();
         $data = [
             'id_pengajuan' => $sku->id_pengajuan,
             'nama' => $sku->nama,
             'nik' => $sku->nik,
             'alasan' => $sku->alasan,
+            'nomor_surat' => $nomorSurat, // Pastikan ini sesuai dengan yang Anda buat sebelumnya
         ];
-
+        
         return view('AdminWali.List Pengajuan.generatesku', compact('data'));
     }
     

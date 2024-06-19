@@ -18,7 +18,7 @@
                             <div class="col-md-12">
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="nomorsurat" class="form-label" style="min-width: 200px;">Nomor Surat</label>
-                                    <input type="text" id="nomorsurat" class="form-control" placeholder="Nomor Surat" name="nomorsurat" value="">
+                                    <input type="text" id="nomorsurat" class="form-control" placeholder="Nomor Surat" name="nomorsurat" value="{{ $data['nomor_surat'] }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="namapengaju" class="form-label" style="min-width: 200px;">Nama Pengaju</label>
