@@ -211,9 +211,16 @@ class PengajuanController extends Controller
         return view('Masyarakat.listpeng', compact('list'));
     }
 
-    public function verifsktm(Request $request)
+    public function verifsktm($id_pengajuan)
     {
-        $data = $request->only(['nama_pengaju', 'ttl', 'agama', 'nik', 'nomorsurat']);
+        $sktm = SKTM::where('id_pengajuan', $id_pengajuan)->firstOrFail();
+        $data = [
+            'id_pengajuan' => $sktm->id_pengajuan,
+            'nama' => $sktm->nama,
+            'nik' => $sktm->nik,
+            'alasan' => $sktm->alasan,
+        ];
+
         return view('AdminWali.List Pengajuan.generatesktm', compact('data'));
     }
 
@@ -229,11 +236,19 @@ class PengajuanController extends Controller
 
         return view('AdminWali.List Pengajuan.generatesku', compact('data'));
     }
-    
-    public function verifpot(Request $request)
+
+    public function verifpot($id_pengajuan)
     {
-        $data = $request->only(['nama', 'nik', 'alasan', 'penghasilan']);
-        return view('AdminWali.List Pengajuan.generatesurpeng', compact('data'));
+        $pot = POT::where('id_pengajuan', $id_pengajuan)->firstOrFail();
+        $data = [
+            'id_pengajuan' => $pot->id_pengajuan,
+            'nama' => $pot->nama,
+            'nik' => $pot->nik,
+            'penghasilan' => $pot->penghasilan,
+            'alasan' => $pot->alasan,
+        ];
+
+        return view('AdminWali.List Pengajuan.generatesku', compact('data'));
     }
 
     public function tolakPengajuanSktm(Request $request)

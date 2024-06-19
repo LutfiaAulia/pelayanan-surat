@@ -29,7 +29,7 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group mb-3">
-                                    <input type="text" id="nama_pengaju" class="form-control" name="nama_pengaju" value="{{ $data->nama }}" readonly>
+                                    <input type="text" id="nama_pengaju" class="form-control" name="nama_pengaju" value="{{ $data['nama'] }}" readonly>
                                 </div>
                                 <div class="form-group mb-3">
                                     <input type="text" id="nik" class="form-control" name="nik" value="{{ $data->nik }}" readonly>

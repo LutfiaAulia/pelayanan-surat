@@ -91,9 +91,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/verifikasisurpeng/{id_pengajuan}', [AdminController::class, 'verifsurpeng'])->name('admin.verifikasisurpeng')->middleware('userAkses:admin');
 
     //Generate (Form yg menampilkan hasil klik button verifikasi)
-    Route::get('/adminwali/listpengajuan/generate', [PengajuanController::class, 'verifsktm'])->name('adminwali.listpengajuan.generate')->middleware('userAkses:admin');
-    Route::get('/adminwali/listpengajuan/verifikasi/{id_pengajuan}', [PengajuanController::class, 'verifsku'])->name('adminwali.listpengajuan.verifikasisku')->middleware('userAkses:admin');
-    Route::get('/adminwali/listpengajuan/verifikasi', [PengajuanController::class, 'verifpot'])->name('adminwali.listpengajuan.verifikasipot')->middleware('userAkses:admin');
+    Route::get('/adminwali/listpengajuan/verifikasisktm/{id_pengajuan}', [PengajuanController::class, 'verifsktm'])->name('adminwali.listpengajuan.verifikasisktm')->middleware('userAkses:admin');
+    Route::get('/adminwali/listpengajuan/verifikasisku/{id_pengajuan}', [PengajuanController::class, 'verifsku'])->name('adminwali.listpengajuan.verifikasisku')->middleware('userAkses:admin');
+    Route::get('/adminwali/listpengajuan/verifikasipot/{id_pengajuan}', [PengajuanController::class, 'verifpot'])->name('adminwali.listpengajuan.verifikasipot')->middleware('userAkses:admin');
 
     //Menolak Pengajuan Admin
     Route::post('/pengajuan/tolaksktm', [PengajuanController::class, 'tolakPengajuanSktm'])->name('pengajuan.tolaksktm')->middleware('userAkses:admin');
