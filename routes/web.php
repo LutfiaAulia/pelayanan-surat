@@ -92,7 +92,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Generate (Form yg menampilkan hasil klik button verifikasi)
     Route::get('/adminwali/listpengajuan/generate', [PengajuanController::class, 'verifsktm'])->name('adminwali.listpengajuan.generate')->middleware('userAkses:admin');
-    Route::get('/adminwali/listpengajuan/verifikasi/{id_pengajuan}', [PengajuanController::class, 'verifsku'])->name('adminwali.listpengajuan.verifikasi')->middleware('userAkses:admin');
+    Route::get('/adminwali/listpengajuan/verifikasi/{id_pengajuan}', [PengajuanController::class, 'verifsku'])->name('adminwali.listpengajuan.verifikasisku')->middleware('userAkses:admin');
     Route::get('/adminwali/listpengajuan/verifikasi', [PengajuanController::class, 'verifpot'])->name('adminwali.listpengajuan.verifikasipot')->middleware('userAkses:admin');
 
     //Menolak Pengajuan Admin

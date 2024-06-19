@@ -54,13 +54,7 @@
                             </div>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
-                        <a href="{{ route('adminwali.listpengajuan.generate', [
-                            'nama_pengaju' => $data->nama,
-                            'ttl' => $data->ttl ?? '',
-                            'agama' => $data->agama ?? '',
-                            'nik' => $data->nik,
-                            'nomorsurat' => $data->nomorsurat ?? ''
-                        ]) }}" class="btn btn-success me-1">Verifikasi</a>
+                        <a href="{{ route('adminwali.listpengajuan.verifikasisktm', $data->id_pengajuan) }}" class="btn btn-success me-1">Verifikasi</a>
                         <button type="button" class="btn btn-danger" id="tolakButton">Tolak</button>
                     </div>                    
                 </form>
