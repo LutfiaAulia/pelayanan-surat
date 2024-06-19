@@ -49,12 +49,7 @@
                             </div>
                         </div>
                         <div class="form-actions d-flex justify-content-end">
-                            <a href="{{ route('adminwali.listpengajuan.verifikasipot', [
-                                'nama' => $data->nama,
-                                'nik' => $data->nik,
-                                'penghasilan' => $data->penghasilan,
-                                'alasan' => $data->alasan,
-                            ]) }}" class="btn btn-success me-1">Verifikasi</a>
+                            <a href="{{ route('adminwali.listpengajuan.verifikasipot', $data->id_pengajuan) }}" class="btn btn-success me-1">Verifikasi</a>
                             <button type="button" class="btn btn-danger" id="tolakButton">Tolak</button>
                         </div>
                     </form>
