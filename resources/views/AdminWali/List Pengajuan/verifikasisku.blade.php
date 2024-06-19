@@ -11,7 +11,7 @@
         <div class="card-content">
             <div class="card-body">
                 <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Detail Surat Keterangan Usaha</h4>
-                <form class="form" method="post" action=""> <!-- Ganti action dengan route verifikasi -->
+                <form class="form" method="post" action="">
                     @csrf
                     @method('PUT')
                     <div class="form-body">
@@ -26,12 +26,6 @@
                                 <div class="form-group mb-4">
                                     <label for="alasan" class="form-label">Alasan</label>
                                 </div>
-                                {{-- <div class="form-group mb-4">
-                                    <label for="fileUploadktp" class="form-label">Lampiran KTP</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="fileUploadFhoto" class="form-label">Lampiran Fhoto Usaha</label>
-                                </div> --}}
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group mb-3">
@@ -55,11 +49,7 @@
                         </div>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
-                        <a href="{{ route('adminwali.listpengajuan.verifikasi', [
-                            'nama' => $data->nama,
-                            'nik' => $data->nik,
-                            'alasan' => $data->alasan,
-                        ]) }}" class="btn btn-success me-1">Verifikasi</a>
+                        <a href="{{ route('adminwali.listpengajuan.verifikasi', $data->id_pengajuan) }}" class="btn btn-success me-1">Verifikasi</a>
                         <button type="button" class="btn btn-danger" id="tolakButton">Tolak</button>
                     </div>
                 </form>

@@ -217,12 +217,19 @@ class PengajuanController extends Controller
         return view('AdminWali.List Pengajuan.generatesktm', compact('data'));
     }
 
-    public function verifsku(Request $request)
+    public function verifsku($id_pengajuan)
     {
-        $data = $request->only(['nama', 'nik', 'alasan']);
+        $sku = SKU::where('id_pengajuan', $id_pengajuan)->firstOrFail();
+        $data = [
+            'id_pengajuan' => $sku->id_pengajuan,
+            'nama' => $sku->nama,
+            'nik' => $sku->nik,
+            'alasan' => $sku->alasan,
+        ];
+
         return view('AdminWali.List Pengajuan.generatesku', compact('data'));
     }
-
+    
     public function verifpot(Request $request)
     {
         $data = $request->only(['nama', 'nik', 'alasan', 'penghasilan']);
