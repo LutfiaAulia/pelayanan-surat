@@ -82,8 +82,8 @@ class PengajuanController extends Controller
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
             'alasan' => 'required',
-            'filektp' => 'required|mimes:jpg,jpeg,png|max:2048',
-            'fotousaha' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'filektp' => 'required|mimes:jpg,jpeg,png|max:512',
+            'fotousaha' => 'required|mimes:jpg,jpeg,png|max:512',
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -124,7 +124,7 @@ class PengajuanController extends Controller
             'nik' => 'required',
             'penghasilan' => 'required',
             'alasan' => 'required',
-            'filekk' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'filekk' => 'required|mimes:png,jpg,jpeg|max:512',
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);

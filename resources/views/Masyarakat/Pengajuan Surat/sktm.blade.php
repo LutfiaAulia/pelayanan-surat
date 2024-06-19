@@ -36,6 +36,14 @@
                                     <input type="text" id="nik" class="form-control" placeholder="16-digit" maxlength="16" name="nik">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>
+                                    <input type="text" id="agama" class="form-control" placeholder="" maxlength="16" name="agama">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="pekerjaan" class="form-label" style="min-width: 200px;">Pekerjaan</label>
+                                    <input type="text" id="pekerjaan" class="form-control" placeholder="Lubuk Alung, dd-ww-yyyy" maxlength="16" name="pekerjaan">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
                                     <input type="text" id="alasan" class="form-control" placeholder="Tambahkan alasan pengajuan surat" name="alasan">
                                 </div>
@@ -43,11 +51,17 @@
                                     <label for="filektp" class="form-label" style="min-width: 200px;">Upload KTP</label>
                                     <input type="file" id="filektp" class="form-control" name="filektp">
                                     <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG</small>
+                                    @if($errors->has('filektp'))
+                                        <div class="text-danger mt-2">Ukuran file terlalu besar.</div>
+                                    @endif
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="filekk" class="form-label" style="min-width: 200px;">Upload KK</label>
                                     <input type="file" id="filekk" class="form-control" name="filekk">
                                     <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG</small>
+                                    @if($errors->has('filekk'))
+                                        <div class="text-danger mt-2">Ukuran file terlalu besar.</div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
