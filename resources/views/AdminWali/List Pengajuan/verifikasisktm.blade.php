@@ -16,36 +16,29 @@
                     @method('PUT')
                     <div class="form-body">
                         <div class="row">
-                            <div class="col-md-2">
-                                <div class="form-group mb-4">
-                                    <label for="nama_pengaju" class="form-label">Nama Pengaju</label>
+                            <div class="col-md-12">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="namapengaju" class="form-label" style="min-width: 200px;">Nama Pengaju</label>
+                                    <input type="text" id="nama_pengaju" class="form-control" name="nama_pengaju" value="{{ $data->nama }}" readonly>
                                 </div>
-                                <div class="form-group mb-4">
-                                    <label for="nik" class="form-label">NIK</label>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="alasan" class="form-label">Alasan</label>
-                                </div>
-                            </div>
-                            <div class="col-md-10">
-                                <div class="form-group mb-3">
-                                    <input type="text" id="nama_pengaju" class="form-control" name="nama_pengaju" value="{{ $data['nama'] }}" readonly>
-                                </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="nik" class="form-label" style="min-width: 200px;">NIK</label>
                                     <input type="text" id="nik" class="form-control" name="nik" value="{{ $data->nik }}" readonly>
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
                                     <input type="text" id="alasan" class="form-control" name="alasan" value="{{ $data->alasan }}" readonly>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label for="fileUploadktp" class="form-label">Lampiran KTP</label>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="filektp" class="form-label" style="min-width: 200px;">Lampiran KTP</label>
                                     <img src="{{ asset('storage/filektp/' . $data->filektp) }}" alt="" style="max-width: 100%; height: auto;">
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label for="fileUploadFhoto" class="form-label">Lampiran Fhoto Usaha</label>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="filekk" class="form-label" style="min-width: 200px;">Lampiran KK</label>
                                     <img src="{{ asset('storage/filekk/' . $data->filekk) }}" alt="" style="max-width: 100%; height: auto;">
                                 </div>
                             </div>
+                        </div>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
                         <a href="{{ route('adminwali.listpengajuan.verifikasisktm', $data->id_pengajuan) }}" class="btn btn-success me-1">Verifikasi</a>
