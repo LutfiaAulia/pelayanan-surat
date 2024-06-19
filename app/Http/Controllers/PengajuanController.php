@@ -221,7 +221,7 @@ class PengajuanController extends Controller
             'alasan' => $sktm->alasan,
         ];
 
-        return view('AdminWali.List Pengajuan.generatesktm', compact('data'));
+        return view('AdminWali.List Pengajuan.generatesku', compact('data'));
     }
 
     public function verifsku($id_pengajuan)
