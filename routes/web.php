@@ -107,6 +107,11 @@ Route::get('/admin/generatesktm', [AdminController::class, 'generatesktm'])->nam
 Route::get('/admin/generatesku', [AdminController::class, 'generatesku'])->name('admin.generatesku');
 Route::get('/admin/generatesurpeng', [AdminController::class, 'generatesurpeng'])->name('admin.generatesurpeng');
 
+// routes/web.php
+Route::get('/surat-keterangan-usaha', function () {
+    return view('AdminWali.Surat.suratsku');
+});
+
 // Kelola Akun
 Route::get('/admin', function () {
     return view('AdminWali.Kelola Akun.admin');
