@@ -151,12 +151,17 @@ class PengajuanController extends Controller
         return redirect()->route('masyarakat.peng')->with('success', 'Surat berhasil diajukan');
     }
 
-    public function listpeng()
+    public function listpengajuan()
     {
+        $userId = auth()->id();
+
         $skuList = SKU::with('pengajuan')
+            ->whereHas('pengajuan', function ($query) use ($userId) {
+                $query->where('id_user', $userId);
+            })
             ->get()
             ->map(function ($item) {
-                return [
+                return $item->pengajuan ? [
                     'nama' => $item->nama,
                     'nik' => $item->nik,
                     'alasan' => $item->alasan,
@@ -164,13 +169,16 @@ class PengajuanController extends Controller
                     'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                     'status_pengajuan' => $item->pengajuan->status_pengajuan,
                     'jenis_surat' => 'SKU',
-                ];
-            });
+                ] : null;
+            })->filter();
 
         $sktmList = SKTM::with('pengajuan')
+            ->whereHas('pengajuan', function ($query) use ($userId) {
+                $query->where('id_user', $userId);
+            })
             ->get()
             ->map(function ($item) {
-                return [
+                return $item->pengajuan ? [
                     'nama' => $item->nama,
                     'nik' => $item->nik,
                     'alasan' => $item->alasan,
@@ -178,13 +186,16 @@ class PengajuanController extends Controller
                     'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                     'status_pengajuan' => $item->pengajuan->status_pengajuan,
                     'jenis_surat' => 'SKTM',
-                ];
-            });
+                ] : null;
+            })->filter();
 
         $potList = POT::with('pengajuan')
+            ->whereHas('pengajuan', function ($query) use ($userId) {
+                $query->where('id_user', $userId);
+            })
             ->get()
             ->map(function ($item) {
-                return [
+                return $item->pengajuan ? [
                     'nama' => $item->nama,
                     'nik' => $item->nik,
                     'alasan' => $item->alasan,
@@ -192,8 +203,8 @@ class PengajuanController extends Controller
                     'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                     'status_pengajuan' => $item->pengajuan->status_pengajuan,
                     'jenis_surat' => 'POT',
-                ];
-            });
+                ] : null;
+            })->filter();
 
         $list = $skuList->merge($sktmList)->merge($potList);
 

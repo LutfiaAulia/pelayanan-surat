@@ -24,12 +24,12 @@
                             </thead>
                             <tbody>
                                 @if(isset($list) && $list->isNotEmpty())
-                                    @foreach ($list as $pengajuan)
+                                    @foreach ($list as $item)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $pengajuan['tanggal_pengajuan'] }}</td>
-                                            <td>{{ $pengajuan['jenis_surat'] }}</td>
-                                            <td>{{ $pengajuan['status_pengajuan'] }}</td>
+                                            <td>{{ $item['tanggal_pengajuan'] }}</td>
+                                            <td>{{ $item['jenis_surat'] }}</td>
+                                            <td>{{ $item['status_pengajuan'] }}</td>
                                             <td><a href="{{ route('masyarakat.sktm', $pengajuan['id_pengajuan']) }}">Cek</a></td>
                                             <td style="width: 200px; text-align: center;">
                                                 <a href="{{ route('masyarakat.sktm.edit', $pengajuan['id_pengajuan']) }}" class="btn btn-primary">

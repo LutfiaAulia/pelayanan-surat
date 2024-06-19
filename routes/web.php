@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/ajupeng', [PengajuanController::class, 'ajupeng'])->name('masyarakat.ajupeng')->middleware('userAkses:masyarakat');
 
     //List Pengajuan Surat Oleh Masyarakat (Masyarakat)
-    Route::get('/listpeng', [PengajuanController::class, 'listpeng'])->name('masyarakat.listpeng')->middleware('userAkses:masyarakat');
+    Route::get('/listpeng', [PengajuanController::class, 'listpengajuan'])->name('masyarakat.listpeng')->middleware('userAkses:masyarakat');
 
 
     //Edit Profil (Masyarakat)
