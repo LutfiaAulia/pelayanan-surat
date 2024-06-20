@@ -34,15 +34,23 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>
-                                    <input type="text" id="agama" class="form-control" placeholder="Tambahkan Agama Pengaju" name="agama" value="{{ $data['agama'] ?? '' }}">
+                                    <input type="text" id="agama" class="form-control" placeholder="Tambahkan Agama Pengaju" name="agama" value="{{ $data['agama'] }}">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="status" class="form-label" style="min-width: 200px;">Status Perkawinan</label>
-                                    <input type="text" id="status" class="form-control" placeholder="Kawin/Belum Kawin" name="status" value="{{ $data['status'] ?? '' }}">
+                                    <input type="text" id="status" class="form-control" placeholder="Kawin/Belum Kawin" name="status" value="{{ $data['status'] }}">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="pekerjaan" class="form-label" style="min-width: 200px;">Pekerjaan</label>
-                                    <input type="text" id="pekerjaan" class="form-control" placeholder="Pekerjaan saat ini" name="pekerjaan" value="{{ $data['pekerjaan'] ?? '' }}">
+                                    <input type="text" id="pekerjaan" class="form-control" placeholder="Pekerjaan saat ini" name="pekerjaan" value="{{ $data['pekerjaan'] }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="alamat" class="form-label" style="min-width: 200px;">Alamat</label>
+                                    <input type="text" id="alamat" class="form-control" name="alamat" value="{{ $data['alamat'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="usaha" class="form-label" style="min-width: 200px;">Usaha</label>
+                                    <input type="text" id="usaha" class="form-control" placeholder="usaha saat ini" name="usaha" value="{{ $data['usaha'] }}">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>

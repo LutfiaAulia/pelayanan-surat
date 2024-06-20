@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="nik" class="form-label" style="min-width: 200px;">NIK</label>
-                                    <input type="text" id="nik" class="form-control" name="nik" value="{{ $data['nik'] ?? '' }}" readonly>
+                                    <input type="text" id="nik" class="form-control" name="nik" value="{{ $data['nik'] }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="tempattanggal" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
@@ -34,11 +34,11 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>
-                                    <input type="text" id="agama" class="form-control" name="agama" value="{{ $data['agama'] ?? '' }}">
+                                    <input type="text" id="agama" class="form-control" name="agama" value="{{ $data['agama'] }}">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="pekerjaan" class="form-label" style="min-width: 200px;">Pekerjaan</label>
-                                    <input type="text" id="pekerjaan" class="form-control" name="pekerjaan" value="{{ $data['pekerjaan'] ?? '' }}">
+                                    <input type="text" id="pekerjaan" class="form-control" name="pekerjaan" value="{{ $data['pekerjaan'] }}">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alamat" class="form-label" style="min-width: 200px;">Alamat</label>

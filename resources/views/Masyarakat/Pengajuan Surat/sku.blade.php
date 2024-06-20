@@ -36,6 +36,22 @@
                                     <input type="text" id="nik" class="form-control" placeholder="16-digit" maxlength="16" name="nik">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>
+                                    <input type="text" id="agama" class="form-control" placeholder="" maxlength="16" name="agama">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="status" class="form-label" style="min-width: 200px;">Status Perkawinan</label>
+                                    <input type="text" id="status" class="form-control" placeholder="" maxlength="16" name="status">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="pekerjaan" class="form-label" style="min-width: 200px;">Pekerjaan</label>
+                                    <input type="text" id="pekerjaan" class="form-control" placeholder="" maxlength="16" name="pekerjaan">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="usaha" class="form-label" style="min-width: 200px;">Usaha</label>
+                                    <input type="text" id="usaha" class="form-control" placeholder="" maxlength="16" name="usaha">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
                                     <input type="text" id="alasan" class="form-control" placeholder="Tambahkan alasan pengajuan surat" name="alasan">
                                 </div>

@@ -37,11 +37,11 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>
-                                    <input type="text" id="agama" class="form-control" placeholder="" maxlength="16" name="agama">
+                                    <input type="text" id="agama" class="form-control" placeholder="" name="agama">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="pekerjaan" class="form-label" style="min-width: 200px;">Pekerjaan</label>
-                                    <input type="text" id="pekerjaan" class="form-control" placeholder="Lubuk Alung, dd-ww-yyyy" maxlength="16" name="pekerjaan">
+                                    <input type="text" id="pekerjaan" class="form-control" placeholder="" name="pekerjaan">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>

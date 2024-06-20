@@ -41,6 +41,8 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
+            'agama' => 'required|string|max:255',
+            'pekerjaan' => 'required|string|max:255',
             'alasan' => 'required',
             'filektp' => 'required|mimes:jpg,jpeg,png|max:512',
             'filekk' => 'required|mimes:jpg,jpeg,png|max:512',
@@ -66,6 +68,8 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
+        $data['agama'] = $request->agama;
+        $data['pekerjaan'] = $request->pekerjaan;
         $data['alasan'] = $request->alasan;
         $data['filekk'] = $filename;
         $data['filektp'] = $filenamektp;
@@ -81,6 +85,10 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
+            'agama' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
+            'pekerjaan' => 'required|string|max:255',
+            'usaha' => 'required|string|max:255',
             'alasan' => 'required',
             'filektp' => 'required|mimes:jpg,jpeg,png|max:2048',
             'fotousaha' => 'required|mimes:jpg,jpeg,png|max:2048',
@@ -106,6 +114,10 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
+        $data['agama'] = $request->agama;
+        $data['status'] = $request->status;
+        $data['pekerjaan'] = $request->pekerjaan;
+        $data['usaha'] = $request->usaha;
         $data['alasan'] = $request->alasan;
         $data['filektp'] = $filenamektp;
         $data['fotousaha'] = $filenameusaha;
@@ -256,6 +268,8 @@ class PengajuanController extends Controller
             'id_pengajuan' => $sktm->id_pengajuan,
             'nama' => $sktm->nama,
             'nik' => $sktm->nik,
+            'agama' => $sktm->agama,
+            'pekerjaan' => $sktm->pekerjaan,
             'alasan' => $sktm->alasan,
             'nomor_surat' => $nomorSurat
         ];
@@ -265,24 +279,19 @@ class PengajuanController extends Controller
 
     public function verifsku(Request $request, $id_pengajuan)
     {
-        // Mendapatkan ID admin yang sedang login
         $adminId = Auth::user()->id;
 
-        // Mencari record pengajuan
         $pengajuan = Pengajuan::findOrFail($id_pengajuan);
 
-        // Memperbarui record pengajuan
         $pengajuan->status_pengajuan = 'diproses';
         $pengajuan->id_admin = $adminId;
         $pengajuan->save();
 
-        // Membuat nomor_surat
-        $jenisSurat = 'SKU'; // Untuk Surat Keterangan Usaha
+        $jenisSurat = 'SKU'; 
         $currentYear = Carbon::now()->year;
         $currentMonthNumeric = Carbon::now()->month;
         $currentMonthRoman = monthToRoman($currentMonthNumeric);
 
-        // Mengambil surat_keluar terakhir untuk jenis_surat tertentu
         $lastSuratKeluar = SuratKeluar::whereYear('created_at', $currentYear)
             ->where('nomor_surat', 'LIKE', '%/' . $jenisSurat . '/%')
             ->orderBy('id_keluar', 'desc')
@@ -293,12 +302,11 @@ class PengajuanController extends Controller
 
         Log::info('Nomor Surat: ' . $nomorSurat);
 
-        // Membuat record baru di surat_keluar
         SuratKeluar::create([
             'id_pengajuan' => $pengajuan->id_pengajuan,
-            'nomor_surat' => $nomorSurat, // Sertakan nomor_surat di sini
+            'nomor_surat' => $nomorSurat, 
             'tanggal_kirim' => now(),
-            'file_surat' => '', // Sesuaikan jika perlu berisi path file
+            'file_surat' => '', 
         ]);
 
         $sku = SKU::where('id_pengajuan', $id_pengajuan)->firstOrFail();
@@ -306,8 +314,12 @@ class PengajuanController extends Controller
             'id_pengajuan' => $sku->id_pengajuan,
             'nama' => $sku->nama,
             'nik' => $sku->nik,
+            'agama' => $sku->agama,
+            'status' => $sku->status,
+            'pekerjaan' => $sku->pekerjaan,
+            'usaha' => $sku->usaha,
             'alasan' => $sku->alasan,
-            'nomor_surat' => $nomorSurat, // Pastikan ini sesuai dengan yang Anda buat sebelumnya
+            'nomor_surat' => $nomorSurat, 
         ];
 
         return view('AdminWali.List Pengajuan.generatesku', compact('data'));
