@@ -82,8 +82,8 @@ class PengajuanController extends Controller
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
             'alasan' => 'required',
-            'filektp' => 'required|mimes:jpg,jpeg,png|max:512',
-            'fotousaha' => 'required|mimes:jpg,jpeg,png|max:512',
+            'filektp' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'fotousaha' => 'required|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -124,7 +124,7 @@ class PengajuanController extends Controller
             'nik' => 'required',
             'penghasilan' => 'required',
             'alasan' => 'required',
-            'filekk' => 'required|mimes:png,jpg,jpeg|max:512',
+            'filekk' => 'required|mimes:png,jpg,jpeg|max:2048',
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -216,25 +216,6 @@ class PengajuanController extends Controller
 
     public function verifsktm(Request $request, $id_pengajuan)
     {
-        function monthToRoman($month)
-        {
-            $romanMonths = [
-                1 => 'I',
-                2 => 'II',
-                3 => 'III',
-                4 => 'IV',
-                5 => 'V',
-                6 => 'VI',
-                7 => 'VII',
-                8 => 'VIII',
-                9 => 'IX',
-                10 => 'X',
-                11 => 'XI',
-                12 => 'XII'
-            ];
-
-            return $romanMonths[intval($month)];
-        }
 
         // Mendapatkan ID admin yang sedang login
         $adminId = Auth::user()->id;
@@ -284,26 +265,6 @@ class PengajuanController extends Controller
 
     public function verifsku(Request $request, $id_pengajuan)
     {
-        function monthToRoman($month)
-        {
-            $romanMonths = [
-                1 => 'I',
-                2 => 'II',
-                3 => 'III',
-                4 => 'IV',
-                5 => 'V',
-                6 => 'VI',
-                7 => 'VII',
-                8 => 'VIII',
-                9 => 'IX',
-                10 => 'X',
-                11 => 'XI',
-                12 => 'XII'
-            ];
-
-            return $romanMonths[intval($month)];
-        }
-
         // Mendapatkan ID admin yang sedang login
         $adminId = Auth::user()->id;
 
@@ -330,6 +291,8 @@ class PengajuanController extends Controller
         $nextNumber = $lastSuratKeluar ? intval(explode('-', $lastSuratKeluar->nomor_surat)[1]) + 1 : 1;
         $nomorSurat = 'B-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT) . '/' . $jenisSurat . '/' . $currentMonthRoman . '/' . $currentYear;
 
+        Log::info('Nomor Surat: ' . $nomorSurat);
+
         // Membuat record baru di surat_keluar
         SuratKeluar::create([
             'id_pengajuan' => $pengajuan->id_pengajuan,
@@ -346,32 +309,12 @@ class PengajuanController extends Controller
             'alasan' => $sku->alasan,
             'nomor_surat' => $nomorSurat, // Pastikan ini sesuai dengan yang Anda buat sebelumnya
         ];
-        
+
         return view('AdminWali.List Pengajuan.generatesku', compact('data'));
     }
 
     public function verifpot(Request $request, $id_pengajuan)
     {
-        function monthToRoman($month)
-        {
-            $romanMonths = [
-                1 => 'I',
-                2 => 'II',
-                3 => 'III',
-                4 => 'IV',
-                5 => 'V',
-                6 => 'VI',
-                7 => 'VII',
-                8 => 'VIII',
-                9 => 'IX',
-                10 => 'X',
-                11 => 'XI',
-                12 => 'XII'
-            ];
-
-            return $romanMonths[intval($month)];
-        }
-
         // Mendapatkan ID admin yang sedang login
         $adminId = Auth::user()->id;
 
@@ -472,4 +415,24 @@ class PengajuanController extends Controller
 
         return redirect()->route('admin.listpot')->with('success', 'Pengajuan berhasil ditolak.');
     }
+}
+
+function monthToRoman($month)
+{
+    $romanMonths = [
+        1 => 'I',
+        2 => 'II',
+        3 => 'III',
+        4 => 'IV',
+        5 => 'V',
+        6 => 'VI',
+        7 => 'VII',
+        8 => 'VIII',
+        9 => 'IX',
+        10 => 'X',
+        11 => 'XI',
+        12 => 'XII'
+    ];
+
+    return $romanMonths[intval($month)];
 }

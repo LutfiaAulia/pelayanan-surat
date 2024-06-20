@@ -11,7 +11,7 @@
         <div class="card-content">
             <div class="card-body">
                 <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Detail Surat Keterangan Tidak Mampu</h4>
-                <form class="form" method="post" action=""> 
+                <form class="form" method="post" action="{{ route('adminwali.listpengajuan.verifikasisktm', $data->id_pengajuan) }}"> 
                     @csrf
                     @method('PUT')
                     <div class="form-body">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
-                        <a href="{{ route('adminwali.listpengajuan.verifikasisktm', $data->id_pengajuan) }}" class="btn btn-success me-1">Verifikasi</a>
+                        <button class="btn btn-success me-1">Verifikasi</a>
                         <button type="button" class="btn btn-danger" id="tolakButton">Tolak</button>
                     </div>                    
                 </form>
