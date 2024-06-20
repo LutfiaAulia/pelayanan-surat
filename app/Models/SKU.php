@@ -17,6 +17,10 @@ class SKU extends Model
         'id_pengajuan',
         'nama',
         'nik',
+        'agama',
+        'status',
+        'pekerjaan',
+        'usaha',
         'alasan',
         'filektp',
         'fotousaha'

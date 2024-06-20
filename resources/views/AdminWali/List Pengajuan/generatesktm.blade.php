@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="namapengaju" class="form-label" style="min-width: 200px;">Nama Pengaju</label>
-                                    <input type="text" id="namapengaju" class="form-control" name="namapengaju" value="{{ $data['nama_pengaju'] ?? '' }}" readonly>
+                                    <input type="text" id="namapengaju" class="form-control" name="namapengaju" value="{{ $data['nama'] }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="nik" class="form-label" style="min-width: 200px;">NIK</label>
@@ -43,6 +43,10 @@
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alamat" class="form-label" style="min-width: 200px;">Alamat</label>
                                     <input type="text" id="alamat" class="form-control" name="alamat" value="{{ $data['alamat'] ?? '' }}">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
+                                    <input type="text" id="alasan" class="form-control" name="alasan" value="{{ $data['alasan'] }}" readonly>
                                 </div>
                             </div>
                         </div>

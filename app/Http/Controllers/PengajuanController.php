@@ -81,6 +81,10 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
+            'agama' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
+            'pekerjaan' => 'required|string|max:255',
+            'usaha' => 'required|string|max:255',
             'alasan' => 'required',
             'filektp' => 'required|mimes:jpg,jpeg,png|max:512',
             'fotousaha' => 'required|mimes:jpg,jpeg,png|max:512',
@@ -106,12 +110,15 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
+        $data['agama'] = $request->agama;
+        $data['status'] = $request->status;
+        $data['pekerjaan'] = $request->pekerjaan;
+        $data['usaha'] = $request->usaha;
         $data['alasan'] = $request->alasan;
         $data['filektp'] = $filenamektp;
         $data['fotousaha'] = $filenameusaha;
         $data['id_pengajuan'] = $pengajuan->id_pengajuan;
-
-
+        
         SKU::create($data);
 
         return redirect()->route('masyarakat.sku')->with('success', 'Surat berhasil diajukan');
@@ -214,6 +221,8 @@ class PengajuanController extends Controller
         return view('Masyarakat.listpeng', compact('list'));
     }
 
+
+    //VERIFIKASI**************************************************************************************
     public function verifsktm($id_pengajuan)
     {
         $sktm = SKTM::where('id_pengajuan', $id_pengajuan)->firstOrFail();
@@ -224,7 +233,7 @@ class PengajuanController extends Controller
             'alasan' => $sktm->alasan,
         ];
 
-        return view('AdminWali.List Pengajuan.generatesku', compact('data'));
+        return view('AdminWali.List Pengajuan.generatesktm', compact('data'));
     }
 
     public function verifsku(Request $request, $id_pengajuan)
@@ -293,7 +302,7 @@ class PengajuanController extends Controller
             'alasan' => $sku->alasan,
             'nomor_surat' => $nomorSurat, // Pastikan ini sesuai dengan yang Anda buat sebelumnya
         ];
-        
+
         return view('AdminWali.List Pengajuan.generatesku', compact('data'));
     }
 
@@ -308,7 +317,7 @@ class PengajuanController extends Controller
             'alasan' => $pot->alasan,
         ];
 
-        return view('AdminWali.List Pengajuan.generatesku', compact('data'));
+        return view('AdminWali.List Pengajuan.generatesurpeng', compact('data'));
     }
 
     public function tolakPengajuanSktm(Request $request)
