@@ -24,7 +24,7 @@
                                         <input type="text" id="nik" class="form-control" name="nik" value="{{ $data->nik }}" readonly>
                                     </div>
                                     <div class="form-group d-flex align-items-center mb-4">
-                                        <label for="penghasilan" class="form-label" style="min-width: 200px;">Penghasilan Orang Tua</label>
+                                        <label for="penghasilan" class="form-label" style="min-width: 200px;">Penghasilan</label>
                                         <input type="text" id="penghasilan" class="form-control" name="penghasilan" value="{{ $data->penghasilan }}" readonly>
                                     </div>
                                     <div class="form-group d-flex align-items-center mb-4">

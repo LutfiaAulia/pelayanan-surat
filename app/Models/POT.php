@@ -17,6 +17,8 @@ class POT extends Model
         'id_pengajuan',
         'nama',
         'nik',
+        'agama',
+        'pekerjaan',
         'penghasilan',
         'alasan',
         'filekk'

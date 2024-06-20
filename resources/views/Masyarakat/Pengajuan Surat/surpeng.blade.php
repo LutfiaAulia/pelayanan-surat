@@ -36,8 +36,16 @@
                                     <input type="text" id="nik" class="form-control" placeholder="16-digit" maxlength="16" name="nik">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="penghasilan" class="form-label" style="min-width: 200px;">Penghasilan Orang Tua</label>
-                                    <input type="text" id="penghasilan" class="form-control" placeholder="Tambahkan penghasilan orangtua" name="penghasilan">
+                                    <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>
+                                    <input type="text" id="agama" class="form-control" placeholder="" name="agama">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="pekerjaan" class="form-label" style="min-width: 200px;">Pekerjaan</label>
+                                    <input type="text" id="pekerjaan" class="form-control" placeholder="" name="pekerjaan">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="penghasilan" class="form-label" style="min-width: 200px;">Penghasilan</label>
+                                    <input type="text" id="penghasilan" class="form-control" placeholder="Tambahkan penghasilan" name="penghasilan">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>

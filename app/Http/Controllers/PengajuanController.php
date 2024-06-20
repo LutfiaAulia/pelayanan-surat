@@ -134,6 +134,8 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'nik' => 'required',
+            'agama' => 'required|string|max:255',
+            'pekerjaan' => 'required|string|max:255',
             'penghasilan' => 'required',
             'alasan' => 'required',
             'filekk' => 'required|mimes:png,jpg,jpeg|max:2048',
@@ -155,6 +157,8 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
+        $data['agama'] = $request->agama;
+        $data['pekerjaan'] = $request->pekerjaan;
         $data['penghasilan'] = $request->penghasilan;
         $data['alasan'] = $request->alasan;
         $data['filekk'] = $filename;
@@ -366,6 +370,8 @@ class PengajuanController extends Controller
             'id_pengajuan' => $pot->id_pengajuan,
             'nama' => $pot->nama,
             'nik' => $pot->nik,
+            'agama' => $pot->agama,
+            'pekerjaan' => $pot->pekerjaan,
             'penghasilan' => $pot->penghasilan,
             'alasan' => $pot->alasan,
             'nomor_surat' => $nomorSurat,
