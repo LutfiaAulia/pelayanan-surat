@@ -81,10 +81,6 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
-            'agama' => 'required|string|max:255',
-            'status' => 'required|string|max:255',
-            'pekerjaan' => 'required|string|max:255',
-            'usaha' => 'required|string|max:255',
             'alasan' => 'required',
             'filektp' => 'required|mimes:jpg,jpeg,png|max:2048',
             'fotousaha' => 'required|mimes:jpg,jpeg,png|max:2048',
@@ -110,15 +106,12 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
-        $data['agama'] = $request->agama;
-        $data['status'] = $request->status;
-        $data['pekerjaan'] = $request->pekerjaan;
-        $data['usaha'] = $request->usaha;
         $data['alasan'] = $request->alasan;
         $data['filektp'] = $filenamektp;
         $data['fotousaha'] = $filenameusaha;
         $data['id_pengajuan'] = $pengajuan->id_pengajuan;
-        
+
+
         SKU::create($data);
 
         return redirect()->route('masyarakat.sku')->with('success', 'Surat berhasil diajukan');
