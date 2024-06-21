@@ -36,6 +36,10 @@
                                     <input type="text" id="nik" class="form-control" placeholder="16-digit" maxlength="16" name="nik">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="tempattanggal" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
+                                    <input type="text" id="tgl_lahir" class="form-control" placeholder="Lubuk Alung, 06-12-1970" name="tgl_lahir">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
                                     <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>
                                     <input type="text" id="agama" class="form-control" placeholder="" maxlength="16" name="agama">
                                 </div>
@@ -46,6 +50,10 @@
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="pekerjaan" class="form-label" style="min-width: 200px;">Pekerjaan</label>
                                     <input type="text" id="pekerjaan" class="form-control" placeholder="" maxlength="16" name="pekerjaan">
+                                </div>
+                                <div class="form-group d-flex align-items-center mb-4">
+                                    <label for="alamat" class="form-label" style="min-width: 200px;">Alamat</label>
+                                    <input type="text" id="alamat" class="form-control" name="alamat">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="usaha" class="form-label" style="min-width: 200px;">Usaha</label>

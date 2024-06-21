@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="tempattanggal" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
-                                    <input type="text" id="ttl" class="form-control" placeholder="Lubuk Alung, 06-12-1970" name="ttl" value="{{ $data['ttl'] ?? '' }}">
+                                    <input type="text" id="ttl" class="form-control" placeholder="Lubuk Alung, 06-12-1970" name="ttl" value="{{ $data['tgl_lahir'] ?? '' }}">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>

@@ -85,9 +85,11 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
+            'tgl_lahir' => 'required|string|max:255',
             'agama' => 'required|string|max:255',
             'status' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
             'usaha' => 'required|string|max:255',
             'alasan' => 'required',
             'filektp' => 'required|mimes:jpg,jpeg,png|max:2048',
@@ -114,9 +116,11 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
+        $data['tgl_lahir'] = $request->tgl_lahir;
         $data['agama'] = $request->agama;
         $data['status'] = $request->status;
         $data['pekerjaan'] = $request->pekerjaan;
+        $data['alamat'] = $request->alamat;
         $data['usaha'] = $request->usaha;
         $data['alasan'] = $request->alasan;
         $data['filektp'] = $filenamektp;
@@ -318,9 +322,11 @@ class PengajuanController extends Controller
             'id_pengajuan' => $sku->id_pengajuan,
             'nama' => $sku->nama,
             'nik' => $sku->nik,
+            'tgl_lahir' => $sku->tgl_lahir,
             'agama' => $sku->agama,
             'status' => $sku->status,
             'pekerjaan' => $sku->pekerjaan,
+            'alamat' => $sku->alamat,
             'usaha' => $sku->usaha,
             'alasan' => $sku->alasan,
             'nomor_surat' => $nomorSurat, 
@@ -328,6 +334,34 @@ class PengajuanController extends Controller
 
         return view('AdminWali.List Pengajuan.generatesku', compact('data'));
     }
+
+    // public function generateSkuSurat(Request $request, $id_pengajuan)
+    // {
+    //     $sku = SKU::where('id_pengajuan', $id_pengajuan)->firstOrFail();
+    //     $nomorSurat = $request->input('nomor_surat');
+
+    //     SuratKeluar::create([
+    //         'id_pengajuan' => $sku->id_pengajuan,
+    //         'nomor_surat' => $nomorSurat,
+    //         'tanggal_kirim' => now(),
+    //         'file_surat' => '', // Update if necessary
+    //     ]);
+
+    //     $data = [
+    //         'nama' => $sku->nama,
+    //         'nik' => $sku->nik,
+    //         'tgl_lahir' => $sku->tgl_lahir,
+    //         'agama' => $sku->agama,
+    //         'status' => $sku->status,
+    //         'pekerjaan' => $sku->pekerjaan,
+    //         'alamat' => $sku->alamat,
+    //         'usaha' => $sku->usaha,
+    //         'nomor_surat' => $nomorSurat,
+    //     ];
+
+    //     $pdf = PDF::loadView('surat_keterangan_usaha', $data);
+    //     return $pdf->download('surat_keterangan_usaha.pdf');
+    // }
 
     public function verifpot(Request $request, $id_pengajuan)
     {
