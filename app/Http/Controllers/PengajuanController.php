@@ -41,8 +41,11 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
+            'tempat_lahir' => 'required|string|max:255', 
+            'tgl_lahir' => 'required|date', 
             'agama' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
             'alasan' => 'required',
             'filektp' => 'required|mimes:jpg,jpeg,png|max:512',
             'filekk' => 'required|mimes:jpg,jpeg,png|max:512',
@@ -68,8 +71,11 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
+        $data['tempat_lahir'] = $request->tempat_lahir;
+        $data['tgl_lahir'] = date('Y-m-d', strtotime($request->tgl_lahir));
         $data['agama'] = $request->agama;
         $data['pekerjaan'] = $request->pekerjaan;
+        $data['alamat'] = $request->alamat;
         $data['alasan'] = $request->alasan;
         $data['filekk'] = $filename;
         $data['filektp'] = $filenamektp;
@@ -85,7 +91,8 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
-            'tgl_lahir' => 'required|string|max:255',
+            'tempat_lahir' => 'required|string|max:255', 
+            'tgl_lahir' => 'required|date', 
             'agama' => 'required|string|max:255',
             'status' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
@@ -116,7 +123,8 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
-        $data['tgl_lahir'] = $request->tgl_lahir;
+        $data['tempat_lahir'] = $request->tempat_lahir;
+        $data['tgl_lahir'] = date('Y-m-d', strtotime($request->tgl_lahir));
         $data['agama'] = $request->agama;
         $data['status'] = $request->status;
         $data['pekerjaan'] = $request->pekerjaan;
@@ -138,8 +146,11 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'nik' => 'required',
+            'tempat_lahir' => 'required|string|max:255', 
+            'tgl_lahir' => 'required|date', 
             'agama' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
             'penghasilan' => 'required',
             'alasan' => 'required',
             'filekk' => 'required|mimes:png,jpg,jpeg|max:2048',
@@ -161,8 +172,11 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
+        $data['tempat_lahir'] = $request->tempat_lahir;
+        $data['tgl_lahir'] = date('Y-m-d', strtotime($request->tgl_lahir));
         $data['agama'] = $request->agama;
         $data['pekerjaan'] = $request->pekerjaan;
+        $data['alamat'] = $request->alamat;
         $data['penghasilan'] = $request->penghasilan;
         $data['alasan'] = $request->alasan;
         $data['filekk'] = $filename;
@@ -276,8 +290,11 @@ class PengajuanController extends Controller
             'id_pengajuan' => $sktm->id_pengajuan,
             'nama' => $sktm->nama,
             'nik' => $sktm->nik,
+            'tempat_lahir' => $sktm->tempat_lahir,
+            'tgl_lahir' => $sktm->tgl_lahir,
             'agama' => $sktm->agama,
             'pekerjaan' => $sktm->pekerjaan,
+            'alamat' => $sktm->alamat,
             'alasan' => $sktm->alasan,
             'nomor_surat' => $nomorSurat
         ];
@@ -295,7 +312,7 @@ class PengajuanController extends Controller
         $pengajuan->id_admin = $adminId;
         $pengajuan->save();
 
-        $jenisSurat = 'SKU'; 
+        $jenisSurat = 'SKU';
         $currentYear = Carbon::now()->year;
         $currentMonthNumeric = Carbon::now()->month;
         $currentMonthRoman = monthToRoman($currentMonthNumeric);
@@ -312,9 +329,9 @@ class PengajuanController extends Controller
 
         SuratKeluar::create([
             'id_pengajuan' => $pengajuan->id_pengajuan,
-            'nomor_surat' => $nomorSurat, 
+            'nomor_surat' => $nomorSurat,
             'tanggal_kirim' => now(),
-            'file_surat' => '', 
+            'file_surat' => '',
         ]);
 
         $sku = SKU::where('id_pengajuan', $id_pengajuan)->firstOrFail();
@@ -322,6 +339,7 @@ class PengajuanController extends Controller
             'id_pengajuan' => $sku->id_pengajuan,
             'nama' => $sku->nama,
             'nik' => $sku->nik,
+            'tempat_lahir' => $sku->tempat_lahir,
             'tgl_lahir' => $sku->tgl_lahir,
             'agama' => $sku->agama,
             'status' => $sku->status,
@@ -329,7 +347,7 @@ class PengajuanController extends Controller
             'alamat' => $sku->alamat,
             'usaha' => $sku->usaha,
             'alasan' => $sku->alasan,
-            'nomor_surat' => $nomorSurat, 
+            'nomor_surat' => $nomorSurat,
         ];
 
         return view('AdminWali.List Pengajuan.generatesku', compact('data'));
@@ -404,8 +422,11 @@ class PengajuanController extends Controller
             'id_pengajuan' => $pot->id_pengajuan,
             'nama' => $pot->nama,
             'nik' => $pot->nik,
+            'tempat_lahir' => $pot->tempat_lahir,
+            'tgl_lahir' => $pot->tgl_lahir,
             'agama' => $pot->agama,
             'pekerjaan' => $pot->pekerjaan,
+            'alamat' => $pot->alamat,
             'penghasilan' => $pot->penghasilan,
             'alasan' => $pot->alasan,
             'nomor_surat' => $nomorSurat,
