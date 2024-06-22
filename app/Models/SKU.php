@@ -17,7 +17,6 @@ class SKU extends Model
         'id_pengajuan',
         'nama',
         'nik',
-        'tempat_lahir',
         'tgl_lahir',
         'agama',
         'status',

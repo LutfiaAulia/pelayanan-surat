@@ -91,8 +91,7 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
-            'tempat_lahir' => 'required|string|max:255', 
-            'tgl_lahir' => 'required|date', 
+            'tgl_lahir' => 'required|string|max:255',
             'agama' => 'required|string|max:255',
             'status' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
@@ -123,8 +122,7 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
-        $data['tempat_lahir'] = $request->tempat_lahir;
-        $data['tgl_lahir'] = date('Y-m-d', strtotime($request->tgl_lahir));
+        $data['tgl_lahir'] = $request->tgl_lahir;
         $data['agama'] = $request->agama;
         $data['status'] = $request->status;
         $data['pekerjaan'] = $request->pekerjaan;
@@ -339,7 +337,6 @@ class PengajuanController extends Controller
             'id_pengajuan' => $sku->id_pengajuan,
             'nama' => $sku->nama,
             'nik' => $sku->nik,
-            'tempat_lahir' => $sku->tempat_lahir,
             'tgl_lahir' => $sku->tgl_lahir,
             'agama' => $sku->agama,
             'status' => $sku->status,
