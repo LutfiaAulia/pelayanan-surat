@@ -124,7 +124,6 @@
                     <td>: {{ $agama }}</td>
                 </tr>
                 <tr>
-                <tr>
                     <td>Pekerjaan</td>
                     <td>: {{ $pekerjaan }}</td>
                 </tr>
@@ -137,7 +136,7 @@
                     <td>: {{ $penghasilan }}</td>
                 </tr>
             </table>
-            <p class="indented">Demikianlah surat keterangan usaha ini kami buat untuk dapat dipergunakan sebagaimana mestinya {{ $alasan }}.</p>
+            <p class="indented">Demikianlah surat keterangan usaha ini kami buat untuk dapat dipergunakan sebagai syarat untuk {{ $alasan }}.</p>
             <div class="signature">
                 <p>Kelok, {{ \Carbon\Carbon::now()->isoFormat('DD MMMM YYYY') }}</p>
                 <p>A.n WALI NAGARI PUNGGUANG KASIAK LUBUK ALUNG</p>

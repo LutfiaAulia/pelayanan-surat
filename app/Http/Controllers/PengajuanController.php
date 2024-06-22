@@ -390,24 +390,38 @@ class PengajuanController extends Controller
 
     public function verifpot(Request $request, $id_pengajuan)
     {
-        // Mendapatkan ID admin yang sedang login
+        $pot = POT::where('id_pengajuan', $id_pengajuan)->firstOrFail();
+        $data = [
+            'id_pengajuan' => $pot->id_pengajuan,
+            'nama' => $pot->nama,
+            'nik' => $pot->nik,
+            'tgl_lahir' => $pot->tgl_lahir,
+            'agama' => $pot->agama,
+            'pekerjaan' => $pot->pekerjaan,
+            'alamat' => $pot->alamat,
+            'penghasilan' => $pot->penghasilan,
+            'alasan' => $pot->alasan,
+        ];
+
+        return view('AdminWali.List Pengajuan.generatesurpeng', compact('data'));
+    }
+
+    public function generateSuratPot(Request $request, $id_pengajuan)
+    {
         $adminId = Auth::user()->id;
 
-        // Mencari record pengajuan
+        $pot = POT::where('id_pengajuan', $id_pengajuan)->firstOrFail();
         $pengajuan = Pengajuan::findOrFail($id_pengajuan);
 
-        // Memperbarui record pengajuan
         $pengajuan->status_pengajuan = 'diproses';
         $pengajuan->id_admin = $adminId;
         $pengajuan->save();
 
-        // Membuat nomor_surat
-        $jenisSurat = 'SPH'; // Untuk Surat Keterangan Usaha
+        $jenisSurat = 'POT';
         $currentYear = Carbon::now()->year;
         $currentMonthNumeric = Carbon::now()->month;
         $currentMonthRoman = monthToRoman($currentMonthNumeric);
 
-        // Mengambil surat_keluar terakhir untuk jenis_surat tertentu
         $lastSuratKeluar = SuratKeluar::whereYear('created_at', $currentYear)
             ->where('nomor_surat', 'LIKE', '%/' . $jenisSurat . '/%')
             ->orderBy('id_keluar', 'desc')
@@ -416,15 +430,13 @@ class PengajuanController extends Controller
         $nextNumber = $lastSuratKeluar ? intval(explode('-', $lastSuratKeluar->nomor_surat)[1]) + 1 : 1;
         $nomorSurat = 'B-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT) . '/' . $jenisSurat . '/' . $currentMonthRoman . '/' . $currentYear;
 
-        // Membuat record baru di surat_keluar
-        SuratKeluar::create([
+        $suratKeluar = SuratKeluar::create([
             'id_pengajuan' => $pengajuan->id_pengajuan,
-            'nomor_surat' => $nomorSurat, // Sertakan nomor_surat di sini
+            'nomor_surat' => $nomorSurat,
             'tanggal_kirim' => now(),
-            'file_surat' => '', // Sesuaikan jika perlu berisi path file
+            'file_surat' => '',
         ]);
 
-        $pot = POT::where('id_pengajuan', $id_pengajuan)->firstOrFail();
         $data = [
             'id_pengajuan' => $pot->id_pengajuan,
             'nama' => $pot->nama,
@@ -438,7 +450,15 @@ class PengajuanController extends Controller
             'nomor_surat' => $nomorSurat,
         ];
 
-        return view('AdminWali.List Pengajuan.generatesurpeng', compact('data'));
+        $pdf = PDF::loadView('AdminWali.Surat.suratpot', $data);
+
+        $filename = 'surat_POT_' . time() . '.pdf';
+        $path = 'public/' . $filename;
+        Storage::put($path, $pdf->output());
+
+        $suratKeluar->update(['file_surat' => $filename]);
+
+        return response()->json(['file' => $filename]);
     }
 
     public function tolakPengajuanSktm(Request $request)

@@ -11,15 +11,11 @@
         <div class="card-content">
             <div class="card-body">
                 <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Generate Surat Keterangan Penghasilan</h4>
-                <form class="form" method="post" action="">
+                <form class="form" id="generateForm" method="post" action="{{ route('admin.generateSuratPot', $data['id_pengajuan']) }}">
                     @csrf
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="nomorsurat" class="form-label" style="min-width: 200px;">Nomor Surat</label>
-                                    <input type="text" id="nomorsurat" class="form-control" placeholder="Nomor Surat" name="nomorsurat" value="{{ $data['nomor_surat'] }}" readonly>
-                                </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="namapengaju" class="form-label" style="min-width: 200px;">Nama Pengaju</label>
                                     <input type="text" id="namapengaju" class="form-control" placeholder="Nama Pengaju" name="namapengaju" value="{{ $data['nama'] }}" readonly>
@@ -56,7 +52,7 @@
                         </div>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary me-1">Generate Surat</button>
+                        <button type="button" id="generateButton" class="btn btn-primary me-1">Generate Surat</button>
                         <button type="reset" class="btn btn-light-primary">Cancel</button>
                     </div>
                 </form>
@@ -64,5 +60,47 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#generateButton').click(function(event) {
+            event.preventDefault();
 
+            var formData = $('#generateForm').serialize();
+
+            $.ajax({
+                url: "{{ route('admin.generateSuratPot', $data['id_pengajuan']) }}",
+                type: "POST",
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response);
+
+                    if (response.file) {
+                        var downloadUrl = "{{ url('storage') }}/" + response.file;
+
+                        var link = document.createElement('a');
+                        link.href = downloadUrl;
+                        link.download = response.file;
+
+                        document.body.appendChild(link);
+                        link.click();
+
+                        document.body.removeChild(link);
+
+                        setTimeout(function() {
+                            window.location.href = "{{ route('admin.listpot') }}";
+                        }, 3000);
+                    } else {
+                        alert('Gagal mengunduh surat. Silakan coba lagi.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('Terjadi kesalahan saat mengunduh surat.');
+                }
+            });
+        });
+    });
+</script>
 @endsection
