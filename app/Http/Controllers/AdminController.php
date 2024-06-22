@@ -10,6 +10,7 @@ use App\Models\Pengajuan;
 use App\Models\SKTM;
 use App\Models\SKU;
 use App\Models\POT;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -345,4 +346,28 @@ class AdminController extends Controller
         return view('AdminWali.List Pengajuan.verifikasisurpeng', compact('data'));
     }
 
+    public function listkeluar()
+    {
+        // Fetching data by joining the necessary tables
+        $suratKeluar = DB::table('pengajuan')
+            ->leftJoin('surat_sktm', 'pengajuan.id_pengajuan', '=', 'surat_sktm.id_pengajuan')
+            ->leftJoin('surat_pot', 'pengajuan.id_pengajuan', '=', 'surat_pot.id_pengajuan')
+            ->leftJoin('surat_sku', 'pengajuan.id_pengajuan', '=', 'surat_sku.id_pengajuan')
+            ->join('surat_keluar', 'pengajuan.id_pengajuan', '=', 'surat_keluar.id_pengajuan')
+            ->select(
+                'surat_keluar.nomor_surat',
+                'pengajuan.status_pengajuan as status',
+                DB::raw('COALESCE(surat_sktm.nama, surat_pot.nama, surat_sku.nama) as nama_pengaju'),
+                DB::raw('COALESCE(surat_sktm.nik, surat_pot.nik, surat_sku.nik) as nik'),
+                DB::raw('CASE 
+                    WHEN surat_sktm.id_sktm IS NOT NULL THEN "SKTM" 
+                    WHEN surat_pot.id_pot IS NOT NULL THEN "POT" 
+                    WHEN surat_sku.id_sku IS NOT NULL THEN "SKU" 
+                    END as jenis_surat')
+            )
+            ->where('pengajuan.status_pengajuan', 'diproses')
+            ->get();
+
+        return view('AdminWali.listsuker', compact('suratKeluar'));
+    }
 }
