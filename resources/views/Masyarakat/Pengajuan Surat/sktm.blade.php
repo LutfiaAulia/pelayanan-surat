@@ -36,9 +36,8 @@
                                     <input type="text" id="nik" class="form-control" placeholder="16-digit" maxlength="16" name="nik">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="tempattanggal" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
-                                    <input type="text" id="tempat_lahir" class="form-control" placeholder="Tempat Lahir" name="tempat_lahir">
-                                    <input type="date" id="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" name="tgl_lahir" >
+                                    <label for="tgl_lahir" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
+                                    <input type="text" id="tgl_lahir" class="form-control" placeholder="Contoh: Lubuk Alung, 07-09-1970" name="tgl_lahir" >
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>

@@ -29,9 +29,8 @@
                                     <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik" value="{{ $data['nik'] }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="tempattanggal" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
-                                    <input type="text" id="tempat_lahir" class="form-control" placeholder="Tempat Lahir" name="tempat_lahir" value="{{ $data['tempat_lahir'] }}" readonly>
-                                    <input type="date" id="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" name="tgl_lahir" value="{{ $data['tgl_lahir'] }}" readonly>
+                                    <label for="tgl_lahir" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
+                                    <input type="text" id="tgl_lahir" class="form-control" placeholder="Lubuk Alung, 06-12-1970" name="tgl_lahir" value="{{ $data['tgl_lahir'] }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="agama" class="form-label" style="min-width: 200px;">Agama</label>

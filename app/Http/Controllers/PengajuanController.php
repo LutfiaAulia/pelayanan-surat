@@ -43,12 +43,11 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
-            'tempat_lahir' => 'required|string|max:255', 
-            'tgl_lahir' => 'required|date', 
+            'tgl_lahir' => 'required|string|max:255', 
             'agama' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
-            'alasan' => 'required',
+            'alasan' => 'required|string|max:255',
             'filektp' => 'required|mimes:jpg,jpeg,png|max:512',
             'filekk' => 'required|mimes:jpg,jpeg,png|max:512',
         ]);
@@ -73,8 +72,7 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
-        $data['tempat_lahir'] = $request->tempat_lahir;
-        $data['tgl_lahir'] = date('Y-m-d', strtotime($request->tgl_lahir));
+        $data['tgl_lahir'] = $request->tgl_lahir;
         $data['agama'] = $request->agama;
         $data['pekerjaan'] = $request->pekerjaan;
         $data['alamat'] = $request->alamat;
@@ -145,9 +143,8 @@ class PengajuanController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
-            'nik' => 'required',
-            'tempat_lahir' => 'required|string|max:255', 
-            'tgl_lahir' => 'required|date', 
+            'nik' => 'required', 
+            'tgl_lahir' => 'required|string|max:255', 
             'agama' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
@@ -172,8 +169,7 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
-        $data['tempat_lahir'] = $request->tempat_lahir;
-        $data['tgl_lahir'] = date('Y-m-d', strtotime($request->tgl_lahir));
+        $data['tgl_lahir'] = $request->tgl_lahir;
         $data['agama'] = $request->agama;
         $data['pekerjaan'] = $request->pekerjaan;
         $data['alamat'] = $request->alamat;
@@ -290,7 +286,6 @@ class PengajuanController extends Controller
             'id_pengajuan' => $sktm->id_pengajuan,
             'nama' => $sktm->nama,
             'nik' => $sktm->nik,
-            'tempat_lahir' => $sktm->tempat_lahir,
             'tgl_lahir' => $sktm->tgl_lahir,
             'agama' => $sktm->agama,
             'pekerjaan' => $sktm->pekerjaan,
@@ -417,7 +412,6 @@ class PengajuanController extends Controller
             'id_pengajuan' => $pot->id_pengajuan,
             'nama' => $pot->nama,
             'nik' => $pot->nik,
-            'tempat_lahir' => $pot->tempat_lahir,
             'tgl_lahir' => $pot->tgl_lahir,
             'agama' => $pot->agama,
             'pekerjaan' => $pot->pekerjaan,
