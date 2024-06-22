@@ -17,8 +17,11 @@ class SKTM extends Model
         'id_pengajuan',
         'nama',
         'nik',
+        'tempat_lahir',
+        'tgl_lahir',
         'agama',
         'pekerjaan',
+        'alamat',
         'alasan',
         'filektp',
         'filekk'

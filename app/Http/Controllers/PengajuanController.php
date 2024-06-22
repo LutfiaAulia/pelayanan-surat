@@ -43,8 +43,11 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
+            'tempat_lahir' => 'required|string|max:255', 
+            'tgl_lahir' => 'required|date', 
             'agama' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
             'alasan' => 'required',
             'filektp' => 'required|mimes:jpg,jpeg,png|max:512',
             'filekk' => 'required|mimes:jpg,jpeg,png|max:512',
@@ -70,8 +73,11 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
+        $data['tempat_lahir'] = $request->tempat_lahir;
+        $data['tgl_lahir'] = date('Y-m-d', strtotime($request->tgl_lahir));
         $data['agama'] = $request->agama;
         $data['pekerjaan'] = $request->pekerjaan;
+        $data['alamat'] = $request->alamat;
         $data['alasan'] = $request->alasan;
         $data['filekk'] = $filename;
         $data['filektp'] = $filenamektp;
@@ -140,8 +146,11 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'nik' => 'required',
+            'tempat_lahir' => 'required|string|max:255', 
+            'tgl_lahir' => 'required|date', 
             'agama' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
             'penghasilan' => 'required',
             'alasan' => 'required',
             'filekk' => 'required|mimes:png,jpg,jpeg|max:2048',
@@ -163,8 +172,11 @@ class PengajuanController extends Controller
 
         $data['nama'] = $request->nama;
         $data['nik'] = $request->nik;
+        $data['tempat_lahir'] = $request->tempat_lahir;
+        $data['tgl_lahir'] = date('Y-m-d', strtotime($request->tgl_lahir));
         $data['agama'] = $request->agama;
         $data['pekerjaan'] = $request->pekerjaan;
+        $data['alamat'] = $request->alamat;
         $data['penghasilan'] = $request->penghasilan;
         $data['alasan'] = $request->alasan;
         $data['filekk'] = $filename;
@@ -278,8 +290,11 @@ class PengajuanController extends Controller
             'id_pengajuan' => $sktm->id_pengajuan,
             'nama' => $sktm->nama,
             'nik' => $sktm->nik,
+            'tempat_lahir' => $sktm->tempat_lahir,
+            'tgl_lahir' => $sktm->tgl_lahir,
             'agama' => $sktm->agama,
             'pekerjaan' => $sktm->pekerjaan,
+            'alamat' => $sktm->alamat,
             'alasan' => $sktm->alasan,
             'nomor_surat' => $nomorSurat
         ];
@@ -402,8 +417,11 @@ class PengajuanController extends Controller
             'id_pengajuan' => $pot->id_pengajuan,
             'nama' => $pot->nama,
             'nik' => $pot->nik,
+            'tempat_lahir' => $pot->tempat_lahir,
+            'tgl_lahir' => $pot->tgl_lahir,
             'agama' => $pot->agama,
             'pekerjaan' => $pot->pekerjaan,
+            'alamat' => $pot->alamat,
             'penghasilan' => $pot->penghasilan,
             'alasan' => $pot->alasan,
             'nomor_surat' => $nomorSurat,
