@@ -33,7 +33,8 @@
                                         <td>{{ $item['status_pengajuan'] }}</td>
                                         <td style="width: 140px; text-align: center;">
                                             <a href="{{ route('admin.verifikasisktm', ['id_pengajuan' => $item['id_pengajuan']]) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                            <a class="btn btn-success"><i class="fas fa-file-upload"></i></a>
+                                            <label for="fileInput" class="btn btn-success"><i class="fas fa-file-upload"></i></label>
+                                            <input type="file" id="fileInput" style="display: none;">
                                         </td>
                                     </tr>
                                 @endforeach
