@@ -43,7 +43,7 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'nik' => 'required|string|max:16',
-            'tgl_lahir' => 'required|string|max:255', 
+            'tgl_lahir' => 'required|string|max:255',
             'agama' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
@@ -143,8 +143,8 @@ class PengajuanController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
-            'nik' => 'required', 
-            'tgl_lahir' => 'required|string|max:255', 
+            'nik' => 'required',
+            'tgl_lahir' => 'required|string|max:255',
             'agama' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
@@ -246,41 +246,6 @@ class PengajuanController extends Controller
 
     public function verifsktm(Request $request, $id_pengajuan)
     {
-
-        // Mendapatkan ID admin yang sedang login
-        $adminId = Auth::user()->id;
-
-        // Mencari record pengajuan
-        $pengajuan = Pengajuan::findOrFail($id_pengajuan);
-
-        // Memperbarui record pengajuan
-        $pengajuan->status_pengajuan = 'diproses';
-        $pengajuan->id_admin = $adminId;
-        $pengajuan->save();
-
-        // Membuat nomor_surat
-        $jenisSurat = 'SKTM'; // Untuk Surat Keterangan Usaha
-        $currentYear = Carbon::now()->year;
-        $currentMonthNumeric = Carbon::now()->month;
-        $currentMonthRoman = monthToRoman($currentMonthNumeric);
-
-        // Mengambil surat_keluar terakhir untuk jenis_surat tertentu
-        $lastSuratKeluar = SuratKeluar::whereYear('created_at', $currentYear)
-            ->where('nomor_surat', 'LIKE', '%/' . $jenisSurat . '/%')
-            ->orderBy('id_keluar', 'desc')
-            ->first();
-
-        $nextNumber = $lastSuratKeluar ? intval(explode('-', $lastSuratKeluar->nomor_surat)[1]) + 1 : 1;
-        $nomorSurat = 'B-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT) . '/' . $jenisSurat . '/' . $currentMonthRoman . '/' . $currentYear;
-
-        // Membuat record baru di surat_keluar
-        SuratKeluar::create([
-            'id_pengajuan' => $pengajuan->id_pengajuan,
-            'nomor_surat' => $nomorSurat, // Sertakan nomor_surat di sini
-            'tanggal_kirim' => now(),
-            'file_surat' => '', // Sesuaikan jika perlu berisi path file
-        ]);
-
         $sktm = SKTM::where('id_pengajuan', $id_pengajuan)->firstOrFail();
         $data = [
             'id_pengajuan' => $sktm->id_pengajuan,
@@ -291,10 +256,40 @@ class PengajuanController extends Controller
             'pekerjaan' => $sktm->pekerjaan,
             'alamat' => $sktm->alamat,
             'alasan' => $sktm->alasan,
-            'nomor_surat' => $nomorSurat
         ];
 
         return view('AdminWali.List Pengajuan.generatesktm', compact('data'));
+    }
+
+    public function generateSuratSktm(Request $request, $id_pengajuan)
+    {
+        $adminId = Auth::user()->id;
+
+        $pengajuan = Pengajuan::findOrFail($id_pengajuan);
+
+        $pengajuan->status_pengajuan = 'diproses';
+        $pengajuan->id_admin = $adminId;
+        $pengajuan->save();
+
+        $jenisSurat = 'SKTM';
+        $currentYear = Carbon::now()->year;
+        $currentMonthNumeric = Carbon::now()->month;
+        $currentMonthRoman = monthToRoman($currentMonthNumeric);
+
+        $lastSuratKeluar = SuratKeluar::whereYear('created_at', $currentYear)
+            ->where('nomor_surat', 'LIKE', '%/' . $jenisSurat . '/%')
+            ->orderBy('id_keluar', 'desc')
+            ->first();
+
+        $nextNumber = $lastSuratKeluar ? intval(explode('-', $lastSuratKeluar->nomor_surat)[1]) + 1 : 1;
+        $nomorSurat = 'B-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT) . '/' . $jenisSurat . '/' . $currentMonthRoman . '/' . $currentYear;
+
+        $suratKeluar = SuratKeluar::create([
+            'id_pengajuan' => $pengajuan->id_pengajuan,
+            'nomor_surat' => $nomorSurat,
+            'tanggal_kirim' => now(),
+            'file_surat' => '',
+        ]);
     }
 
     public function verifsku(Request $request, $id_pengajuan)
