@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
-                                    <input type="text" id="alasan" class="form-control" placeholder="Tambahkan alasan pengajuan surat" name="alasan">
+                                    <input type="text" id="alasan" class="form-control" placeholder="Contoh: Penurunan UKT Anaknya An. Maisitoh" name="alasan">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="filektp" class="form-label" style="min-width: 200px;">Upload KTP</label>
