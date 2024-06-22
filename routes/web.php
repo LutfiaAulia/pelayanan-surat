@@ -102,7 +102,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Generate Surat
     Route::post('/admin/generate-sku-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratSku'])->name('admin.generateSuratSku')->middleware('userAkses:admin');
-
+    Route::post('/admin/generate-sktm-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratSktm'])->name('admin.generateSuratSktm')->middleware('userAkses:admin');
 
 });
 
