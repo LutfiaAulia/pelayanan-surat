@@ -100,7 +100,7 @@
         <hr>
         <div class="content">
             <div class="title">
-                <h3><u>SURAT KETERANGAN USAHA</u></h3>
+                <h3><u>SURAT KETERANGAN TIDAK MAMPU</u></h3>
             </div>
             <div class="doc-number">
                 <p>Nomor: {{ $nomor_surat }}</p>
@@ -124,9 +124,6 @@
                     <td>: {{ $agama }}</td>
                 </tr>
                 <tr>
-                    <td>Status Perkawinan</td>
-                    <td>: {{ $status }}</td>
-                </tr>
                 <tr>
                     <td>Pekerjaan</td>
                     <td>: {{ $pekerjaan }}</td>
@@ -136,8 +133,8 @@
                     <td>: {{ $alamat }}</td>
                 </tr>
             </table>
-            <p class="indented">Menurut sepengetahuan kami dan berdasarkan data dari Wali Korong Kelok Nagari Pungguang Kasiak Lubuk Alung, bahwa yang bersangkutan benar-benar memiliki usaha {{ $usaha }}.</p>
-            <p class="indented">Demikianlah surat keterangan usaha ini kami buat untuk dapat dipergunakan sebagaimana mestinya.</p>
+            <p class="indented">Menurut sepengetahuan kami dan berdasarkan data dari Wali Korong Kelok Nagari Pungguang kasiak Lubuk Alung. Bahwa yang bersangkutan adalah berasal dari keluarga Tidak Mampu sesuai dengan kepmensos RI No. 146 Tahun 2013 Tentang Penetapan Kriteria dan Pendataan Fakir Miskin dan Orang Tidak Mampu serta tidak termasuk dalam data DTKS Nagari Pungguang Kasiak Lubuk Alung.</p>
+            <p class="indented">Demikianlah surat keterangan usaha ini kami buat untuk dapat dipergunakan sebagaimana mestinya {{ $alasan }}.</p>
             <div class="signature">
                 <p>Kelok, {{ \Carbon\Carbon::now()->isoFormat('DD MMMM YYYY') }}</p>
                 <p>A.n WALI NAGARI PUNGGUANG KASIAK LUBUK ALUNG</p>

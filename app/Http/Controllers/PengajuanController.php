@@ -316,7 +316,7 @@ class PengajuanController extends Controller
         return view('AdminWali.List Pengajuan.generatesku', compact('data'));
     }
 
-    public function generateSuratSKU(Request $request, $id_pengajuan)
+    public function generateSuratSku(Request $request, $id_pengajuan)
     {
         $adminId = Auth::user()->id;
 
