@@ -33,17 +33,17 @@
                                                 <td>{{ $item['status_pengajuan'] }}</td>
                                                 <td><a href="{{ route('masyarakat.sktm', $item['id_pengajuan']) }}">Cek</a></td>
                                                 <td style="width: 200px; text-align: center;">
-                                                    <a href="{{ route('masyarakat.sktm.edit', $item['id_pengajuan']) }}" class="btn btn-primary">
+                                                    {{-- <a href="{{ route('masyarakat.sktm.edit', $item['id_pengajuan']) }}" class="btn btn-primary">
                                                         <i class="fas fa-edit"></i>
-                                                    </a>
+                                                    </a> --}}
                                                     <button class="btn btn-success"><i class="fas fa-file-upload"></i></button>
-                                                    <form action="{{ route('masyarakat.sktm.destroy', $item['id_pengajuan']) }}" method="POST" style="display:inline;">
+                                                    {{-- <form action="{{ route('masyarakat.sktm.destroy', $item['id_pengajuan']) }}" method="POST" style="display:inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
-                                                    </form>
+                                                    </form> --}}
                                                 </td>
                                             </tr>
                                         @endforeach

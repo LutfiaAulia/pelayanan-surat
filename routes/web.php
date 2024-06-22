@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/ajupeng', [PengajuanController::class, 'ajupeng'])->name('masyarakat.ajupeng')->middleware('userAkses:masyarakat');
 
     //List Pengajuan Surat Oleh Masyarakat (Masyarakat)
-    Route::get('/listpeng', [PengajuanController::class, 'listpengajuan'])->name('masyarakat.listpeng')->middleware('userAkses:masyarakat');
+    Route::get('/listpeng', [PengajuanController::class, 'listpengajuan'])->name('listpeng')->middleware('userAkses:masyarakat');
 
     //Edit Profil (Masyarakat)
     Route::get('/profile/{id}/edit', [MasyarakatController::class, 'edit'])->name('masyarakat.edit')->middleware('userAkses:masyarakat');
@@ -153,9 +153,9 @@ Route::get('/surpeng', function () {
 })->name('surpeng');
 
 // List Pengajuan
-Route::get('/listpeng', function () {
-    return view('Masyarakat.listpeng');
-})->name('listpeng');
+// Route::get('/listpeng', function () {
+//     return view('Masyarakat.listpeng');
+// })->name('listpeng');
 
 // Syarat Pengajuan
 Route::get('/syarpeng', function () {
