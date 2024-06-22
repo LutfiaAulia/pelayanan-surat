@@ -27,6 +27,7 @@
             border: 1px solid #d3d3d3;
             box-shadow: 0 0 5px rgba(0,0,0,0.1);
             box-sizing: border-box;
+            position: relative;
         }
         .header {
             display: flex;
@@ -35,13 +36,17 @@
             text-align: center;
             width: 100%;
         }
-        .header .text {
-            flex: 4;
-            text-align: center;
+        .header .logo {
+            flex: 1;
+            text-align: left;
         }
-        .header img {
+        .header .logo img {
             width: 100px;
             height: auto;
+        }
+        .header .text {
+            flex: 3;
+            text-align: center;
         }
         hr {
             border: 0;
