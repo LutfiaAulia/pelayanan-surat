@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Keterangan Tidak Mampu</title>
+    <title>Surat Keterangan Usaha</title>
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
