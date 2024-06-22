@@ -11,7 +11,7 @@
         <div class="card-content">
             <div class="card-body">
                 <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Generate Surat Keterangan Tidak Mampu</h4>
-                <form class="form" method="post" action="{{ route('admin.generateSuratSktm', $data['id_pengajuan']) }}">
+                <form class="form" id="generateForm" method="post" action="{{ route('admin.generateSuratSktm', $data['id_pengajuan']) }}">
                     @csrf
                     <div class="form-body">
                         <div class="row">
@@ -59,7 +59,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#generateButton').click(function() {
+        $('#generateButton').click(function(event) {
             event.preventDefault();
 
             var formData = $('#generateForm').serialize();
@@ -69,6 +69,9 @@
                 type: "POST",
                 data: formData,
                 dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 success: function(response) {
                     console.log(response);
 

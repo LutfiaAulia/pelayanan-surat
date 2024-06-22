@@ -124,7 +124,6 @@
                     <td>: {{ $agama }}</td>
                 </tr>
                 <tr>
-                <tr>
                     <td>Pekerjaan</td>
                     <td>: {{ $pekerjaan }}</td>
                 </tr>
