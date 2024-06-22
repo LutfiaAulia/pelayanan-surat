@@ -25,7 +25,7 @@
                                     <input type="text" id="nik" class="form-control" placeholder="NIK" name="nik" value="{{ $data['nik'] }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="ttl" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
+                                    <label for="tgl_lahir" class="form-label" style="min-width: 200px;">Tempat/Tanggal Lahir</label>
                                     <input type="text" id="tgl_lahir" class="form-control" placeholder="Lubuk Alung, 06-12-1970" name="tgl_lahir" value="{{ $data['tgl_lahir'] }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="usaha" class="form-label" style="min-width: 200px;">Usaha</label>
-                                    <input type="text" id="usaha" class="form-control" placeholder="usaha saat ini" name="usaha" value="{{ $data['usaha'] }}" readonly>
+                                    <input type="text" id="usaha" class="form-control" placeholder="Usaha saat ini" name="usaha" value="{{ $data['usaha'] }}" readonly>
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
@@ -67,41 +67,45 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-    function downloadAndRedirect() {
-        $.ajax({
-            url: "{{ route('admin.generateSuratSku', $data['id_pengajuan']) }}",
-            type: "POST", 
-            data: $('#generateForm').serialize()
-            success: function(response) {
-                var filename = response.file;
+    $(document).ready(function() {
+        $('#generateButton').click(function() {
+            event.preventDefault();
 
-                var downloadUrl = "{{ url('storage') }}/" + filename;
+            var formData = $('#generateForm').serialize();
 
-                var link = document.createElement('a');
-                link.href = downloadUrl;
-                link.download = filename;
+            $.ajax({
+                url: "{{ route('admin.generateSuratSku', $data['id_pengajuan']) }}",
+                type: "POST",
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response);
 
-                document.body.appendChild(link);
-                link.click();
+                    if (response.file) {
+                        var downloadUrl = "{{ url('storage') }}/" + response.file;
 
-                document.body.removeChild(link);
+                        var link = document.createElement('a');
+                        link.href = downloadUrl;
+                        link.download = response.file;
 
-                setTimeout(function() {
-                    window.location.href = "{{ route('admin.listsku') }}";
-                }, 3000);
-            },
-            error: function(xhr) {
-                alert("Terjadi kesalahan saat mengunduh surat.");
-                console.error(xhr);
-            }
+                        document.body.appendChild(link);
+                        link.click();
+
+                        document.body.removeChild(link);
+
+                        setTimeout(function() {
+                            window.location.href = "{{ route('admin.listsku') }}";
+                        }, 3000);
+                    } else {
+                        alert('Gagal mengunduh surat. Silakan coba lagi.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('Terjadi kesalahan saat mengunduh surat.');
+                }
+            });
         });
-    }
-
-    $(document).on('click', '#generateButton', function(e) {
-        e.preventDefault();
-        downloadAndRedirect();
     });
 </script>
-
-
 @endsection
