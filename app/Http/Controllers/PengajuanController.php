@@ -265,6 +265,7 @@ class PengajuanController extends Controller
     {
         $adminId = Auth::user()->id;
 
+        $sktm = SKTM::where('id_pengajuan', $id_pengajuan)->firstOrFail();
         $pengajuan = Pengajuan::findOrFail($id_pengajuan);
 
         $pengajuan->status_pengajuan = 'diproses';
@@ -290,6 +291,27 @@ class PengajuanController extends Controller
             'tanggal_kirim' => now(),
             'file_surat' => '',
         ]);
+
+        $data = [
+            'nama' => $sktm->nama,
+            'nik' => $sktm->nik,
+            'tgl_lahir' => $sktm->tgl_lahir,
+            'agama' => $sktm->agama,
+            'pekerjaan' => $sktm->pekerjaan,
+            'alamat' => $sktm->alamat,
+            'alasan' => $sktm->alasan,
+            'nomor_surat' => $nomorSurat,
+        ];
+
+        $pdf = PDF::loadView('AdminWali.Surat.suratsktm', $data);
+
+        $filename = 'SKTM_' . time() . '.pdf';
+        $path = 'public/' . $filename;
+        Storage::put($path, $pdf->output());
+
+        $suratKeluar->update(['file_surat' => $filename]);
+
+        return response()->json(['file' => $filename]);
     }
 
     public function verifsku(Request $request, $id_pengajuan)
