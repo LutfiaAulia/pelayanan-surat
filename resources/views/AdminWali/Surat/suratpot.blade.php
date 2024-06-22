@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Keterangan Usaha</title>
+    <title>Surat Keterangan Penghasilan Orang Tua</title>
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
@@ -100,7 +100,7 @@
         <hr>
         <div class="content">
             <div class="title">
-                <h3><u>SURAT KETERANGAN TIDAK MAMPU</u></h3>
+                <h3><u>SURAT KETERANGAN PENGHASILAN ORANG TUA</u></h3>
             </div>
             <div class="doc-number">
                 <p>Nomor: {{ $nomor_surat }}</p>
@@ -132,8 +132,11 @@
                     <td>Alamat</td>
                     <td>: {{ $alamat }}</td>
                 </tr>
+                <tr>
+                    <td>Penghasilan</td>
+                    <td>: {{ $penghasilan }}</td>
+                </tr>
             </table>
-            <p class="indented">Menurut sepengetahuan kami dan berdasarkan data dari Wali Korong Kelok Nagari Pungguang kasiak Lubuk Alung. Bahwa yang bersangkutan adalah berasal dari keluarga Tidak Mampu sesuai dengan kepmensos RI No. 146 Tahun 2013 Tentang Penetapan Kriteria dan Pendataan Fakir Miskin dan Orang Tidak Mampu serta tidak termasuk dalam data DTKS Nagari Pungguang Kasiak Lubuk Alung.</p>
             <p class="indented">Demikianlah surat keterangan usaha ini kami buat untuk dapat dipergunakan sebagaimana mestinya {{ $alasan }}.</p>
             <div class="signature">
                 <p>Kelok, {{ \Carbon\Carbon::now()->isoFormat('DD MMMM YYYY') }}</p>
