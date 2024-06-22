@@ -45,7 +45,7 @@
             text-align: center;
         }
         .header img {
-            width: 100px; /* Sesuaikan ukuran logo sesuai kebutuhan */
+            width: 100px;
             height: auto;
         }
         hr {
@@ -92,7 +92,7 @@
     <div class="page">
         <div class="header">
             <div class="logo">
-                <img src="logoWN.png" alt="Logo"> <!-- Ubah path sesuai lokasi logo -->
+                <img src="logoWN.png" alt="Logo">
             </div>
             <div class="text">
                 <h2>PEMERINTAH KABUPATEN PADANG PARIAMAN</h2>
@@ -108,43 +108,43 @@
                 <h3><u>SURAT KETERANGAN USAHA</u></h3>
             </div>
             <div class="doc-number">
-                <p>Nomor: 09/SKPOT-PKLA/III-2024</p>
+                <p>Nomor: {{ $nomor_surat }}</p>
             </div>
             <p class="indented">Yang bertanda tangan di bawah ini Wali Nagari Pungguang Kasiak Lubuk Alung Kecamatan Lubuk Alung Kabupaten Padang Pariaman menerangkan bahwa:</p>
             <table>
                 <tr>
                     <td>Nama</td>
-                    <td>: SUSANTO</td>
+                    <td>: {{ $nama }}</td>
                 </tr>
                 <tr>
                     <td>NIK</td>
-                    <td>: 130501988906020001</td>
+                    <td>: {{ $nik }}</td>
                 </tr>
                 <tr>
                     <td>Tempat/tgl.lahir</td>
-                    <td>: Sintuk 20-07-1976</td>
+                    <td>: {{ $tgl_lahir }}</td>
                 </tr>
                 <tr>
                     <td>Agama</td>
-                    <td>: Islam</td>
+                    <td>: {{ $agama }}</td>
                 </tr>
                 <tr>
                     <td>Status Perkawinan</td>
-                    <td>: Belum Kawin</td>
+                    <td>: {{ $status }}</td>
                 </tr>
                 <tr>
                     <td>Pekerjaan</td>
-                    <td>: Pedagang</td>
+                    <td>: {{ $pekerjaan }}</td>
                 </tr>
                 <tr>
                     <td>Alamat</td>
-                    <td>: Korong Kelok Nagari Pungguang Kasiak Lubuk Alung, Kecamatan Lubuk Alung</td>
+                    <td>: {{ $alamat }}</td>
                 </tr>
             </table>
-            <p class="indented">Menurut sepengetahuan kami dan berdasarkan data dari Wali Korong Kelok Nagari Pungguang Kasiak Lubuk Alung, bahwa yang bersangkutan benar-benar memiliki usaha Warung Kopi.</p>
+            <p class="indented">Menurut sepengetahuan kami dan berdasarkan data dari Wali Korong Kelok Nagari Pungguang Kasiak Lubuk Alung, bahwa yang bersangkutan benar-benar memiliki usaha {{ $usaha }}.</p>
             <p class="indented">Demikianlah surat keterangan usaha ini kami buat untuk dapat dipergunakan sebagaimana mestinya.</p>
             <div class="signature">
-                <p>Kelok, 07 Maret 2024</p>
+                <p>Kelok, {{ \Carbon\Carbon::now()->isoFormat('DD MMMM YYYY') }}</p>
                 <p>A.n WALI NAGARI PUNGGUANG KASIAK LUBUK ALUNG</p>
                 <br><br><br>
                 <p>ttd dan stempel wali nagari</p>

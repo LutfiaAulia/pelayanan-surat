@@ -32,8 +32,11 @@
                                         <td>{{ $item['tanggal_pengajuan'] }}</td>
                                         <td>{{ $item['status_pengajuan'] }}</td>
                                         <td style="width: 140px; text-align: center;" >
-                                            <a href="{{ route('admin.verifikasisku', ['id_pengajuan' => $item['id_pengajuan']]) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                            <a class="btn btn-success"><i class="fas fa-file-upload"></i></a>
+                                            @if ($item['status_pengajuan'] == 'diproses')
+                                                <a class="btn btn-success"><i class="fas fa-file-upload"></i></a>
+                                            @elseif ($item['status_pengajuan'] == 'Mengajukan')
+                                                <a href="{{ route('admin.verifikasisku', ['id_pengajuan' => $item['id_pengajuan']]) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

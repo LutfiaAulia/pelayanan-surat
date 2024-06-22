@@ -101,7 +101,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pengajuan/tolakpot', [PengajuanController::class, 'tolakPengajuanPot'])->name('pengajuan.tolakpot')->middleware('userAkses:admin');
 
     //Generate Surat
-    // Route::post('/admin/generate-sku-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratSku'])->name('admin.generateSuratSku')->middleware('userAkses:admin');
+    Route::post('/admin/generate-sku-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratSku'])->name('admin.generateSuratSku')->middleware('userAkses:admin');
 
 
 });

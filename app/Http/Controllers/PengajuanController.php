@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class PengajuanController extends Controller
 {
@@ -287,36 +289,6 @@ class PengajuanController extends Controller
 
     public function verifsku(Request $request, $id_pengajuan)
     {
-        $adminId = Auth::user()->id;
-
-        $pengajuan = Pengajuan::findOrFail($id_pengajuan);
-
-        $pengajuan->status_pengajuan = 'diproses';
-        $pengajuan->id_admin = $adminId;
-        $pengajuan->save();
-
-        $jenisSurat = 'SKU'; 
-        $currentYear = Carbon::now()->year;
-        $currentMonthNumeric = Carbon::now()->month;
-        $currentMonthRoman = monthToRoman($currentMonthNumeric);
-
-        $lastSuratKeluar = SuratKeluar::whereYear('created_at', $currentYear)
-            ->where('nomor_surat', 'LIKE', '%/' . $jenisSurat . '/%')
-            ->orderBy('id_keluar', 'desc')
-            ->first();
-
-        $nextNumber = $lastSuratKeluar ? intval(explode('-', $lastSuratKeluar->nomor_surat)[1]) + 1 : 1;
-        $nomorSurat = 'B-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT) . '/' . $jenisSurat . '/' . $currentMonthRoman . '/' . $currentYear;
-
-        Log::info('Nomor Surat: ' . $nomorSurat);
-
-        SuratKeluar::create([
-            'id_pengajuan' => $pengajuan->id_pengajuan,
-            'nomor_surat' => $nomorSurat, 
-            'tanggal_kirim' => now(),
-            'file_surat' => '', 
-        ]);
-
         $sku = SKU::where('id_pengajuan', $id_pengajuan)->firstOrFail();
         $data = [
             'id_pengajuan' => $sku->id_pengajuan,
@@ -329,39 +301,65 @@ class PengajuanController extends Controller
             'alamat' => $sku->alamat,
             'usaha' => $sku->usaha,
             'alasan' => $sku->alasan,
-            'nomor_surat' => $nomorSurat, 
         ];
 
         return view('AdminWali.List Pengajuan.generatesku', compact('data'));
     }
 
-    // public function generateSkuSurat(Request $request, $id_pengajuan)
-    // {
-    //     $sku = SKU::where('id_pengajuan', $id_pengajuan)->firstOrFail();
-    //     $nomorSurat = $request->input('nomor_surat');
+    public function generateSuratSKU(Request $request, $id_pengajuan)
+    {
+        $adminId = Auth::user()->id;
 
-    //     SuratKeluar::create([
-    //         'id_pengajuan' => $sku->id_pengajuan,
-    //         'nomor_surat' => $nomorSurat,
-    //         'tanggal_kirim' => now(),
-    //         'file_surat' => '', // Update if necessary
-    //     ]);
+        $sku = SKU::where('id_pengajuan', $id_pengajuan)->firstOrFail();
 
-    //     $data = [
-    //         'nama' => $sku->nama,
-    //         'nik' => $sku->nik,
-    //         'tgl_lahir' => $sku->tgl_lahir,
-    //         'agama' => $sku->agama,
-    //         'status' => $sku->status,
-    //         'pekerjaan' => $sku->pekerjaan,
-    //         'alamat' => $sku->alamat,
-    //         'usaha' => $sku->usaha,
-    //         'nomor_surat' => $nomorSurat,
-    //     ];
+        $pengajuan = Pengajuan::findOrFail($id_pengajuan);
 
-    //     $pdf = PDF::loadView('surat_keterangan_usaha', $data);
-    //     return $pdf->download('surat_keterangan_usaha.pdf');
-    // }
+        $pengajuan->status_pengajuan = 'diproses';
+        $pengajuan->id_admin = $adminId;
+        $pengajuan->save();
+
+        $jenisSurat = 'SKU';
+        $currentYear = Carbon::now()->year;
+        $currentMonthNumeric = Carbon::now()->month;
+        $currentMonthRoman = monthToRoman($currentMonthNumeric);
+
+        $lastSuratKeluar = SuratKeluar::whereYear('created_at', $currentYear)
+            ->where('nomor_surat', 'LIKE', '%/' . $jenisSurat . '/%')
+            ->orderBy('id_keluar', 'desc')
+            ->first();
+
+        $nextNumber = $lastSuratKeluar ? intval(explode('-', $lastSuratKeluar->nomor_surat)[1]) + 1 : 1;
+        $nomorSurat = 'B-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT) . '/' . $jenisSurat . '/' . $currentMonthRoman . '/' . $currentYear;
+
+        $suratKeluar = SuratKeluar::create([
+            'id_pengajuan' => $sku->id_pengajuan,
+            'nomor_surat' => $nomorSurat,
+            'tanggal_kirim' => now(),
+            'file_surat' => '',
+        ]);
+
+        $data = [
+            'nama' => $sku->nama,
+            'nik' => $sku->nik,
+            'tgl_lahir' => $sku->tgl_lahir,
+            'agama' => $sku->agama,
+            'status' => $sku->status,
+            'pekerjaan' => $sku->pekerjaan,
+            'alamat' => $sku->alamat,
+            'usaha' => $sku->usaha,
+            'nomor_surat' => $nomorSurat,
+        ];
+
+        $pdf = PDF::loadView('AdminWali.Surat.suratsku', $data);
+
+        $filename = 'surat_keterangan_usaha_' . time() . '.pdf';
+        $path = 'public/' . $filename;
+        Storage::put($path, $pdf->output());
+
+        $suratKeluar->update(['file_surat' => $filename]);
+
+        return response()->json(['file' => $filename]);
+    }
 
     public function verifpot(Request $request, $id_pengajuan)
     {
