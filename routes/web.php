@@ -52,17 +52,17 @@ Route::middleware(['auth'])->group(function () {
     //Edit Pengajuan
     Route::get('/sktm/edit/{id_pengajuan}', [MasyarakatController::class, 'editSKTM'])->name('masyarakat.sktm.edit')->middleware('userAkses:masyarakat');
     Route::get('/sku/edit/{id_pengajuan}', [MasyarakatController::class, 'editSKU'])->name('masyarakat.sku.edit')->middleware('userAkses:masyarakat');
-    Route::get('/surpeng/edit/{id_pengajuan}', [MasyarakatController::class, 'editSurpeng'])->name('masyarakat.surpeng.edit')->middleware('userAkses:masyarakat');
+    Route::get('/pot/edit/{id_pengajuan}', [MasyarakatController::class, 'editPOT'])->name('masyarakat.pot.edit')->middleware('userAkses:masyarakat');
 
     //Update Data Pengajuan
-    Route::post('/sktm/update/{id_pengajuan}', [MasyarakatController::class, 'updateSktm'])->name('masyarakat.updatesktm')->middleware('userAkses:masyarakat');
-    Route::post('/sku/update/{id_pengajuan}', [MasyarakatController::class, 'updateSku'])->name('masyarakat.updatesku')->middleware('userAkses:masyarakat');
-    Route::post('/surpeng/update/{id_pengajuan}', [MasyarakatController::class, 'updatePot'])->name('masyarakat.updatepot')->middleware('userAkses:masyarakat');
+    Route::post('/sktm/update/{id_pengajuan}', [MasyarakatController::class, 'updateSKTM'])->name('masyarakat.updatesktm')->middleware('userAkses:masyarakat');
+    Route::post('/sku/update/{id_pengajuan}', [MasyarakatController::class, 'updateSKU'])->name('masyarakat.updatesku')->middleware('userAkses:masyarakat');
+    Route::post('/pot/update/{id_pengajuan}', [MasyarakatController::class, 'updatePOT'])->name('masyarakat.updatepot')->middleware('userAkses:masyarakat');
 
     //Hapus Pengajuan
-    Route::delete('/sktm/{id_pengajuan}', [MasyarakatController::class, 'destroySKTM'])->name('masyarakat.sktm.destroy')->middleware('userAkses:masyarakat');
-    Route::delete('/sku/{id_pengajuan}', [MasyarakatController::class, 'destroySKU'])->name('masyarakat.sku.destroy')->middleware('userAkses:masyarakat');
-    Route::delete('/surpeng/{id_pengajuan}', [MasyarakatController::class, 'destroySurpeng'])->name('masyarakat.pot.destroy')->middleware('userAkses:masyarakat');
+    Route::delete('/sktm/delete/{id_pengajuan}', [MasyarakatController::class, 'destroySKTM'])->name('masyarakat.sktm.destroy')->middleware('userAkses:masyarakat');
+    Route::delete('/sku/delete/{id_pengajuan}', [MasyarakatController::class, 'destroySKU'])->name('masyarakat.sku.destroy')->middleware('userAkses:masyarakat');
+    Route::delete('/pot/delete/{id_pengajuan}', [MasyarakatController::class, 'destroyPOT'])->name('masyarakat.pot.destroy')->middleware('userAkses:masyarakat');
 
     //List Suker
     Route::get('/listsuker', [AdminController::class, 'listkeluar'])->name('listsuker')->middleware('userAkses:admin, walinagari');

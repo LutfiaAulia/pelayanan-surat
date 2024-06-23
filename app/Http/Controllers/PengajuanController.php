@@ -238,7 +238,7 @@ class PengajuanController extends Controller
                 ] : null;
             })->filter();
 
-        $list = $skuList->merge($sktmList)->merge($potList);
+            $list = collect($skuList)->merge($sktmList)->merge($potList);
 
         return view('Masyarakat.listpeng', compact('list'));
     }
