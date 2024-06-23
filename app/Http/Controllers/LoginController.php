@@ -36,7 +36,7 @@ class LoginController extends Controller
             } elseif ($user->role == 'walinagari') {
                 return redirect('dashboard/walinagari');
             } elseif ($user->role == 'masyarakat') {
-                return redirect('dashboard/masyarakat');
+                return redirect('welcome/masyarakat');
             }
         } else {
             return redirect()->back()->withErrors(['nkkip' => 'NKK/NIP atau Password Salah'])->withInput();

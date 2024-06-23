@@ -1,156 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surat Keterangan Usaha</title>
-    <style>
-        body {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 12pt;
-            margin: 0;
-            padding: 0;
-            line-height: 1.15;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            background-color: #f0f0f0;
-            height: 100vh;
-            overflow-y: auto;
-        }
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            padding: 20mm;
-            margin: 10mm auto;
-            background: white;
-            border: 1px solid #d3d3d3;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-            box-sizing: border-box;
-            position: relative;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-        }
-        .header .logo {
-            flex: 1;
-            text-align: left;
-        }
-        .header .logo img {
-            width: 100px;
-            height: auto;
-        }
-        .header .text {
-            flex: 3;
-            text-align: center;
-        }
-        hr {
-            border: 0;
-            border-top: 3px solid black;
-            margin: 10px 0;
-            width: 100%;
-        }
-        .content {
-            margin-top: 20px;
-        }
-        .content table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-        .content table td {
-            padding: 5px;
-            vertical-align: top;
-        }
-        .signature {
-            text-align: right;
-            margin-top: 50px;
-        }
-        .signature p {
-            margin: 0;
-        }
-        .title {
-            text-align: center;
-            text-decoration: underline;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .doc-number {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .indented {
-            text-indent: 1em;
-        }
-    </style>
 </head>
+
 <body>
-    <div class="page">
-        <div class="header">
-            <div class="logo">
-                <img src="logoWN.png" alt="Logo">
-            </div>
-            <div class="text">
-                <h2>PEMERINTAH KABUPATEN PADANG PARIAMAN</h2>
-                <h3>KECAMATAN LUBUK ALUNG</h3>
-                <h3>NAGARI PUNGGUANG KASIAK LUBUK ALUNG</h3>
-                <p>Kantor: Jln. Raya Lubuk Alung - Pariaman Km. 2</p>
-                <p>Kode Pos : 25581</p>
-            </div>
-        </div>
-        <hr>
-        <div class="content">
-            <div class="title">
-                <h3><u>SURAT KETERANGAN USAHA</u></h3>
-            </div>
-            <div class="doc-number">
-                <p>Nomor: {{ $nomor_surat }}</p>
-            </div>
-            <p class="indented">Yang bertanda tangan di bawah ini Wali Nagari Pungguang Kasiak Lubuk Alung Kecamatan Lubuk Alung Kabupaten Padang Pariaman menerangkan bahwa:</p>
-            <table>
-                <tr>
-                    <td>Nama</td>
-                    <td>: {{ $nama }}</td>
-                </tr>
-                <tr>
-                    <td>NIK</td>
-                    <td>: {{ $nik }}</td>
-                </tr>
-                <tr>
-                    <td>Tempat/tgl. lahir</td>
-                    <td>: {{ $tgl_lahir }}</td>
-                </tr>
-                <tr>
-                    <td>Agama</td>
-                    <td>: {{ $agama }}</td>
-                </tr>
-                <tr>
-                    <td>Status Perkawinan</td>
-                    <td>: {{ $status }}</td>
-                </tr>
-                <tr>
-                    <td>Pekerjaan</td>
-                    <td>: {{ $pekerjaan }}</td>
-                </tr>
-                <tr>
-                    <td>Alamat</td>
-                    <td>: {{ $alamat }}</td>
-                </tr>
-            </table>
-            <p class="indented">Menurut sepengetahuan kami dan berdasarkan data dari Wali Korong Kelok Nagari Pungguang Kasiak Lubuk Alung, bahwa yang bersangkutan benar-benar memiliki usaha {{ $usaha }}.</p>
-            <p class="indented">Demikianlah surat keterangan usaha ini kami buat untuk dapat dipergunakan sebagaimana mestinya.</p>
-            <div class="signature">
-                <p>Kelok, {{ \Carbon\Carbon::now()->isoFormat('DD MMMM YYYY') }}</p>
-                <p>A.n WALI NAGARI PUNGGUANG KASIAK LUBUK ALUNG</p>
-                <br><br><br>
-                <p>ttd dan stempel wali nagari</p>
-                <p>DODI MARTEN</p>
-            </div>
-        </div>
-    </div>
+
+    <table align="center" width="500">
+        <tr>
+            <td valign="middle"><img src="{{ public_path('logoWN.png') }}" alt="Logo" height="100"></td>
+            <td valign="middle">
+                <center>
+                    <font size="3"><b>PEMERINTAH KABUPATEN PADANG PARIAMAN</b></font><br>
+                    <font size="3"><b>KECAMATAN LUBUK ALUNG</b></font><br>
+                    <font size="3"><b>NAGARI PUNGGUANG KASIAK LUBUK ALUNG</b></font><br>
+                    <font size="2"><b><i>Kantor: Jln. Raya Lubuk Alung - Pariaman Km. 2</i></b></font><br>
+                    <font size="2"><b><i>Kode Pos: 25581</i></b></font>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <hr>
+            </td>
+        </tr>
+    </table>
+
+    <table align="center" width="500">
+        <tr>
+            <td colspan="2">
+                <center>
+                    <font size="3"><b><u>SURAT KETERANGAN USAHA</u></b></font><br>
+                    <font size="3">Nomor: {{ $nomor_surat }}</font>
+                </center>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <table align="center" width="500">
+        <tr>
+            <td colspan="2" style="text-align: justify; text-indent: 50px;">
+                Yang bertanda tangan di bawah ini Wali Nagari Pungguang Kasiak Lubuk Alung Kecamatan Lubuk Alung Kabupaten Padang Pariaman menerangkan bahwa:
+            </td>
+        </tr>
+    </table>
+
+    <table align="center" width="500" style="margin-top: 20px;">
+        <tr>
+            <td>Nama</td>
+            <td>: {{ $nama }}</td>
+        </tr>
+        <tr>
+            <td>NIK</td>
+            <td>: {{ $nik }}</td>
+        </tr>
+        <tr>
+            <td>Tempat/tgl. lahir</td>
+            <td>: {{ $tgl_lahir }}</td>
+        </tr>
+        <tr>
+            <td>Agama</td>
+            <td>: {{ $agama }}</td>
+        </tr>
+        <tr>
+            <td>Status Perkawinan</td>
+            <td>: {{ $status }}</td>
+        </tr>
+        <tr>
+            <td>Pekerjaan</td>
+            <td>: {{ $pekerjaan }}</td>
+        </tr>
+        <tr>
+            <td>Alamat</td>
+            <td>: {{ $alamat }}</td>
+        </tr>
+    </table>
+
+    <table align="center" width="500" style="margin-top: 20px;">
+        <tr>
+            <td colspan="2" style="text-align: justify; text-indent: 50px;">
+                Menurut sepengetahuan kami dan berdasarkan data dari Wali Korong Kelok Nagari Pungguang Kasiak Lubuk Alung, bahwa yang bersangkutan benar-benar memiliki usaha {{ $usaha }}.
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: justify; text-indent: 50px;">
+                Demikianlah surat keterangan usaha ini kami buat untuk dapat dipergunakan sebagaimana mestinya.
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <table align="right" width="800" style="margin-top: 20px;">
+        <tr>
+            <td align="right">
+                <center>
+                    <font size="2">Kelok, {{ \Carbon\Carbon::now()->isoFormat('DD MMMM YYYY') }}</font>
+                </center>
+                <center>
+                    <font size="2"><b>A.n WALI NAGARI PUNGGUANG KASIAK</b></font>
+                </center>
+                <center>
+                    <font size="2"><b>LUBUK ALUNG</b></font>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td height="70"></td>
+        </tr>
+        <tr>
+            <td align="right">
+                <center><b>DODI MARTEN</b></center>
+            </td>
+        </tr>
+    </table>
+
 </body>
+
 </html>

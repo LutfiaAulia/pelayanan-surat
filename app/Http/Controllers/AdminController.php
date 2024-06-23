@@ -16,7 +16,7 @@ class AdminController extends Controller
 {
     function index()
     {
-        return view('index');
+        return view('welcome');
     }
 
     function listAdmin()
@@ -39,7 +39,7 @@ class AdminController extends Controller
 
     function masyarakat()
     {
-        return view('index');
+        return view('welcome');
     }
 
     function tambahAdmin()

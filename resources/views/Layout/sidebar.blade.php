@@ -43,6 +43,15 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
+                
+                @if(Auth::check() && Auth::user()->role == 'masyarakat')
+                    <li class="sidebar-item {{ request()->routeIs('masyarakat.welcome') && auth()->user()->role == 'masyarakat' ? 'active' : '' }}">
+                        <a href="" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Welcome</span>
+                        </a>
+                    </li>
+                @endif
 
                 @if(Auth::check() && Auth::user()->role == 'admin')
                     <li class="sidebar-item {{ request()->routeIs('admin.dashboard') && auth()->user()->role == 'admin' ? 'active' : '' }}">
@@ -56,15 +65,6 @@
                 @if(Auth::check() && Auth::user()->role == 'walinagari')
                     <li class="sidebar-item {{ request()->routeIs('walinagari.dashboard') && auth()->user()->role == 'walinagari' ? 'active' : '' }}">
                         <a href="{{ route('walinagari.dashboard') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Beranda</span>
-                        </a>
-                    </li>
-                @endif
-                
-                @if(Auth::check() && Auth::user()->role == 'masyarakat')
-                    <li class="sidebar-item {{ request()->routeIs('masyarakat.dashboard') && auth()->user()->role == 'masyarakat' ? 'active' : '' }}">
-                        <a href="{{ route('masyarakat.dashboard') }}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Beranda</span>
                         </a>
