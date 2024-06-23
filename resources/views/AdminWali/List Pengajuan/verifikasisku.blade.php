@@ -49,8 +49,12 @@
                         </div>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
-                        <button type="submit" class="btn btn-success me-1">Verifikasi</button>
-                        <button type="button" class="btn btn-danger" id="tolakButton">Tolak</button>
+                        @if ($data->pengajuan->status_pengajuan == 'Mengajukan')
+                            <button type="submit" class="btn btn-success me-1">Verifikasi</button>
+                            <button type="button" class="btn btn-danger" id="tolakButton">Tolak</button>
+                        @else
+                            <a href="{{ route('admin.listsku') }}" class="btn btn-light-primary">Cancel</a>    
+                        @endif
                     </div>
                 </form>
             </div>

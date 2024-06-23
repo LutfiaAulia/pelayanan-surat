@@ -32,12 +32,9 @@
                                         <td>{{ $item['tanggal_pengajuan'] }}</td>
                                         <td>{{ $item['status_pengajuan'] }}</td>
                                         <td style="width: 140px; text-align: center;" >
-                                            @if ($item['status_pengajuan'] == 'diproses')
-                                                <label for="fileInput" class="btn btn-success"><i class="fas fa-file-upload"></i></label>
-                                                <input type="file" id="fileInput" style="display: none;">
-                                            @elseif ($item['status_pengajuan'] == 'Mengajukan')
-                                                <a href="{{ route('admin.verifikasisku', ['id_pengajuan' => $item['id_pengajuan']]) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                            @endif
+                                            <a href="{{ route('admin.verifikasisku', ['id_pengajuan' => $item['id_pengajuan']]) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                            <label for="fileInput" class="btn btn-success"><i class="fas fa-file-upload"></i></label>
+                                            <input type="file" id="fileInput" style="display: none;">
                                         </td>
                                     </tr>
                                 @endforeach
