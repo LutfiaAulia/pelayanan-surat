@@ -18,7 +18,6 @@
                                     <th scope="col">Tanggal Pengajuan</th>
                                     <th scope="col">Jenis Surat</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Detail</th>
                                     <th colspan="2">Action</th>
                                 </tr>
                             </thead>
@@ -31,7 +30,6 @@
                                                 <td>{{ $item['tanggal_pengajuan'] }}</td>
                                                 <td>{{ $item['jenis_surat'] }}</td>
                                                 <td>{{ $item['status_pengajuan'] }}</td>
-                                                <td><a href="{{ route('masyarakat.sktm', $item['id_pengajuan']) }}">Cek</a></td>
                                                 <td style="width: 200px; text-align: center;">
                                                     @if($item['status_pengajuan'] == 'Mengajukan')
                                                         @if($item['jenis_surat'] == 'SKTM')
@@ -61,6 +59,10 @@
                                                             <i class="fas fa-file-download"></i>
                                                         </button>
                                                     @endif
+
+                                                    @if($item['status_pengajuan'] == 'Ditolak')
+                                                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#alasanTolakModal" data-id="{{ $item['id_pengajuan'] }}">Cek</button>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -81,4 +83,48 @@
         </div>
     </section>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="alasanTolakModal" tabindex="-1" aria-labelledby="alasanTolakModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="alasanTolakModalLabel">Alasan Penolakan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="alasanPenolakanText"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#alasanTolakModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget);
+        var id_pengajuan = button.data('id');
+
+        $.ajax({
+            url: '{{ route("alasanTolak") }}',
+            method: 'GET',
+            data: { id_pengajuan: id_pengajuan },
+            success: function(response) {
+                console.log(response); // Debugging
+                $('#alasanPenolakanText').text(response.alasan_penolakan);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error); // Debugging
+                console.error('Status:', status);
+                console.error('Response:', xhr.responseText);
+                $('#alasanPenolakanText').text('Gagal mengambil data');
+            }
+        });
+    });
+});
+</script>
+
 @endsection

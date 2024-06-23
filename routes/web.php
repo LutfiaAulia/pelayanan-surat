@@ -118,6 +118,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pengajuan/tolaksku', [PengajuanController::class, 'tolakPengajuanSku'])->name('pengajuan.tolaksku')->middleware('userAkses:admin');
     Route::post('/pengajuan/tolakpot', [PengajuanController::class, 'tolakPengajuanPot'])->name('pengajuan.tolakpot')->middleware('userAkses:admin');
 
+    Route::get('/alasantolak', [PengajuanController::class, 'alasanTolak'])->name('alasanTolak')->middleware('userAkses:masyarakat');
+
     //Generate Surat
     Route::post('/admin/generate-sku-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratSku'])->name('admin.generateSuratSku')->middleware('userAkses:admin');
     Route::post('/admin/generate-sktm-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratSktm'])->name('admin.generateSuratSktm')->middleware('userAkses:admin');

@@ -37,6 +37,18 @@ class PengajuanController extends Controller
         return view('Masyarakat.Pengajuan Surat.surpeng');
     }
 
+    public function alasanTolak(Request $request)
+    {
+        $id_pengajuan = $request->input('id_pengajuan');
+        $pengajuan = Pengajuan::find($id_pengajuan);
+
+        if ($pengajuan) {
+            return response()->json(['alasan_penolakan' => $pengajuan->alasan_penolakan]);
+        } else {
+            return response()->json(['alasan_penolakan' => 'Data tidak ditemukan'], 404);
+        }
+    }
+
     public function ajusktm(Request $request)
     {
         $validator = Validator::make($request->all(), [
