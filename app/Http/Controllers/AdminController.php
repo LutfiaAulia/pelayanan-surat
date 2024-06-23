@@ -267,10 +267,12 @@ class AdminController extends Controller
     public function listsku()
     {
         $list = SKU::with('pengajuan')
-            ->whereHas('pengajuan', function($query) {})
+            ->whereHas('pengajuan', function ($query) {
+                $query->where('status_pengajuan', '!=', 'Selesai');
+            })
             ->get();
 
-        $list = $list->map(function($item) {
+        $list = $list->map(function ($item) {
             return [
                 'nama' => $item->nama,
                 'nik' => $item->nik,
@@ -286,13 +288,13 @@ class AdminController extends Controller
 
     public function listsktm()
     {
-        // Mengambil data dengan join
         $list = SKTM::with('pengajuan')
-            ->whereHas('pengajuan', function($query) {})
+            ->whereHas('pengajuan', function ($query) {
+                $query->where('status_pengajuan', '!=', 'Selesai');
+            })
             ->get();
 
-        // Mengambil hanya kolom yang diperlukan
-        $list = $list->map(function($item) {
+        $list = $list->map(function ($item) {
             return [
                 'nama' => $item->nama,
                 'nik' => $item->nik,
@@ -308,13 +310,13 @@ class AdminController extends Controller
 
     public function listpot()
     {
-        // Mengambil data dengan join
         $list = POT::with('pengajuan')
-            ->whereHas('pengajuan', function($query) {})
+            ->whereHas('pengajuan', function ($query) {
+                $query->where('status_pengajuan', '!=', 'Selesai');
+            })
             ->get();
 
-        // Mengambil hanya kolom yang diperlukan
-        $list = $list->map(function($item) {
+        $list = $list->map(function ($item) {
             return [
                 'nama' => $item->nama,
                 'nik' => $item->nik,
@@ -348,7 +350,6 @@ class AdminController extends Controller
 
     public function listkeluar()
     {
-        // Fetching data by joining the necessary tables
         $suratKeluar = DB::table('pengajuan')
             ->leftJoin('surat_sktm', 'pengajuan.id_pengajuan', '=', 'surat_sktm.id_pengajuan')
             ->leftJoin('surat_pot', 'pengajuan.id_pengajuan', '=', 'surat_pot.id_pengajuan')
@@ -365,7 +366,7 @@ class AdminController extends Controller
                     WHEN surat_sku.id_sku IS NOT NULL THEN "SKU" 
                     END as jenis_surat')
             )
-            ->where('pengajuan.status_pengajuan', 'diproses')
+            ->where('pengajuan.status_pengajuan', 'Selesai')
             ->get();
 
         return view('AdminWali.listsuker', compact('suratKeluar'));
