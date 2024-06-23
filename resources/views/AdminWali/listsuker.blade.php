@@ -25,19 +25,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Example rows --}}
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>John Doe</td>
-                                    <td>123456789</td>
-                                    <td>SKTM</td>
-                                    <td>B-003/SKTM/IV/2024</td>
-                                    <td>Selesai</td>
-                                    <td style="width: 140px; text-align: center;" >
-                                        <button class="btn btn-success"><i class="fas fa-print"></i></button>
-                                    </td>
-                                </tr>
-                                {{-- Add more rows as needed --}}
+                                @foreach($suratKeluar as $index => $surat)
+                                    <tr>
+                                        <th scope="row">{{ $index + 1 }}</th>
+                                        <td>{{ $surat->nama_pengaju }}</td>
+                                        <td>{{ $surat->nik }}</td>
+                                        <td>{{ $surat->jenis_surat }}</td>
+                                        <td>{{ $surat->nomor_surat }}</td>
+                                        <td>{{ $surat->status }}</td>
+                                        <td style="width: 140px; text-align: center;">
+                                            <button class="btn btn-success"><i class="fas fa-print"></i></button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

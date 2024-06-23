@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-actions d-flex justify-content-end">
                         <button type="button" id="generateButton" class="btn btn-primary me-1">Generate Surat</button>
-                        <button type="reset" class="btn btn-light-primary">Cancel</button>
+                        <a href="{{ route('admin.listsktm') }}" class="btn btn-light-primary">Cancel</a>
                     </div>
                 </form>
             </div>

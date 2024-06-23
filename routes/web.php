@@ -49,6 +49,9 @@ Route::middleware(['auth'])->group(function () {
     //List Pengajuan Surat Oleh Masyarakat (Masyarakat)
     Route::get('/listpeng', [PengajuanController::class, 'listpengajuan'])->name('listpeng')->middleware('userAkses:masyarakat');
 
+    //List Suker
+    Route::get('/listsuker', [AdminController::class, 'listkeluar'])->name('listsuker')->middleware('userAkses:admin, walinagari');
+
     //Edit Profil (Masyarakat)
     Route::get('/profile/{id}/edit', [MasyarakatController::class, 'edit'])->name('masyarakat.edit')->middleware('userAkses:masyarakat');
     Route::put('/profile/{id}', [MasyarakatController::class, 'update'])->name('masyarakat.update')->middleware('userAkses:masyarakat');
@@ -130,33 +133,12 @@ Route::get('/masyarakat', function () {
     return view('AdminWali.Kelola Akun.masyarakat');
 })->name('masyarakat');
 
-// List Surat Keluar
-Route::get('/listsuker', function () {
-    return view('AdminWali.listsuker');
-})->name('listsuker');
-
-// Route::get('/verif', function () {
-//     return view('AdminWali.List Pengajuan.verifikasisktm');
-// })->name('verif');
-
-// Masyarakat
-
-// Pengajuan Surat
-// Route::get('/sktm', function () {
-//     return view('Masyarakat.Pengajuan Surat.sktm');
-// })->name('sktm');
-
 Route::get('/sku', function () {
     return view('Masyarakat.Pengajuan Surat.sku');
 })->name('sku');
 Route::get('/surpeng', function () {
     return view('Masyarakat.Pengajuan Surat.surpeng');
 })->name('surpeng');
-
-// List Pengajuan
-// Route::get('/listpeng', function () {
-//     return view('Masyarakat.listpeng');
-// })->name('listpeng');
 
 // Syarat Pengajuan
 Route::get('/syarpeng', function () {
