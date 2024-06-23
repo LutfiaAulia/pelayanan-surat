@@ -43,11 +43,10 @@
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
                                                         @elseif($item['jenis_surat'] == 'POT')
-                                                            <a href="{{ route('masyarakat.surpeng.edit', $item['id_pengajuan']) }}" class="btn btn-primary">
+                                                            <a href="{{ route('masyarakat.pot.edit', $item['id_pengajuan']) }}" class="btn btn-primary">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
                                                         @endif
-                                                        <button class="btn btn-success"><i class="fas fa-file-download"></i></button>
                                                         <form action="{{ route('masyarakat.' . strtolower($item['jenis_surat']) . '.destroy', $item['id_pengajuan']) }}" method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('DELETE')
