@@ -196,18 +196,21 @@ class MasyarakatController extends Controller
     public function destroySKTM($id_pengajuan)
     {
         SKTM::where('id_pengajuan', $id_pengajuan)->delete();
+        Pengajuan::where('id_pengajuan', $id_pengajuan)->delete();
         return redirect()->route('listpeng')->with('success', 'Data berhasil dihapus');
     }
 
     public function destroySKU($id_pengajuan)
     {
         SKU::where('id_pengajuan', $id_pengajuan)->delete();
+        Pengajuan::where('id_pengajuan', $id_pengajuan)->delete();
         return redirect()->route('listpeng')->with('success', 'Data berhasil dihapus');
     }
 
-    public function destroySurpeng($id_pengajuan)
+    public function destroyPOT($id_pengajuan)
     {
         POT::where('id_pengajuan', $id_pengajuan)->delete();
+        Pengajuan::where('id_pengajuan', $id_pengajuan)->delete();
         return redirect()->route('listpeng')->with('success', 'Data berhasil dihapus');
     }
 }
