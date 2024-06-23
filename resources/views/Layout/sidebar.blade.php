@@ -48,7 +48,7 @@
                     <li class="sidebar-item">
                         <a href="" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
-                            <span>Beranda</span>
+                            <span>Welcome</span>
                         </a>
                     </li>
                 @endif
@@ -57,7 +57,7 @@
                     <li class="sidebar-item">
                         <a href="" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
-                            <span>Beranda</span>
+                            <span>Welcome</span>
                         </a>
                     </li>
                 @endif
@@ -66,7 +66,7 @@
                     <li class="sidebar-item">
                         <a href="" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
-                            <span>Beranda</span>
+                            <span>Welcome</span>
                         </a>
                     </li>
                 @endif
