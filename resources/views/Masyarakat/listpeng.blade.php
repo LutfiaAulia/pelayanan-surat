@@ -33,17 +33,27 @@
                                                 <td>{{ $item['status_pengajuan'] }}</td>
                                                 <td><a href="{{ route('masyarakat.sktm', $item['id_pengajuan']) }}">Cek</a></td>
                                                 <td style="width: 200px; text-align: center;">
-                                                    {{-- <a href="{{ route('masyarakat.sktm.edit', $item['id_pengajuan']) }}" class="btn btn-primary">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a> --}}
+                                                    @if($item['jenis_surat'] == 'SKTM')
+                                                        <a href="{{ route('masyarakat.sktm.edit', $item['id_pengajuan']) }}" class="btn btn-primary">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                    @elseif($item['jenis_surat'] == 'SKU')
+                                                        <a href="{{ route('masyarakat.sku.edit', $item['id_pengajuan']) }}" class="btn btn-primary">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                    @elseif($item['jenis_surat'] == 'POT')
+                                                        <a href="{{ route('masyarakat.surpeng.edit', $item['id_pengajuan']) }}" class="btn btn-primary">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                    @endif
                                                     <button class="btn btn-success"><i class="fas fa-file-upload"></i></button>
-                                                    {{-- <form action="{{ route('masyarakat.sktm.destroy', $item['id_pengajuan']) }}" method="POST" style="display:inline;">
+                                                    <form action="{{ route('masyarakat.' . strtolower($item['jenis_surat']) . '.destroy', $item['id_pengajuan']) }}" method="POST" style="display:inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
-                                                    </form> --}}
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -55,7 +65,6 @@
                                 @else
                                     <tr>
                                         <td colspan="6">Variabel $list tidak terdefinisi.</td>
-                                    </tr>
                                 @endisset
                             </tbody>
                         </table>
