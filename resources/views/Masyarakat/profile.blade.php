@@ -59,7 +59,7 @@
                 </div>
 
                 <button type="submit" id="save-button" class="btn btn-primary" disabled>Simpan</button>
-                <a href="{{ route('masyarakat.dashboard') }}" class="btn btn-secondary">Batal</a>
+                <a href="{{ route('masyarakat.welcome') }}" class="btn btn-secondary">Batal</a>
             </form>
         </div>
     </div>
