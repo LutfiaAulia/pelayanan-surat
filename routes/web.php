@@ -128,6 +128,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/upload-suratSku/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratSku'])->name('upload.suratsku')->middleware('userAkses:admin');
     Route::post('/upload-suratPot/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratPot'])->name('upload.suratpot')->middleware('userAkses:admin');
 
+    //Download Surat Keluar
+    //Route::get('/surat/download/{id_pengajuan}', 'SuratController@downloadSurat')->name('surat.download')->middleware('userAkses:admin');
+
+
 
 });
 
