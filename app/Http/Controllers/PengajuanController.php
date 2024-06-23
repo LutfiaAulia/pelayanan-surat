@@ -513,6 +513,135 @@ class PengajuanController extends Controller
 
         return redirect()->route('admin.listpot')->with('success', 'Pengajuan berhasil ditolak.');
     }
+
+    public function uploadSuratSktm(Request $request, $id_pengajuan)
+    {
+        $validator = Validator::make($request->all(), [
+            'file' => 'required|mimes:pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $pengajuan = Pengajuan::findOrFail($id_pengajuan);
+
+        if ($pengajuan->status_pengajuan === 'Selesai') {
+            return redirect()->back()->with('error', 'Pengajuan sudah selesai dan tidak bisa diubah lagi.');
+        }
+
+        $suratKeluar = SuratKeluar::where('id_pengajuan', $id_pengajuan)->first();
+        if (!$suratKeluar) {
+            $suratKeluar = new SuratKeluar();
+            $suratKeluar->id_pengajuan = $id_pengajuan;
+        }
+
+        if ($suratKeluar->file_surat) {
+            Storage::disk('public')->delete($suratKeluar->file_surat);
+        }
+
+        $file = $request->file('file');
+        $extension = $file->getClientOriginalExtension();
+        $cleanNomorSurat = str_replace('/', '_', $suratKeluar->nomor_surat);
+        $filename = 'SKTM_' . $cleanNomorSurat . '.' . $extension;
+        $path = 'surat/' . $filename;
+
+        Storage::disk('public')->put($path, file_get_contents($file));
+
+        $suratKeluar->file_surat = $path;
+        $suratKeluar->save();
+
+        $pengajuan->status_pengajuan = 'Selesai';
+        $pengajuan->save();
+
+        return redirect()->back()->with('success', 'Surat berhasil diupload dan status pengajuan telah diubah menjadi Selesai.');
+    }
+
+    public function uploadSuratSku(Request $request, $id_pengajuan)
+    {
+        $validator = Validator::make($request->all(), [
+            'file' => 'required|mimes:pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $pengajuan = Pengajuan::findOrFail($id_pengajuan);
+
+        if ($pengajuan->status_pengajuan === 'Selesai') {
+            return redirect()->back()->with('error', 'Pengajuan sudah selesai dan tidak bisa diubah lagi.');
+        }
+
+        $suratKeluar = SuratKeluar::where('id_pengajuan', $id_pengajuan)->first();
+        if (!$suratKeluar) {
+            $suratKeluar = new SuratKeluar();
+            $suratKeluar->id_pengajuan = $id_pengajuan;
+        }
+
+        if ($suratKeluar->file_surat) {
+            Storage::disk('public')->delete($suratKeluar->file_surat);
+        }
+
+        $file = $request->file('file');
+        $extension = $file->getClientOriginalExtension();
+        $cleanNomorSurat = str_replace('/', '_', $suratKeluar->nomor_surat);
+        $filename = 'SKU_' . $cleanNomorSurat . '.' . $extension;
+        $path = 'surat/' . $filename;
+
+        Storage::disk('public')->put($path, file_get_contents($file));
+
+        $suratKeluar->file_surat = $path;
+        $suratKeluar->save();
+
+        $pengajuan->status_pengajuan = 'Selesai';
+        $pengajuan->save();
+
+        return redirect()->back()->with('success', 'Surat berhasil diupload dan status pengajuan telah diubah menjadi Selesai.');
+    }
+
+    public function uploadSuratPot(Request $request, $id_pengajuan)
+    {
+        $validator = Validator::make($request->all(), [
+            'file' => 'required|mimes:pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $pengajuan = Pengajuan::findOrFail($id_pengajuan);
+
+        if ($pengajuan->status_pengajuan === 'Selesai') {
+            return redirect()->back()->with('error', 'Pengajuan sudah selesai dan tidak bisa diubah lagi.');
+        }
+
+        $suratKeluar = SuratKeluar::where('id_pengajuan', $id_pengajuan)->first();
+        if (!$suratKeluar) {
+            $suratKeluar = new SuratKeluar();
+            $suratKeluar->id_pengajuan = $id_pengajuan;
+        }
+
+        if ($suratKeluar->file_surat) {
+            Storage::disk('public')->delete($suratKeluar->file_surat);
+        }
+
+        $file = $request->file('file');
+        $extension = $file->getClientOriginalExtension();
+        $cleanNomorSurat = str_replace('/', '_', $suratKeluar->nomor_surat);
+        $filename = 'POT_' . $cleanNomorSurat . '.' . $extension;
+        $path = 'surat/' . $filename;
+
+        Storage::disk('public')->put($path, file_get_contents($file));
+
+        $suratKeluar->file_surat = $path;
+        $suratKeluar->save();
+
+        $pengajuan->status_pengajuan = 'Selesai';
+        $pengajuan->save();
+
+        return redirect()->back()->with('success', 'Surat berhasil diupload dan status pengajuan telah diubah menjadi Selesai.');
+    }
 }
 
 function monthToRoman($month)

@@ -32,11 +32,16 @@
                                         <td>{{ $item['tanggal_pengajuan'] }}</td>
                                         <td>{{ $item['status_pengajuan'] }}</td>
                                         <td style="width: 140px; text-align: center;" >
-                                            <a href="{{ route('admin.verifikasisurpeng', ['id_pengajuan' => $item['id_pengajuan']]) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                            @if ($item['status_pengajuan'] != 'Mengajukan' && $item['status_pengajuan'] != 'Ditolak')
-                                                <label for="fileInput" class="btn btn-success"><i class="fas fa-file-upload"></i></label>
-                                                <input type="file" id="fileInput" style="display: none;">
-                                            @endif
+                                            <div class="d-flex align-items-center">
+                                                <a href="{{ route('admin.verifikasisurpeng', ['id_pengajuan' => $item['id_pengajuan']]) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                @if ($item['status_pengajuan'] != 'Mengajukan' && $item['status_pengajuan'] != 'Ditolak')
+                                                    <form action="{{ route('upload.suratpot', ['id_pengajuan' => $item['id_pengajuan']]) }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <label for="fileInput{{ $loop->iteration }}" class="btn btn-success"><i class="fas fa-file-upload"></i></label>
+                                                        <input type="file" id="fileInput{{ $loop->iteration }}" name="file" style="display: none;" onchange="this.form.submit();">
+                                                    </form>
+                                                @endif
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
