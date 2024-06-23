@@ -46,7 +46,7 @@
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                     @endif
-                                                    <button class="btn btn-success"><i class="fas fa-file-upload"></i></button>
+                                                    <button class="btn btn-success"><i class="fas fa-file-download"></i></button>
                                                     <form action="{{ route('masyarakat.' . strtolower($item['jenis_surat']) . '.destroy', $item['id_pengajuan']) }}" method="POST" style="display:inline;">
                                                         @csrf
                                                         @method('DELETE')
