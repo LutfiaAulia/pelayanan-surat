@@ -123,6 +123,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/generate-sktm-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratSktm'])->name('admin.generateSuratSktm')->middleware('userAkses:admin');
     Route::post('/admin/generate-pot-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratPot'])->name('admin.generateSuratPot')->middleware('userAkses:admin');
 
+    //Upload Surat
+    Route::post('/upload-suratSktm/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratSktm'])->name('upload.suratsktm')->middleware('userAkses:admin');
+    Route::post('/upload-suratSku/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratSku'])->name('upload.suratsku')->middleware('userAkses:admin');
+    Route::post('/upload-suratPot/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratPot'])->name('upload.suratpot')->middleware('userAkses:admin');
+
+
 });
 
 //Generate Surat
