@@ -35,8 +35,8 @@ Route::get('/home', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('userAkses:admin');
     Route::get('/dashboard/walinagari', [DashboardController::class, 'index'])->name('walinagari.dashboard')->middleware('userAkses:walinagari');
-    Route::get('/dashboard/masyarakat', [DashboardController::class, 'index'])->name('masyarakat.dashboard')->middleware('userAkses:masyarakat');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/welcome/masyarakat', [AdminController::class, 'masyarakat'])->name('masyarakat.welcome')->middleware('userAkses:masyarakat');
 
     //Pengajuan Surat (Masyarakat)
     Route::get('/formsktm', [PengajuanController::class, 'formsktm'])->name('masyarakat.sktm')->middleware('userAkses:masyarakat');

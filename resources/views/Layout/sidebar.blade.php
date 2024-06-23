@@ -43,27 +43,9 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
-
-                @if(Auth::check() && Auth::user()->role == 'admin')
-                    <li class="sidebar-item">
-                        <a href="" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Welcome</span>
-                        </a>
-                    </li>
-                @endif
-                
-                @if(Auth::check() && Auth::user()->role == 'walinagari')
-                    <li class="sidebar-item">
-                        <a href="" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Welcome</span>
-                        </a>
-                    </li>
-                @endif
                 
                 @if(Auth::check() && Auth::user()->role == 'masyarakat')
-                    <li class="sidebar-item">
+                    <li class="sidebar-item {{ request()->routeIs('masyarakat.welcome') && auth()->user()->role == 'masyarakat' ? 'active' : '' }}">
                         <a href="" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Welcome</span>
