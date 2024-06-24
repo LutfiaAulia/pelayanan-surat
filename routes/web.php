@@ -132,6 +132,9 @@ Route::middleware(['auth'])->group(function () {
 
     //Download Surat Keluar
     //Route::get('/surat/download/{id_pengajuan}', 'SuratController@downloadSurat')->name('surat.download')->middleware('userAkses:admin');
+    Route::get('/surat-keluar', [PengajuanController::class, 'takeSurat'])->name('surat.index')->middleware('userAkses:admin');
+    Route::get('/download-surat/{id_pengajuan}', [PengajuanController::class, 'downloadSurat'])->name('download.surat')->middleware('userAkses:admin');
+
 
 
 

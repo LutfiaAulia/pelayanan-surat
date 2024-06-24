@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- content --}}
+{{-- konten --}}
 <div class="page-content">
     <section class="row">
         <div class="col-12">
@@ -21,7 +21,7 @@
                                     <th scope="col">Jenis Surat</th>
                                     <th scope="col">Nomor Surat</th>
                                     <th scope="col">Status</th>
-                                    <th colspan="2">Action</th>
+                                    <th colspan="2">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,7 +34,9 @@
                                         <td>{{ $surat->nomor_surat }}</td>
                                         <td>{{ $surat->status }}</td>
                                         <td style="width: 140px; text-align: center;">
-                                            <button class="btn btn-success"><i class="fas fa-print"></i></button>
+                                            <a href="{{ route('download.surat', $surat->id_pengajuan) }}" class="btn btn-success">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

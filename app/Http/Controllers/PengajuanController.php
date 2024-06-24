@@ -250,7 +250,7 @@ class PengajuanController extends Controller
                 ] : null;
             })->filter();
 
-            $list = collect($skuList)->merge($sktmList)->merge($potList);
+        $list = collect($skuList)->merge($sktmList)->merge($potList);
 
         return view('Masyarakat.listpeng', compact('list'));
     }
@@ -653,6 +653,37 @@ class PengajuanController extends Controller
         $pengajuan->save();
 
         return redirect()->back()->with('success', 'Surat berhasil diupload dan status pengajuan telah diubah menjadi Selesai.');
+    }
+
+    public function takeSk()
+    {
+        // Ambil semua surat keluar
+        $suratKeluar = SuratKeluar::all();
+
+        // Kirim data ke view
+        return view('AdminWali.listsuker', compact('suratKeluar'));
+    }
+
+    public function downloadSurat($id_pengajuan)
+    {
+        // Cari surat keluar berdasarkan id_pengajuan
+        $suratKeluar = SuratKeluar::where('id_pengajuan', $id_pengajuan)->first();
+
+        // Jika surat tidak ditemukan, tampilkan pesan error
+        if (!$suratKeluar || !$suratKeluar->file_surat) {
+            return redirect()->back()->with('error', 'Surat tidak ditemukan atau belum diupload.');
+        }
+
+        // Dapatkan path surat dari storage
+        $filePath = storage_path('app/public/' . $suratKeluar->file_surat);
+
+        // Jika file tidak ada di lokasi yang ditentukan, tampilkan pesan error
+        if (!file_exists($filePath)) {
+            return redirect()->back()->with('error', 'File surat tidak ditemukan di storage.');
+        }
+
+        // Download file
+        return response()->download($filePath, basename($filePath));
     }
 }
 

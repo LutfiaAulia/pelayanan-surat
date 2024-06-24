@@ -356,6 +356,7 @@ class AdminController extends Controller
             ->leftJoin('surat_sku', 'pengajuan.id_pengajuan', '=', 'surat_sku.id_pengajuan')
             ->join('surat_keluar', 'pengajuan.id_pengajuan', '=', 'surat_keluar.id_pengajuan')
             ->select(
+                'pengajuan.id_pengajuan',
                 'surat_keluar.nomor_surat',
                 'pengajuan.status_pengajuan as status',
                 DB::raw('COALESCE(surat_sktm.nama, surat_pot.nama, surat_sku.nama) as nama_pengaju'),
