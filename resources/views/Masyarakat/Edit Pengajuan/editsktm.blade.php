@@ -24,6 +24,7 @@
                 <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Form Pengajuan Surat Keterangan Tidak Mampu</h4>
                 <form action="{{ route('masyarakat.updatesktm', $sktm->id_pengajuan) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-12">

@@ -76,7 +76,7 @@ class MasyarakatController extends Controller
         return view('Masyarakat.Edit Pengajuan.editsurpeng', compact('surpeng'));
     }
 
-    public function updateSktm(Request $request, $id_pengajuan)
+    public function updateSKTM(Request $request, $id_pengajuan) // Pastikan metode ini dinamai updateSKTM
     {
         // Validasi data input dari form
         $validatedData = $request->validate([
