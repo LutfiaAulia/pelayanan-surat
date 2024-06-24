@@ -55,9 +55,9 @@
                                                     @endif
 
                                                     @if($item['status_pengajuan'] == 'Selesai')
-                                                        <button class="btn btn-success">
-                                                            <i class="fas fa-file-download"></i>
-                                                        </button>
+                                                        <a href="{{ route('download.surat', ['id_pengajuan' => $item['id_pengajuan']]) }}" class="btn btn-success">
+                                                            <i class="fas fa-download"></i>
+                                                        </a>
                                                     @endif
 
                                                     @if($item['status_pengajuan'] == 'Ditolak')

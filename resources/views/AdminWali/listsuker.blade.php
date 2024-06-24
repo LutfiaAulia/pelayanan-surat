@@ -35,7 +35,7 @@
                                         <td>{{ $surat->status }}</td>
                                         <td style="width: 140px; text-align: center;">
                                             <a href="{{ route('download.surat', $surat->id_pengajuan) }}" class="btn btn-success">
-                                                <i class="fas fa-download"></i> Download
+                                                <i class="fas fa-download"></i>
                                             </a>
                                         </td>
                                     </tr>
