@@ -212,6 +212,7 @@ class PengajuanController extends Controller
                     'id_pengajuan' => $item->pengajuan->id_pengajuan,
                     'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                     'status_pengajuan' => $item->pengajuan->status_pengajuan,
+                    'alasan_penolakan' => $item->pengajuan->alasan_penolakan,
                     'jenis_surat' => 'SKU',
                 ] : null;
             })->filter();
@@ -229,6 +230,7 @@ class PengajuanController extends Controller
                     'id_pengajuan' => $item->pengajuan->id_pengajuan,
                     'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                     'status_pengajuan' => $item->pengajuan->status_pengajuan,
+                    'alasan_penolakan' => $item->pengajuan->alasan_penolakan,
                     'jenis_surat' => 'SKTM',
                 ] : null;
             })->filter();
@@ -246,6 +248,7 @@ class PengajuanController extends Controller
                     'id_pengajuan' => $item->pengajuan->id_pengajuan,
                     'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                     'status_pengajuan' => $item->pengajuan->status_pengajuan,
+                    'alasan_penolakan' => $item->pengajuan->alasan_penolakan,
                     'jenis_surat' => 'POT',
                 ] : null;
             })->filter();

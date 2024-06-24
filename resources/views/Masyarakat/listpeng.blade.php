@@ -18,7 +18,7 @@
                                     <th scope="col">Tanggal Pengajuan</th>
                                     <th scope="col">Jenis Surat</th>
                                     <th scope="col">Status</th>
-                                    <th colspan="2">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -26,7 +26,7 @@
                                     @if($list->isNotEmpty())
                                         @foreach ($list as $item)
                                             <tr>
-                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item['tanggal_pengajuan'] }}</td>
                                                 <td>{{ $item['jenis_surat'] }}</td>
                                                 <td>{{ $item['status_pengajuan'] }}</td>
@@ -52,28 +52,25 @@
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </button>
                                                         </form>
-                                                    @endif
-
-                                                    @if($item['status_pengajuan'] == 'Selesai')
+                                                    @elseif($item['status_pengajuan'] == 'Selesai')
                                                         <a href="{{ route('download.surat', ['id_pengajuan' => $item['id_pengajuan']]) }}" class="btn btn-success">
                                                             <i class="fas fa-download"></i>
                                                         </a>
-                                                    @endif
-
-                                                    @if($item['status_pengajuan'] == 'Ditolak')
-                                                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#alasanTolakModal" data-id="{{ $item['id_pengajuan'] }}">Cek</button>
+                                                    @elseif($item['status_pengajuan'] == 'Ditolak')
+                                                        <span>{{ $item['alasan_penolakan'] }}</span>
                                                     @endif
                                                 </td>
                                             </tr>
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="6">Tidak ada data pengajuan.</td>
+                                            <td colspan="5">Tidak ada data pengajuan.</td>
                                         </tr>
                                     @endif
                                 @else
                                     <tr>
-                                        <td colspan="6">Variabel $list tidak terdefinisi.</td>
+                                        <td colspan="5">Variabel $list tidak terdefinisi.</td>
+                                    </tr>
                                 @endisset
                             </tbody>
                         </table>
@@ -83,48 +80,5 @@
         </div>
     </section>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="alasanTolakModal" tabindex="-1" aria-labelledby="alasanTolakModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="alasanTolakModalLabel">Alasan Penolakan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p id="alasanPenolakanText"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-$(document).ready(function() {
-    $('#alasanTolakModal').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget);
-        var id_pengajuan = button.data('id');
-
-        $.ajax({
-            url: '{{ route("alasanTolak") }}',
-            method: 'GET',
-            data: { id_pengajuan: id_pengajuan },
-            success: function(response) {
-                console.log(response); // Debugging
-                $('#alasanPenolakanText').text(response.alasan_penolakan);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error:', error); // Debugging
-                console.error('Status:', status);
-                console.error('Response:', xhr.responseText);
-                $('#alasanPenolakanText').text('Gagal mengambil data');
-            }
-        });
-    });
-});
-</script>
 
 @endsection
