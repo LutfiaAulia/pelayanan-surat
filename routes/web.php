@@ -54,7 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pot/edit/{id_pengajuan}', [MasyarakatController::class, 'editPOT'])->name('masyarakat.pot.edit')->middleware('userAkses:masyarakat');
 
     //Update Data Pengajuan
-    Route::post('/sktm/update/{id_pengajuan}', [MasyarakatController::class, 'updateSKTM'])->name('masyarakat.updatesktm')->middleware('userAkses:masyarakat');
+    Route::put('/sktm/update/{id_pengajuan}', [MasyarakatController::class, 'updateSKTM'])->name('masyarakat.updatesktm')->middleware('userAkses:masyarakat');
     Route::post('/sku/update/{id_pengajuan}', [MasyarakatController::class, 'updateSKU'])->name('masyarakat.updatesku')->middleware('userAkses:masyarakat');
     Route::post('/pot/update/{id_pengajuan}', [MasyarakatController::class, 'updatePOT'])->name('masyarakat.updatepot')->middleware('userAkses:masyarakat');
 
