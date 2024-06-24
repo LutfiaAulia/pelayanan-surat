@@ -5,7 +5,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PengajuanController;
-use App\Models\Pengajuan;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
