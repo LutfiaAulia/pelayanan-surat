@@ -90,9 +90,9 @@ class MasyarakatController extends Controller
             'filekk' => 'nullable|file|mimes:jpg,jpeg,png|max:500',
         ]);
 
-        $sktm = SKTM::findOrFail($id_pengajuan);
+        $sktm = SKTM::where('id_pengajuan',$id_pengajuan)->first();
 
-        $sktm->fill($validatedData);
+        $sktm->update($validatedData);
 
         if ($request->hasFile('filektp')) {
             if ($sktm->filektp) {
@@ -117,6 +117,8 @@ class MasyarakatController extends Controller
 
     public function updateSKU(Request $request, $id_pengajuan)
     {
+        
+        //  return response()->json(array('test'=>$sku));
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
             'nik' => 'required|digits:16',
@@ -130,11 +132,11 @@ class MasyarakatController extends Controller
             'filektp' => 'nullable|file|mimes:jpg,jpeg,png|max:2000',
             'fotousaha' => 'nullable|file|mimes:jpg,jpeg,png|max:2000',
         ]);
-
-        $sku = SKU::findOrFail($id_pengajuan);
-
-        $sku->fill($validatedData);
-
+        
+        $sku = SKU::where('id_pengajuan',$id_pengajuan)->first();
+        
+        $sku->update($validatedData);
+        
         if ($request->hasFile('filektp')) {
             if ($sku->filektp) {
                 Storage::delete('public/filektp/' . $sku->filektp);
@@ -170,9 +172,9 @@ class MasyarakatController extends Controller
             'filekk' => 'nullable|file|mimes:jpg,jpeg,png|max:500',
         ]);
 
-        $surpeng = POT::findOrFail($id_pengajuan);
+        $surpeng = POT::where('id_pengajuan',$id_pengajuan)->first();
 
-        $surpeng->fill($validatedData);
+        $surpeng->update($validatedData);
 
         if ($request->hasFile('filekk')) {
             if ($surpeng->filekk) {

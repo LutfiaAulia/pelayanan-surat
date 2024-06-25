@@ -305,7 +305,7 @@ class AdminController extends Controller
             ];
         });
 
-        return view('AdminWali.List Pengajuan.listsktm', compact('list'));
+        return view('AdminWali.List Pengajuan.listsktm', compact('list'))->with('success', 'Surat berhasil diajukan');
     }
 
     public function listpot()

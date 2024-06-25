@@ -24,6 +24,7 @@
                 <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Form Pengajuan Surat Keterangan Usaha</h4>
                 <form action="{{ route('masyarakat.updatesku', $sku->id_pengajuan) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method ('PUT')
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-12">
@@ -84,7 +85,7 @@
                     </div>
                     <div class="form-actions d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1">Submit</button>
-                        <button type="reset" class="btn btn-light-primary">Cancel</button>
+                        <a herf="{{ route('listpeng') }}" class="btn btn-light-primary">Cancel</a>
                     </div>
                 </form>
             </div>
