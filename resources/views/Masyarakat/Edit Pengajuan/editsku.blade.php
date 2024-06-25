@@ -24,6 +24,7 @@
                 <h4 class="card-title" style="text-align: center; margin-bottom: 20px;">Form Pengajuan Surat Keterangan Usaha</h4>
                 <form action="{{ route('masyarakat.updatesku', $sku->id_pengajuan) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method ('PUT')
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-12">
@@ -63,33 +64,54 @@
                                     <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
                                     <input type="text" id="alasan" class="form-control" placeholder="Tambahkan alasan pengajuan surat" name="alasan" value="{{ old('alasan', $sku->alasan ?? '') }}">
                                 </div>
-                                <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="filektp" class="form-label" style="min-width: 200px;">Upload KTP</label>
-                                    <input type="file" id="filektp" class="form-control" name="filektp">
-                                    <small class="text-muted">Ukuran maksimum: 2MB, Format: JPG, JPEG, PNG</small>
-                                    @if (isset($sku->filektp))
-                                        <img src="{{ asset('storage/filektp/' . $sku->filektp) }}" alt="KTP" style="max-width: 500px; height: auto;">
-                                    @endif
+                                <div class="form-group d-flex mb-4 align-items-start">
+                                    <label for="filektp" class="form-label">Upload KTP</label>
+                                    <div>
+                                        @if (isset($sku->filektp))
+                                            <img src="{{ asset('storage/filektp/' . $sku->filektp) }}" alt="KTP" style="max-width: 500px; height: auto; display: block;">
+                                        @endif
+                                        <input type="file" id="filektp" class="form-control mt-2" name="filektp">
+                                        <small class="text-muted">Ukuran maksimum: 2MB, Format: JPG, JPEG, PNG</small>
+                                    </div>
                                 </div>
-                                <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="fotousaha" class="form-label" style="min-width: 200px;">Upload Foto Usaha</label>
-                                    <input type="file" id="fotousaha" class="form-control" name="fotousaha">
-                                    <small class="text-muted">Ukuran maksimum: 2MB, Format: JPG, JPEG, PNG</small>
-                                    @if (isset($sku->fotousaha))
-                                        <img src="{{ asset('storage/fotousaha/' . $sku->fotousaha) }}" alt="Foto Usaha" style="max-width: 500px; height: auto;">
-                                    @endif
+                                <div class="form-group d-flex mb-4 align-items-start">
+                                    <label for="fotousaha" class="form-label">Upload Foto Usaha</label>
+                                    <div>
+                                        @if (isset($sku->fotousaha))
+                                            <img src="{{ asset('storage/fotousaha/' . $sku->fotousaha) }}" alt="Foto Usaha" style="max-width: 500px; height: auto; display: block;">
+                                        @endif
+                                        <input type="file" id="fotousaha" class="form-control mt-2" name="fotousaha">
+                                        <small class="text-muted">Ukuran maksimum: 2MB, Format: JPG, JPEG, PNG</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1">Submit</button>
-                        <button type="reset" class="btn btn-light-primary">Cancel</button>
+                        <a href="{{ route('listpeng') }}" class="btn btn-light-primary">Cancel</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .form-group {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        min-width: 200px;
+        padding-top: 5px;
+    }
+
+    .form-control {
+        margin-top: 10px;
+    }
+</style>
 
 @endsection
