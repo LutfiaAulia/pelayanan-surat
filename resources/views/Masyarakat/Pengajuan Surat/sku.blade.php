@@ -78,12 +78,18 @@
                     </div>
                     <div class="form-actions d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1">Submit</button>
-                        <button type="reset" class="btn btn-light-primary">Cancel</button>
+                        <button type="reset" class="btn btn-light-primary">Reset</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('nik').addEventListener('input', function (e) {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+</script>
 
 @endsection

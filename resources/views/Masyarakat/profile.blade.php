@@ -40,7 +40,7 @@
 
                 <div class="form-group">
                     <label for="nkkip">NIK:</label>
-                    <input type="text" class="form-control" id="nkkip" name="nkkip" value="{{ $user->nkkip }}" required pattern="\d*" inputmode="numeric">
+                    <input type="text" class="form-control" id="nkkip" name="nkkip" maxlength="16" value="{{ $user->nkkip }}" required pattern="\d*" inputmode="numeric">
                     @error('nkkip')
                         <small>{{ $message }}</small>
                     @enderror

@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-actions d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1">Submit</button>
-                        <button type="reset" class="btn btn-light-primary">Cancel</button>
+                        <button type="reset" class="btn btn-light-primary">Reset</button>
                     </div>
                 </form>                
             </div>

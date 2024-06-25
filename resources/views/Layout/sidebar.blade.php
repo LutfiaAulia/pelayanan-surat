@@ -46,7 +46,7 @@
                 
                 @if(Auth::check() && Auth::user()->role == 'masyarakat')
                     <li class="sidebar-item {{ request()->routeIs('masyarakat.welcome') && auth()->user()->role == 'masyarakat' ? 'active' : '' }}">
-                        <a href="" class='sidebar-link'>
+                        <a href="{{ route('masyarakat.welcome') }}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Welcome</span>
                         </a>
