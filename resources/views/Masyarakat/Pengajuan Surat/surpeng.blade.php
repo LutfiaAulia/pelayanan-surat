@@ -62,7 +62,7 @@
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="filekk" class="form-label" style="min-width: 200px;">Upload KK</label>
                                     <input type="file" id="filekk" class="form-control" name="filekk">
-                                    <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG</small>
+                                    <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG, JPEG, PNG</small>
                                 </div>
                             </div>
                         </div>
