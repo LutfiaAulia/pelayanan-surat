@@ -56,34 +56,39 @@
                                     <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
                                     <input type="text" id="alasan" class="form-control" placeholder="Contoh: Penurunan UKT Anaknya An. Maisitoh" name="alasan" value="{{ old('alasan', $sktm->alasan ?? '') }}">
                                 </div>
-                                <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="filektp" class="form-label" style="min-width: 200px;">Upload KTP</label>
-                                    <input type="file" id="filektp" class="form-control" name="filektp">
-                                    <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG</small>
-                                    @if ($errors->has('filektp'))
-                                        <div class="text-danger mt-2">Ukuran file terlalu besar.</div>
-                                    @endif
-                                    @if (isset($sktm->filektp))
-                                        <img src="{{ asset('storage/filektp/' . $sktm->filektp) }}" alt="KTP" style="max-width: 500px; height: auto;">
-                                    @endif
+                                <div class="form-group d-flex mb-4 align-items-start">
+                                    <label for="filektp" class="form-label">Upload KTP</label>
+                                    <div>
+                                        @if (isset($sktm->filektp))
+                                            <img src="{{ asset('storage/filektp/' . $sktm->filektp) }}" alt="KTP" style="max-width: 500px; height: auto; display: block;">
+                                        @endif
+                                        <input type="file" id="filektp" class="form-control mt-2" name="filektp">
+                                        <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG</small>
+                                        @if ($errors->has('filektp'))
+                                            <div class="text-danger mt-2">Ukuran file terlalu besar.</div>
+                                        @endif
+                                    </div>
                                 </div>
-                                <div class="form-group d-flex align-items-center mb-4">
-                                    <label for="filekk" class="form-label" style="min-width: 200px;">Upload KK</label>
-                                    <input type="file" id="filekk" class="form-control" name="filekk">
-                                    <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG</small>
-                                    @if ($errors->has('filekk'))
-                                        <div class="text-danger mt-2">Ukuran file terlalu besar.</div>
-                                    @endif
-                                    @if (isset($sktm->filekk))
-                                        <img src="{{ asset('storage/filekk/' . $sktm->filekk) }}" alt="KK" style="max-width: 500px; height: auto;">
-                                    @endif
-                                </div>
+                                
+                                <div class="form-group d-flex mb-4 align-items-start">
+                                    <label for="filekk" class="form-label">Upload KK</label>
+                                    <div>
+                                        @if (isset($sktm->filekk))
+                                            <img src="{{ asset('storage/filekk/' . $sktm->filekk) }}" alt="KK" style="max-width: 500px; height: auto; display: block;">
+                                        @endif
+                                        <input type="file" id="filekk" class="form-control mt-2" name="filekk">
+                                        <small class="text-muted">Ukuran maksimum: 500KB, Format: JPG</small>
+                                        @if ($errors->has('filekk'))
+                                            <div class="text-danger mt-2">Ukuran file terlalu besar.</div>
+                                        @endif
+                                    </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
                     <div class="form-actions d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1">Submit</button>
-                        <button type="reset" class="btn btn-light-primary">Cancel</button>
+                        <a href="{{ route('listpeng') }}" class="btn btn-light-primary">Cancel</a>
                     </div>
                 </form>                
             </div>
@@ -95,6 +100,29 @@
     document.getElementById('nik').addEventListener('input', function (e) {
         this.value = this.value.replace(/[^0-9]/g, '');
     });
+
+    function previewImage(event, previewId) {
+        const preview = document.getElementById(previewId);
+        preview.src = URL.createObjectURL(event.target.files[0]);
+        preview.onload = () => URL.revokeObjectURL(preview.src);  // free memory
+    }
 </script>
+
+<style>
+    .form-group {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        min-width: 200px;
+        padding-top: 5px;
+    }
+
+    .form-control {
+        margin-top: 10px;
+    }
+</style>
 
 @endsection

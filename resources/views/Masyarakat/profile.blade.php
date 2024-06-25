@@ -23,7 +23,6 @@
             <form id="edit-profile-form" action="{{ route('masyarakat.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-
                 <div class="d-flex flex-column align-items-center">
                     @if($user->profile_picture)
                         <img id="profilePicturePreview" src="{{ asset($user->profile_picture) }}" alt="Profile Picture" class="rounded-circle mb-2" width="150" height="150" style="object-fit: cover; cursor: pointer;">
@@ -124,11 +123,11 @@
             }
         });
 
-        // Ensure NIK input only allows numbers
         document.getElementById('nkkip').addEventListener('input', function (e) {
             e.target.value = e.target.value.replace(/[^0-9]/g, '');
         });
     });
 </script>
+
 
 @endsection
