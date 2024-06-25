@@ -5,7 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PengajuanController;
-use App\Models\Pengajuan;
+use App\Http\Middleware\UserAkses;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
@@ -52,11 +52,11 @@ Route::middleware(['auth'])->group(function () {
     //Edit Pengajuan
     Route::get('/sktm/edit/{id_pengajuan}', [MasyarakatController::class, 'editSKTM'])->name('masyarakat.sktm.edit')->middleware('userAkses:masyarakat');
     Route::get('/sku/edit/{id_pengajuan}', [MasyarakatController::class, 'editSKU'])->name('masyarakat.sku.edit')->middleware('userAkses:masyarakat');
-    Route::get('/pot/edit/{id_pengajuan}', [MasyarakatController::class, 'editPOT'])->name('masyarakat.pot.edit')->middleware('userAkses:masyarakat');
+    Route::get('/pot/edit/{id_pengajuan}', [MasyarakatController::class, 'editSurpeng'])->name('masyarakat.pot.edit')->middleware('userAkses:masyarakat');
 
     //Update Data Pengajuan
-    Route::post('/sktm/update/{id_pengajuan}', [MasyarakatController::class, 'updateSKTM'])->name('masyarakat.updatesktm')->middleware('userAkses:masyarakat');
-    Route::post('/sku/update/{id_pengajuan}', [MasyarakatController::class, 'updateSKU'])->name('masyarakat.updatesku')->middleware('userAkses:masyarakat');
+    Route::put('/sktm/update/{id_pengajuan}', [MasyarakatController::class, 'updateSKTM'])->name('masyarakat.updatesktm')->middleware('userAkses:masyarakat');
+    Route::put('/sku/update/{id_pengajuan}', [MasyarakatController::class, 'updateSKU'])->name('masyarakat.updatesku')->middleware('userAkses:masyarakat');
     Route::post('/pot/update/{id_pengajuan}', [MasyarakatController::class, 'updatePOT'])->name('masyarakat.updatepot')->middleware('userAkses:masyarakat');
 
     //Hapus Pengajuan
@@ -65,12 +65,12 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/pot/delete/{id_pengajuan}', [MasyarakatController::class, 'destroyPOT'])->name('masyarakat.pot.destroy')->middleware('userAkses:masyarakat');
 
     //List Suker
-    Route::get('/listsuker', [AdminController::class, 'listkeluar'])->name('listsuker')->middleware('userAkses:admin, walinagari');
+    Route::get('/listsuker', [AdminController::class, 'listkeluar'])->name('listsuker')->middleware('userAkses:admin,walinagari');
 
     //Edit Profil (Masyarakat)
     Route::get('/profile/{id}/edit', [MasyarakatController::class, 'edit'])->name('masyarakat.edit')->middleware('userAkses:masyarakat');
     Route::put('/profile/{id}', [MasyarakatController::class, 'update'])->name('masyarakat.update')->middleware('userAkses:masyarakat');
-    
+
     // Route::get('/profile/{id}/show', [MasyarakatController::class, 'show'])->name('masyarakat.show')->middleware('userAkses:masyarakat');
     Route::get('/profile/{id}', [MasyarakatController::class, 'show'])->name('Masyarakat.profile')->middleware('userAkses:masyarakat');
 
@@ -118,17 +118,21 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pengajuan/tolaksku', [PengajuanController::class, 'tolakPengajuanSku'])->name('pengajuan.tolaksku')->middleware('userAkses:admin');
     Route::post('/pengajuan/tolakpot', [PengajuanController::class, 'tolakPengajuanPot'])->name('pengajuan.tolakpot')->middleware('userAkses:admin');
 
+    Route::get('/alasantolak', [PengajuanController::class, 'alasanTolak'])->name('alasanTolak')->middleware('userAkses:masyarakat');
+
     //Generate Surat
     Route::post('/admin/generate-sku-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratSku'])->name('admin.generateSuratSku')->middleware('userAkses:admin');
     Route::post('/admin/generate-sktm-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratSktm'])->name('admin.generateSuratSktm')->middleware('userAkses:admin');
     Route::post('/admin/generate-pot-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratPot'])->name('admin.generateSuratPot')->middleware('userAkses:admin');
 
     //Upload Surat
-    Route::post('/upload-suratSktm/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratSktm'])->name('upload.suratsktm')->middleware('userAkses:admin');
-    Route::post('/upload-suratSku/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratSku'])->name('upload.suratsku')->middleware('userAkses:admin');
-    Route::post('/upload-suratPot/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratPot'])->name('upload.suratpot')->middleware('userAkses:admin');
+    Route::post('/upload-suratSktm/{id_pengajuan}', [PengajuanController::class, 'uploadSuratSktm'])->name('upload.suratsktm')->middleware('userAkses:admin');
+    Route::post('/upload-suratSku/{id_pengajuan}', [PengajuanController::class, 'uploadSuratSku'])->name('upload.suratsku')->middleware('userAkses:admin');
+    Route::post('/upload-suratPot/{id_pengajuan}', [PengajuanController::class, 'uploadSuratPot'])->name('upload.suratpot')->middleware('userAkses:admin');
 
-
+    //Download Surat Keluar
+    Route::get('/surat-keluar', [PengajuanController::class, 'takeSurat'])->name('surat.index');
+    Route::get('/download-surat/{id_pengajuan}', [PengajuanController::class, 'downloadSurat'])->name('download.surat');
 });
 
 //Generate Surat

@@ -18,8 +18,7 @@
                                     <th scope="col">Tanggal Pengajuan</th>
                                     <th scope="col">Jenis Surat</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Detail</th>
-                                    <th colspan="2">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,11 +26,10 @@
                                     @if($list->isNotEmpty())
                                         @foreach ($list as $item)
                                             <tr>
-                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item['tanggal_pengajuan'] }}</td>
                                                 <td>{{ $item['jenis_surat'] }}</td>
                                                 <td>{{ $item['status_pengajuan'] }}</td>
-                                                <td><a href="{{ route('masyarakat.sktm', $item['id_pengajuan']) }}">Cek</a></td>
                                                 <td style="width: 200px; text-align: center;">
                                                     @if($item['status_pengajuan'] == 'Mengajukan')
                                                         @if($item['jenis_surat'] == 'SKTM')
@@ -54,24 +52,25 @@
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </button>
                                                         </form>
-                                                    @endif
-
-                                                    @if($item['status_pengajuan'] == 'Selesai')
-                                                        <button class="btn btn-success">
-                                                            <i class="fas fa-file-download"></i>
-                                                        </button>
+                                                    @elseif($item['status_pengajuan'] == 'Selesai')
+                                                        <a href="{{ route('download.surat', ['id_pengajuan' => $item['id_pengajuan']]) }}" class="btn btn-success">
+                                                            <i class="fas fa-download"></i>
+                                                        </a>
+                                                    @elseif($item['status_pengajuan'] == 'Ditolak')
+                                                        <span>{{ $item['alasan_penolakan'] }}</span>
                                                     @endif
                                                 </td>
                                             </tr>
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="6">Tidak ada data pengajuan.</td>
+                                            <td colspan="5">Tidak ada data pengajuan.</td>
                                         </tr>
                                     @endif
                                 @else
                                     <tr>
-                                        <td colspan="6">Variabel $list tidak terdefinisi.</td>
+                                        <td colspan="5">Variabel $list tidak terdefinisi.</td>
+                                    </tr>
                                 @endisset
                             </tbody>
                         </table>
@@ -81,4 +80,5 @@
         </div>
     </section>
 </div>
+
 @endsection

@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-actions d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary me-1">Submit</button>
-                        <button type="reset" class="btn btn-light-primary">Cancel</button>
+                        <a href="{{ route('admin.listAdmin') }}" class="btn btn-light-primary">Cancel</a>
                     </div>
                 </form>
             </div>

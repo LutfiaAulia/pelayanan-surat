@@ -19,4 +19,9 @@ class SuratKeluar extends Model
         'tanggal_kirim',
         'file_surat',
     ];
+
+    public function pengajuan()
+    {
+        return $this->belongsTo(Pengajuan::class, 'id_pengajuan', 'id_pengajuan');
+    }
 }

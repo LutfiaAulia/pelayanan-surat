@@ -4,6 +4,20 @@
 
 {{-- Konten --}}
 <div class="page-content">
+    <div class="me-auto" style="margin-bottom: 20px;">
+        {{-- Flash messages --}}
+        @if (session('success'))
+        <div class="alert alert-success">
+                {{ session('success') }}
+        </div>
+        @endif
+        @if (session('error'))
+        <div class="alert alert-danger">
+                {{ session('error') }}
+        </div>
+        @endif
+        <h3>Surat Keterangan Tidak Mampu</h3>
+    </div>
     <section class="row">
         <div class="col-12">
             <div class="card">

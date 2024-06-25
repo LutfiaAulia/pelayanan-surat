@@ -37,6 +37,18 @@ class PengajuanController extends Controller
         return view('Masyarakat.Pengajuan Surat.surpeng');
     }
 
+    public function alasanTolak(Request $request)
+    {
+        $id_pengajuan = $request->input('id_pengajuan');
+        $pengajuan = Pengajuan::find($id_pengajuan);
+
+        if ($pengajuan) {
+            return response()->json(['alasan_penolakan' => $pengajuan->alasan_penolakan]);
+        } else {
+            return response()->json(['alasan_penolakan' => 'Data tidak ditemukan'], 404);
+        }
+    }
+
     public function ajusktm(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -200,6 +212,7 @@ class PengajuanController extends Controller
                     'id_pengajuan' => $item->pengajuan->id_pengajuan,
                     'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                     'status_pengajuan' => $item->pengajuan->status_pengajuan,
+                    'alasan_penolakan' => $item->pengajuan->alasan_penolakan,
                     'jenis_surat' => 'SKU',
                 ] : null;
             })->filter();
@@ -217,6 +230,7 @@ class PengajuanController extends Controller
                     'id_pengajuan' => $item->pengajuan->id_pengajuan,
                     'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                     'status_pengajuan' => $item->pengajuan->status_pengajuan,
+                    'alasan_penolakan' => $item->pengajuan->alasan_penolakan,
                     'jenis_surat' => 'SKTM',
                 ] : null;
             })->filter();
@@ -234,11 +248,12 @@ class PengajuanController extends Controller
                     'id_pengajuan' => $item->pengajuan->id_pengajuan,
                     'tanggal_pengajuan' => $item->pengajuan->tanggal_pengajuan,
                     'status_pengajuan' => $item->pengajuan->status_pengajuan,
+                    'alasan_penolakan' => $item->pengajuan->alasan_penolakan,
                     'jenis_surat' => 'POT',
                 ] : null;
             })->filter();
 
-            $list = collect($skuList)->merge($sktmList)->merge($potList);
+        $list = collect($skuList)->merge($sktmList)->merge($potList);
 
         return view('Masyarakat.listpeng', compact('list'));
     }
@@ -641,6 +656,29 @@ class PengajuanController extends Controller
         $pengajuan->save();
 
         return redirect()->back()->with('success', 'Surat berhasil diupload dan status pengajuan telah diubah menjadi Selesai.');
+    }
+
+    public function takeSk()
+    {
+        $suratKeluar = SuratKeluar::all();
+        return view('AdminWali.listsuker', compact('suratKeluar'));
+    }
+
+    public function downloadSurat($id_pengajuan)
+    {
+        $suratKeluar = SuratKeluar::where('id_pengajuan', $id_pengajuan)->first();
+
+        if (!$suratKeluar || !$suratKeluar->file_surat) {
+            return redirect()->back()->with('error', 'Surat tidak ditemukan atau belum diupload.');
+        }
+
+        $filePath = storage_path('app/public/' . $suratKeluar->file_surat);
+
+        if (!file_exists($filePath)) {
+            return redirect()->back()->with('error', 'File surat tidak ditemukan di storage.');
+        }
+
+        return response()->download($filePath, basename($filePath));
     }
 }
 
