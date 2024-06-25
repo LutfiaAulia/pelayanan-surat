@@ -15,7 +15,7 @@
                 {{ session('error') }}
         </div>
         @endif
-        <h3>Surat Keterangan Tidak Mampu</h3>
+        <h3>List Pengajuan</h3>
     </div>
     <section class="row">
         <div class="col-12">
