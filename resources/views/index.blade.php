@@ -2,8 +2,15 @@
 
 @section('content')
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h1>Selamat Datang di Pelayanan Surat Menyurat Kantor Wali Nagari Pungguang Kasiak</h1>
+        </div>
+    </div>
+</div>
 {{-- content --}}
-<div class="page-content">
+<div class="page-content mt-5">
     <section class="row">
         <div class="row">
             <div class="col-6 col-lg-3 col-md-6">
@@ -74,30 +81,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Profile Visit</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="chart-profile-visit"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Visitors Profile</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="chart-visitors-profile"></div>
-                    </div>
-                </div>
-            </div>
-        </div>                    
+        </div>               
     </section>
-</div>           
+</div>
 
 @endsection
