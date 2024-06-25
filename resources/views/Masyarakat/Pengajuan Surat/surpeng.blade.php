@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="penghasilan" class="form-label" style="min-width: 200px;">Penghasilan</label>
-                                    <input type="text" id="penghasilan" class="form-control" placeholder="Tambahkan penghasilan" name="penghasilan">
+                                    <input type="text" id="penghasilan" class="form-control" placeholder="Contoh: Rp.2.000.000" name="alasan" name="penghasilan">
                                 </div>
                                 <div class="form-group d-flex align-items-center mb-4">
                                     <label for="alasan" class="form-label" style="min-width: 200px;">Alasan</label>
