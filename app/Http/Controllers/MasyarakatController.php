@@ -76,9 +76,8 @@ class MasyarakatController extends Controller
         return view('Masyarakat.Edit Pengajuan.editsurpeng', compact('surpeng'));
     }
 
-    public function updateSKTM(Request $request, $id_pengajuan) // Pastikan metode ini dinamai updateSKTM
+    public function updateSKTM(Request $request, $id_pengajuan)
     {
-        // Validasi data input dari form
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
             'nik' => 'required|digits:16',
@@ -91,13 +90,10 @@ class MasyarakatController extends Controller
             'filekk' => 'nullable|file|mimes:jpg,jpeg,png|max:500',
         ]);
 
-        // Ambil data SKTM berdasarkan $id_pengajuan
         $sktm = SKTM::findOrFail($id_pengajuan);
 
-        // Isi model SKTM dengan data yang sudah divalidasi
         $sktm->fill($validatedData);
 
-        // Proses upload dan simpan file jika ada perubahan
         if ($request->hasFile('filektp')) {
             if ($sktm->filektp) {
                 Storage::delete('public/filektp/' . $sktm->filektp);
@@ -114,14 +110,12 @@ class MasyarakatController extends Controller
             $sktm->filekk = basename($filekkPath);
         }
 
-        // Simpan perubahan data SKTM
         $sktm->save();
 
-        // Redirect kembali ke halaman sebelumnya dengan pesan sukses
         return redirect()->back()->with('success', 'Data SKTM berhasil diperbarui.');
     }
 
-    public function updateSku(Request $request, $id_pengajuan)
+    public function updateSKU(Request $request, $id_pengajuan)
     {
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
@@ -137,7 +131,7 @@ class MasyarakatController extends Controller
             'fotousaha' => 'nullable|file|mimes:jpg,jpeg,png|max:2000',
         ]);
 
-        $sku = SKU::findOrFail($id_pengajuan); // Make sure to pass 'id' as a hidden input in your form
+        $sku = SKU::findOrFail($id_pengajuan);
 
         $sku->fill($validatedData);
 
@@ -162,7 +156,7 @@ class MasyarakatController extends Controller
         return redirect()->back()->with('success', 'Data berhasil diperbarui.');
     }
 
-    public function updatePot(Request $request, $id_pengajuan)
+    public function updatePOT(Request $request, $id_pengajuan)
     {
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
@@ -176,7 +170,7 @@ class MasyarakatController extends Controller
             'filekk' => 'nullable|file|mimes:jpg,jpeg,png|max:500',
         ]);
 
-        $surpeng = POT::findOrFail($id_pengajuan); // Make sure to pass 'id' as a hidden input in your form
+        $surpeng = POT::findOrFail($id_pengajuan);
 
         $surpeng->fill($validatedData);
 
