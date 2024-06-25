@@ -117,8 +117,6 @@ class MasyarakatController extends Controller
 
     public function updateSKU(Request $request, $id_pengajuan)
     {
-        
-        //  return response()->json(array('test'=>$sku));
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
             'nik' => 'required|digits:16',
