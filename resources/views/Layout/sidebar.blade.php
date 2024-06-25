@@ -5,7 +5,7 @@
         <div class="sidebar-logo position-relative mt-4">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="">
                         <img src="{{ asset('logo.png') }}" alt="Logo" class="logo" width="80px" height="auto">
                     </a>
                 </div>

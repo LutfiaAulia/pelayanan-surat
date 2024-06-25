@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PengajuanController;
+use App\Http\Middleware\UserAkses;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
@@ -64,12 +65,12 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/pot/delete/{id_pengajuan}', [MasyarakatController::class, 'destroyPOT'])->name('masyarakat.pot.destroy')->middleware('userAkses:masyarakat');
 
     //List Suker
-    Route::get('/listsuker', [AdminController::class, 'listkeluar'])->name('listsuker')->middleware('userAkses:admin, walinagari');
+    Route::get('/listsuker', [AdminController::class, 'listkeluar'])->name('listsuker')->middleware('userAkses:admin,walinagari');
 
     //Edit Profil (Masyarakat)
     Route::get('/profile/{id}/edit', [MasyarakatController::class, 'edit'])->name('masyarakat.edit')->middleware('userAkses:masyarakat');
     Route::put('/profile/{id}', [MasyarakatController::class, 'update'])->name('masyarakat.update')->middleware('userAkses:masyarakat');
-    
+
     // Route::get('/profile/{id}/show', [MasyarakatController::class, 'show'])->name('masyarakat.show')->middleware('userAkses:masyarakat');
     Route::get('/profile/{id}', [MasyarakatController::class, 'show'])->name('Masyarakat.profile')->middleware('userAkses:masyarakat');
 
@@ -125,17 +126,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/generate-pot-surat/{id_pengajuan}', [PengajuanController::class, 'generateSuratPot'])->name('admin.generateSuratPot')->middleware('userAkses:admin');
 
     //Upload Surat
-    Route::post('/upload-suratSktm/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratSktm'])->name('upload.suratsktm')->middleware('userAkses:admin');
-    Route::post('/upload-suratSku/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratSku'])->name('upload.suratsku')->middleware('userAkses:admin');
-    Route::post('/upload-suratPot/{id_pengajuan}', [PengajuanController:: class, 'uploadSuratPot'])->name('upload.suratpot')->middleware('userAkses:admin');
+    Route::post('/upload-suratSktm/{id_pengajuan}', [PengajuanController::class, 'uploadSuratSktm'])->name('upload.suratsktm')->middleware('userAkses:admin');
+    Route::post('/upload-suratSku/{id_pengajuan}', [PengajuanController::class, 'uploadSuratSku'])->name('upload.suratsku')->middleware('userAkses:admin');
+    Route::post('/upload-suratPot/{id_pengajuan}', [PengajuanController::class, 'uploadSuratPot'])->name('upload.suratpot')->middleware('userAkses:admin');
 
     //Download Surat Keluar
     Route::get('/surat-keluar', [PengajuanController::class, 'takeSurat'])->name('surat.index');
     Route::get('/download-surat/{id_pengajuan}', [PengajuanController::class, 'downloadSurat'])->name('download.surat');
-
-
-
-
 });
 
 //Generate Surat
